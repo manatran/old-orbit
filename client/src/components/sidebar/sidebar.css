@@ -1,0 +1,93 @@
+aside {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 66px;
+  max-width: 230px;
+  margin-right: 16px;
+  box-sizing: border-box;
+}
+
+aside h2 {
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  font-size: 16px;
+  color: #666;
+  font-weight: bold;
+}
+
+aside .button {
+  font-size: 14px;
+  padding: 8px;
+  margin-bottom: 8px;
+}
+
+aside .popular {
+  margin-top: 32px;
+}
+
+aside .lang {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #666;
+  margin-bottom: 16px;
+}
+
+aside .lang img {
+  height: 24px;
+  width: 24px;
+  margin-right: 8px;
+}
+aside .lang p{
+  font-size: 14px;
+  margin: 0;
+}
+aside .lang .meta .light {
+  font-size: 12px;
+  color: #999;
+}
+
+aside .nav {
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+  margin-top: 32px;
+}
+
+aside .nav .column {
+  display: flex;
+  flex-direction: column;
+}
+
+aside .column a {
+  margin: 8px 16px;
+  margin-left: 0;
+  color: #666666;
+}
+
+aside .social {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+aside .social img {
+  width: 24px;
+  height: 24px;
+}
+
+aside .copy {
+  margin-top: 16px;
+  font-size: 14px;
+}
+aside .copy p {
+  margin: 4px;
+  text-align: center;
+  color: #999;
+}
+
+@media only screen and (max-width: 720px) {
+  aside {
+    display: none;
+  }
+}

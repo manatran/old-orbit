@@ -1,0 +1,135 @@
+.login-header {
+  margin-top: 48px;
+  background-image: url('./../../assets/pattern.png'), linear-gradient(to right, #3C95D1, #BE62BB);
+  padding: 64px 0;
+  color: white;
+}
+
+.login-header .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login-header .intro,
+.login-header .login-buttons {
+  width: 50%;
+}
+
+.login-header h1 {
+  font-family: 'Segoe UI', "Roboto", sans-serif
+}
+
+.login-header p {
+  color: #F9F9F9;
+}
+
+.login-header .login-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-header .login-buttons img {
+  width: 64px;
+  height: 64px;
+}
+
+.login-header .login-buttons h2 {
+  font-size: 20px;
+  color: #F9F9F9;
+}
+
+.login-header .login-buttons .buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.login-header .login-buttons .buttons a.button {
+  width: 240px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  margin: 8px;
+}
+.login-header .button span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-header .button img {
+  height: 24px;
+  width: 24px;
+  margin-left: 16px;
+}
+
+.login-header .gh-login {
+  background-color: #24292E;
+  border: solid 1px #24292E;
+}
+.login-header .gl-login {
+  background-color: #4F3E7F;
+  border: solid 1px #4F3E7F;
+}
+
+.small-header {
+  padding: 16px;
+  box-sizing: border-box;
+  width: 100%;
+  color: white;
+  border-radius: 8px 8px 0 0;
+  background-image: url('./../../assets/pattern.png'), linear-gradient(to right, #37C862, #1A8FB4);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.small-header .title, .small-header .description {
+  width: 50%;
+}
+
+.small-header .description {
+  text-align: right;
+  color: #F9F9F9;
+}
+
+.small-header h2 {
+  margin: 0;
+  font-size: 32px;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+}
+.small-header h3 {
+  margin: 0;
+  font-size: 24px;
+  font-family: "Roboto Light", 'Roboto', sans-serif;
+  font-weight: 200;
+}
+
+.small-header .description h3 {
+  font-weight: 700;
+  font-family: "Roboto Bold", 'Roboto', sans-serif;
+}
+
+@media only screen and (max-width: 720px) {
+  .login-header .container {
+    flex-direction: column;
+  }
+  .login-header .login-buttons, .login-header .intro {
+    width: 100%;
+  }
+
+  .small-header {
+    flex-direction: column;
+  }
+  .small-header .title, .small-header .description {
+    width: 100%;
+  }
+}

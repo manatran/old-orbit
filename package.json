@@ -12,9 +12,10 @@
     "url": "git+https://github.com/manatran/orbit.git"
   },
   "keywords": [
-    "graphql",
+    "node",
     "react",
-    "node"
+    "graphql",
+    "prisma"
   ],
   "author": "Manaus Transez",
   "license": "MIT",
