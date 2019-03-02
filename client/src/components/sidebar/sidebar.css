@@ -7,13 +7,6 @@ aside {
   box-sizing: border-box;
 }
 
-aside h2 {
-  font-family: 'Segoe UI', 'Roboto', sans-serif;
-  font-size: 16px;
-  color: #666;
-  font-weight: bold;
-}
-
 aside .button {
   font-size: 14px;
   padding: 8px;
@@ -37,10 +30,12 @@ aside .lang img {
   width: 24px;
   margin-right: 8px;
 }
-aside .lang p{
+
+aside .lang p {
   font-size: 14px;
   margin: 0;
 }
+
 aside .lang .meta .light {
   font-size: 12px;
   color: #999;
@@ -80,6 +75,7 @@ aside .copy {
   margin-top: 16px;
   font-size: 14px;
 }
+
 aside .copy p {
   margin: 4px;
   text-align: center;

@@ -1,0 +1,95 @@
+.submission {
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: 8px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.submission .background {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px 8px 0 0;
+}
+
+.submission .meta {
+  background-color: white;
+  border-radius: 0 0 8px 8px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.submission .meta h2,
+.submission .meta p {
+  margin: 0;
+}
+
+.submission .meta p {
+  color: #666;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.submission-container {
+  display: grid;
+  grid-gap: 32px;
+  grid-template-columns: repeat(auto-fill, 180px);
+  overflow: hidden;
+  max-height: 200px;
+  padding-bottom: 16px;
+}
+
+.submission.add-submission {
+  background-color: #40A3E6;
+  transition: .2s;
+}
+
+.submission.add-submission:hover {
+  opacity: .75;
+}
+
+.submission.add-submission .background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.submission.add-submission .background i.material-icons {
+  font-size: 40px;
+}
+
+.submission.add-submission .meta {
+  background-color: #70BAEC;
+  padding: 19px 8px;
+}
+
+.submission.add-submission .meta h2 {
+  color: white;
+  font-size: 14px;
+  text-align: center;
+}
+
+a.link {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@media only screen and (max-width: 720px) {
+  .submission-container {
+    grid-gap: 8px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+
+  .submission {
+    min-height: 80px;
+  }
+
+  .submission .meta {
+    display: none;
+  }
+}

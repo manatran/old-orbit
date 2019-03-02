@@ -59,11 +59,13 @@
   align-content: center;
   margin: 8px;
 }
+
 .login-header .button span {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .login-header .button img {
   height: 24px;
   width: 24px;
@@ -74,6 +76,7 @@
   background-color: #24292E;
   border: solid 1px #24292E;
 }
+
 .login-header .gl-login {
   background-color: #4F3E7F;
   border: solid 1px #4F3E7F;
@@ -84,7 +87,7 @@
   box-sizing: border-box;
   width: 100%;
   color: white;
-  border-radius: 8px 8px 0 0;
+  border-radius: 8px ;
   background-image: url('./../../assets/pattern.png'), linear-gradient(to right, #37C862, #1A8FB4);
   display: flex;
   flex-direction: row;
@@ -92,23 +95,30 @@
   margin-bottom: 32px;
 }
 
-.small-header .title, .small-header .description {
+.small-header .title,
+.small-header .description {
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .small-header .description {
   text-align: right;
   color: #F9F9F9;
+  align-items: flex-end;
 }
 
 .small-header h2 {
-  margin: 0;
-  font-size: 32px;
-  font-family: 'Segoe UI', 'Roboto', sans-serif;
-}
-.small-header h3 {
+  color: white;
   margin: 0;
   font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.small-header h3 {
+  margin: 0;
+  font-size: 20px;
   font-family: "Roboto Light", 'Roboto', sans-serif;
   font-weight: 200;
 }
@@ -118,18 +128,35 @@
   font-family: "Roboto Bold", 'Roboto', sans-serif;
 }
 
+.small-header .description a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #DBECF8;
+  text-align: right;
+  font-size: 14px;
+  margin: 8px 0;
+}
+.small-header .description a i.material-icons {
+  font-size: 20px;
+}
+
 @media only screen and (max-width: 720px) {
   .login-header .container {
     flex-direction: column;
   }
-  .login-header .login-buttons, .login-header .intro {
+
+  .login-header .login-buttons,
+  .login-header .intro {
     width: 100%;
   }
 
   .small-header {
     flex-direction: column;
   }
-  .small-header .title, .small-header .description {
+
+  .small-header .title,
+  .small-header .description {
     width: 100%;
   }
 }

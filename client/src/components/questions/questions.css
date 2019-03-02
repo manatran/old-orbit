@@ -1,0 +1,130 @@
+.question {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+  margin-bottom: 8px;
+  padding: 8px 16px;
+  border: solid 1px #EFEFEF;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.question img {
+  height: 48px;
+  width: 48px;
+  margin: 0 16px;
+}
+
+.votes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.votes span {
+  color: #999;
+  font-size: 12px;
+}
+
+.votes .up,
+.votes .down {
+  cursor: pointer;
+  color: #999;
+}
+
+.votes .up:hover {
+  color: #40A3E6;
+}
+
+.votes .down:hover {
+  color: #E64040;
+}
+
+.question-body {
+  flex: 1;
+}
+
+.question-body h2 {
+  margin: 0;
+}
+
+.question-body h2 .tag {
+  margin-left: 8px;
+  border: solid 1px #40E672;
+  color: #18BF4A;
+  padding: 1px 4px 2px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.question-body p {
+  margin: 0;
+  font-size: 14px;
+  color: #999;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 8px;
+}
+
+.question-body .category {
+  color: #666;
+  font-family: "Roboto Bold", Roboto, sans-serif;
+  margin-right: 8px;
+  font-weight: bold;
+}
+
+.question-body .category::after {
+  content: '●';
+  margin-left: 8px;
+  color: #999;
+}
+
+.question-body .author {
+  margin-left: 8px;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.question-body .author i {
+  margin-right: 4px;
+  font-size: 14px
+}
+
+.question .options {
+  color: #999;
+  font-size: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.question .options span {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.question .options i.material-icons {
+  font-size: 16px;
+  margin-left: 4px;
+}
+
+@media only screen and (max-width: 720px) {
+
+  .question img,
+  .question-body h2 .tag {
+    display: none;
+  }
+
+  .question .votes {
+    margin-right: 8px;
+  }
+
+}
