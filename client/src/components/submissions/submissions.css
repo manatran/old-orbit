@@ -92,4 +92,8 @@ a.link {
   .submission .meta {
     display: none;
   }
+
+  .submission.add-submission .background i.material-icons {
+    font-size: 24px;
+  }
 }
