@@ -32,7 +32,7 @@
   align-items: center;
 }
 
-.login-header .login-buttons img {
+.login-header .login-buttons .logo {
   width: 64px;
   height: 64px;
 }
@@ -42,45 +42,6 @@
   color: #F9F9F9;
 }
 
-.login-header .login-buttons .buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  width: 100%;
-}
-
-.login-header .login-buttons .buttons a.button {
-  width: 240px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-content: center;
-  margin: 8px;
-}
-
-.login-header .button span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.login-header .button img {
-  height: 24px;
-  width: 24px;
-  margin-left: 16px;
-}
-
-.login-header .gh-login {
-  background-color: #24292E;
-  border: solid 1px #24292E;
-}
-
-.login-header .gl-login {
-  background-color: #4F3E7F;
-  border: solid 1px #4F3E7F;
-}
 
 .small-header {
   padding: 16px;

@@ -89,6 +89,7 @@
   position: relative;
   top: 3px;
   margin-right: 4px;
+  display: none;
 }
 
 .question-body .category::after {

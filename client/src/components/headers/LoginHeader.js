@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
+import AuthButtons from './../auth/AuthButtons';
 import logo from './../../assets/logo.png';
 import './header.css';
-import github from './../../assets/icons/github-white.png';
-import gitlab from './../../assets/icons/gitlab.png';
 
 class LoginHeader extends Component {
   render() {
@@ -15,23 +14,9 @@ class LoginHeader extends Component {
             <p>Don't be a stranger!</p>
           </div>
           <div className="login-buttons">
-            <img src={logo} alt="Orbit Logo" />
+            <img src={logo} className="logo" alt="Orbit Logo" />
             <h2>Join our community today!</h2>
-            <div className="buttons">
-              <a href="/" className="button gh-login">
-                <span>
-                  Login with GitHub
-                </span>
-                <img src={github} alt="Login with GitHub" />
-              </a>
-
-              <a href="/" className="button gl-login">
-                <span>
-                  Login with GitLab
-                </span>
-              <img src={gitlab} alt="Login with GitLab" />
-              </a>
-            </div>
+            <AuthButtons />
           </div>
         </div>
       </header>
