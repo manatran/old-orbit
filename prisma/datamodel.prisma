@@ -20,7 +20,7 @@ type Submission {
 	comments: [Comment!]
 	challenge: Challenge!
 	tags: [Tag!]1
-	githubUrl: String!
+	githubUrl: String! @unique
 	thumbnail: @TODO
 }
 
