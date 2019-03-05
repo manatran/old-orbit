@@ -1,4 +1,83 @@
 type User {
-  id: ID! @unique
-  name: String!
+	id: ID! @unique
+  createdAt: DateTime!
+	updatedAt: DateTime
+	deletedAt: DateTime
+  token: String!
+	isAdmin: Boolean! @default(value: "false")
+	blacklist: [User!]
+	subscriptions: [Category!]
+}
+
+type Submission {
+	id: ID! @unique
+  createdAt: DateTime!
+	updatedAt: DateTime
+	deletedAt: DateTime
+	author: User!
+	title: String!
+	description: String!
+	comments: [Comment!]
+	challenge: Challenge!
+	tags: [Tag!]1
+	githubUrl: String!
+	thumbnail: @TODO
+}
+
+type Post {
+	id: ID! @unique
+  createdAt: DateTime!
+	updatedAt: DateTime
+	deletedAt: DateTime
+	author: User!
+	title: String!
+	description: String!
+	comments: [Comment!]
+	tags: [Tag!]
+	category: Category!
+	pinned: Boolean! @default(value: "false")
+}
+
+type Comment {
+	id: ID! @unique
+  createdAt: DateTime!
+	updatedAt: DateTime
+	deletedAt: DateTime
+	author: User!
+	content: String!
+	likes: [User!]
+	parentComment: Comment!
+	tags: [Tag!]
+}
+
+type Tag {
+	id: ID! @unique
+  createdAt: DateTime!
+	updatedAt: DateTime
+	deletedAt: DateTime
+	name: String!
+	description: String!
+	thumbnail: @TODO!
+	parentTag: Tag
+}
+
+type Revision {
+	id: ID! @unique
+	createdAt: DateTime!
+	updatedAt: DateTime
+	deletedAt: DateTime
+	author: User!
+	content: String!
+	post: Post!
+}
+
+type Report {
+	id: ID! @unique
+	createdAt: DateTime!
+	updatedAt: DateTime
+	deletedAt: DateTime
+	author: User!
+	content: String!
+	tags: [Tag]
+	resolvedBy: User
 }

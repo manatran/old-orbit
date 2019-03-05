@@ -35,7 +35,7 @@
 .submission-container {
   display: grid;
   grid-gap: 32px;
-  grid-template-columns: repeat(auto-fill, 180px);
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   overflow: hidden;
   max-height: 200px;
   padding-bottom: 16px;
@@ -79,10 +79,9 @@ a.link {
   align-items: center;
 }
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 1080px) {
   .submission-container {
     grid-gap: 8px;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 
   .submission {

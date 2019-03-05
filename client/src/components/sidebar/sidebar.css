@@ -2,7 +2,7 @@ aside {
   position: -webkit-sticky;
   position: sticky;
   top: 66px;
-  max-width: 230px;
+  max-width: 250px;
   margin-right: 16px;
   box-sizing: border-box;
 }
@@ -60,7 +60,8 @@ aside .column a {
 }
 
 aside .social {
-  margin-top: 16px;
+	margin: 16px auto;
+	max-width: 200px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

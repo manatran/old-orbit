@@ -172,6 +172,10 @@
 	margin-bottom: 16px;
 }
 
+.question .dropdown .close i {
+	cursor: pointer;
+}
+
 .question .dropdown ul {
 	margin: 0;
 	padding: 0;
