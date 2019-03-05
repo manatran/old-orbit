@@ -1,7 +1,7 @@
 type User {
 	id: ID! @unique
   createdAt: DateTime!
-	updatedAt: DateTime
+	updatedAt: DateTime!
 	deletedAt: DateTime
   token: String!
 	isAdmin: Boolean! @default(value: "false")
@@ -12,22 +12,22 @@ type User {
 type Submission {
 	id: ID! @unique
   createdAt: DateTime!
-	updatedAt: DateTime
+	updatedAt: DateTime!
 	deletedAt: DateTime
 	author: User!
 	title: String!
 	description: String!
 	comments: [Comment!]
 	challenge: Challenge!
-	tags: [Tag!]1
-	githubUrl: String! @unique
-	thumbnail: @TODO
+	tags: [Tag!]
+	githubUrl: String!
+	thumbnail: String!
 }
 
 type Post {
 	id: ID! @unique
   createdAt: DateTime!
-	updatedAt: DateTime
+	updatedAt: DateTime!
 	deletedAt: DateTime
 	author: User!
 	title: String!
@@ -38,14 +38,27 @@ type Post {
 	pinned: Boolean! @default(value: "false")
 }
 
+type Challenge {
+	id: ID! @unique
+  createdAt: DateTime!
+	updatedAt: DateTime!
+	deletedAt: DateTime
+  startsAt: DateTime!
+  expiresAt: DateTime!
+  author: User!
+  title: String!
+  description: String!
+  period: String!
+}
+
 type Comment {
 	id: ID! @unique
   createdAt: DateTime!
-	updatedAt: DateTime
+	updatedAt: DateTime!
 	deletedAt: DateTime
-	author: User!
+	author: User! @relation(name: "CommentAuthorRelation")
 	content: String!
-	likes: [User!]
+	likes: [User!] @relation(name: "LikeRelation")
 	parentComment: Comment!
 	tags: [Tag!]
 }
@@ -53,18 +66,29 @@ type Comment {
 type Tag {
 	id: ID! @unique
   createdAt: DateTime!
-	updatedAt: DateTime
+	updatedAt: DateTime!
 	deletedAt: DateTime
 	name: String!
 	description: String!
-	thumbnail: @TODO!
+	thumbnail: String!
 	parentTag: Tag
+}
+
+type Category {
+	id: ID! @unique
+  createdAt: DateTime!
+	updatedAt: DateTime!
+	deletedAt: DateTime
+	name: String!
+	description: String!
+	thumbnail: String!
+	parentCategory: Category
 }
 
 type Revision {
 	id: ID! @unique
 	createdAt: DateTime!
-	updatedAt: DateTime
+	updatedAt: DateTime!
 	deletedAt: DateTime
 	author: User!
 	content: String!
@@ -74,10 +98,10 @@ type Revision {
 type Report {
 	id: ID! @unique
 	createdAt: DateTime!
-	updatedAt: DateTime
+	updatedAt: DateTime!
 	deletedAt: DateTime
-	author: User!
+	author: User! @relation(name: "ReportAuthorRelation")
 	content: String!
 	tags: [Tag]
-	resolvedBy: User
+	resolvedBy: User @relation(name: "ResolvedRelation")
 }

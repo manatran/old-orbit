@@ -7,6 +7,38 @@ var models = [
   {
     name: "User",
     embedded: false
+  },
+  {
+    name: "Submission",
+    embedded: false
+  },
+  {
+    name: "Post",
+    embedded: false
+  },
+  {
+    name: "Challenge",
+    embedded: false
+  },
+  {
+    name: "Comment",
+    embedded: false
+  },
+  {
+    name: "Tag",
+    embedded: false
+  },
+  {
+    name: "Category",
+    embedded: false
+  },
+  {
+    name: "Revision",
+    embedded: false
+  },
+  {
+    name: "Report",
+    embedded: false
   }
 ];
 exports.Prisma = prisma_lib_1.makePrismaClientClass({
