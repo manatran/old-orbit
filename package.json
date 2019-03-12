@@ -4,7 +4,8 @@
   "description": "Orbit is a beginner-friendly community for developers.",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon --config nodemon.json server.js",
+    "start": "node server.js",
+    "serve": "nodemon server.js",
     "c-start": "concurrently \"npm start\" \"cd client && npm start\""
   },
   "repository": {
@@ -14,8 +15,8 @@
   "keywords": [
     "node",
     "react",
-    "graphql",
-    "prisma"
+    "rest",
+    "mongodb"
   ],
   "author": "Manaus Transez",
   "license": "MIT",
@@ -23,8 +24,11 @@
   "homepage": "https://github.com/manatran/orbit#readme",
   "dependencies": {
     "express": "^4.16.4",
-    "graphql-yoga": "^1.17.4",
-    "npm": "^6.8.0"
+    "jsonwebtoken": "^8.5.0",
+    "mongoose": "^5.4.18",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "concurrently": "^4.1.0",

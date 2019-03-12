@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
-import Navigation from './../components/navigation';
-import Homepage from './../pages/Homepage';
-import Authpage from './../pages/Authpage';
+import React, { Component } from "react";
+import { Redirect, Route, Switch } from "react-router-dom";
+import Navigation from "./../components/navigation";
+import Homepage from "./../pages/Homepage";
+import Authpage from "./../pages/Authpage";
 
 class Main extends Component {
   render() {
@@ -10,12 +10,13 @@ class Main extends Component {
       <React.Fragment>
         <Navigation />
         <Switch>
-          <Route exact path='/signup' component={Authpage} />
-          <Route exact path='/' component={Homepage} />
-          <Redirect from="/home" to="/"/>
+          <Route exact path="/signup" component={Authpage} />
+          <Route exact path="/" component={Homepage} />
+          <Redirect from="/home" to="/" />
+          <Redirect from="*" to="/" />
         </Switch>
       </React.Fragment>
-    )
+    );
   }
 }
 

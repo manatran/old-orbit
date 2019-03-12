@@ -1,11 +1,16 @@
 .buttons .gh-login {
-  background-color: #24292E;
-  border: solid 1px #24292E;
+  background-color: #24292e;
+  border: solid 1px #24292e;
 }
 
 .buttons .gl-login {
-  background-color: #4F3E7F;
-  border: solid 1px #4F3E7F;
+  background-color: #4f3e7f;
+  border: solid 1px #4f3e7f;
+}
+
+.buttons .disabled {
+  cursor: no-drop;
+  filter: contrast(0.66);
 }
 
 .buttons {
@@ -38,7 +43,6 @@
   margin-left: 16px;
 }
 
-
 .auth-container {
   display: flex;
   flex-direction: column;
@@ -65,7 +69,7 @@
 }
 
 .auth-container h2 {
-  font-family: 'Segoe UI', "Roboto", sans-serif;
+  font-family: "Segoe UI", "Roboto", sans-serif;
   font-size: 20px;
   margin: 0;
   margin-bottom: 16px;
@@ -73,8 +77,8 @@
 }
 .auth-container p {
   margin: 0;
-	text-align: center;
-	line-height: 20px;
+  text-align: center;
+  line-height: 20px;
 }
 
 .auth-container .buttons {
@@ -84,12 +88,12 @@
 .auth-container .small {
   margin: 16px 0;
   font-size: 12px;
-	color: #afafaf;
-	line-height: 16px;
+  color: #afafaf;
+  line-height: 16px;
 }
 
 .auth-container .divider {
-  color: #AFAFAF;
+  color: #afafaf;
   font-size: 12px;
   display: flex;
   flex-direction: row;
@@ -103,12 +107,13 @@
 .auth-container .divider::after {
   margin-left: 16px;
 }
-.auth-container .divider::before, .auth-container .divider::after {
-  content: '';
+.auth-container .divider::before,
+.auth-container .divider::after {
+  content: "";
   display: block;
   width: 100px;
   height: 1px;
-  background-color: #D7D7D7;
+  background-color: #d7d7d7;
 }
 
 .auth-container .button.light {
