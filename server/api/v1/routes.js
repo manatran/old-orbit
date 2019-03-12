@@ -9,6 +9,6 @@ router.get("/hello", (req, res) => {
   res.send("general kenobi!");
 });
 
-router.get("/github/callback", authController.signup);
+router.get("/github/callback", authController.github);
 
 module.exports = router;

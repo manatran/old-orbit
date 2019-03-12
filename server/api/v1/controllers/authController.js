@@ -3,7 +3,7 @@ const errorHandler = require("./../utils/errorHandler");
 const config = require("./../../../config/config");
 
 // Signup user through GitHub
-exports.signup = (req, res, next) => {
+exports.github = (req, res, next) => {
   const { code } = req.query;
 
   if (!code) {
@@ -35,6 +35,7 @@ exports.signup = (req, res, next) => {
     }
   );
 };
+
 // Fetch user from GitHub API
 const getUser = (res, access_token) => {
   request.get(
@@ -48,12 +49,16 @@ const getUser = (res, access_token) => {
     },
     (error, response, body) => {
       const user = body;
-      res.send(user);
-      /*
-        TODO:
-        1. Register user if does not yet exist
-        2. Create JWT
-      */
+      registerUser(res, access_token, user);
     }
   );
+};
+
+// Register user
+const registerUser = (res, acces_token, user) => {
+  console.log("registering");
+  /* TODO:
+    1. Register user if does not yet exist
+    2. Create JWT
+  */
 };
