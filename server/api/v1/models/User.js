@@ -4,6 +4,11 @@ const Schema = mongoose.Schema;
 // Create Schema
 const UserSchema = new Schema(
   {
+    username: {
+      type: String,
+      required: true,
+      unique: true
+    },
     access_token: {
       type: String,
       required: true,

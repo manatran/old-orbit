@@ -23,6 +23,7 @@
   "bugs": "https://github.com/manatran/orbit/issues",
   "homepage": "https://github.com/manatran/orbit#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.5.0",
     "mongoose": "^5.4.18",

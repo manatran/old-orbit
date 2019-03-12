@@ -1,4 +1,5 @@
 const request = require("request");
+const User = require("./../models/User");
 const errorHandler = require("./../utils/errorHandler");
 const config = require("./../../../config/config");
 
@@ -48,15 +49,41 @@ const getUser = (res, access_token) => {
       }
     },
     (error, response, body) => {
-      const user = body;
+      const user = JSON.parse(body);
       registerUser(res, access_token, user);
     }
   );
 };
 
 // Register user
-const registerUser = (res, acces_token, user) => {
-  console.log("registering");
+const registerUser = (res, access_token, user) => {
+  // Check database for user
+  User.findOne({ username: user.login }).then(dbuser => {
+    if (dbuser) {
+      // TODO: Login
+      res.json({
+        error: "User already exists"
+      });
+    }
+
+    console.log(JSON.parse(user));
+    console.log(user.login);
+    // Create new user
+    const newUser = new User({
+      access_token: access_token,
+      username: user.login
+    });
+
+    newUser.save((err, post) => {
+      if (err) {
+        return res.status(500).json({ error: err });
+      }
+
+      // TODO: Login as new user
+      res.status(201).json(newUser);
+    });
+  });
+
   /* TODO:
     1. Register user if does not yet exist
     2. Create JWT
