@@ -63,7 +63,6 @@ const signinUser = (res, access_token, user) => {
     if (dbuser) {
       // Return Bearer token
       const token = createToken(res, dbuser);
-      console.log(token);
       return res.redirect(`/callback?token=${token}`);
     }
 
@@ -78,8 +77,7 @@ const signinUser = (res, access_token, user) => {
         return res.status(500).json({ error: err });
       }
       // Return Bearer token
-      const token = createToken(res, newUser);
-      console.log(token);
+      const token = createToken(res, newUser);=
       return res.redirect(`/callback?token=${token}`);
     });
   });

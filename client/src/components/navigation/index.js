@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import logo from './../../assets/logo.png';
-import './nav.css';
+import React, { Component } from "react";
+import logo from "./../../assets/logo.png";
+import "./nav.css";
 
 class Navigation extends Component {
   constructor(props) {
     super(props);
     this.state = {
       dropdown: false
-    }
+    };
   }
 
   toggleDropDown() {
@@ -29,31 +29,41 @@ class Navigation extends Component {
               <a href="/">Challenge suggestions</a>
               <a href="/">Question forum</a>
             </div>
-
           </div>
 
           <div className="column">
-
             <span className="search">
               <i className="material-icons">search</i>
               <input type="text" placeholder="Search Orbit..." />
             </span>
 
-            <span className={this.state.dropdown ? "logged-in active" : "logged-in"}>
-              <div className="personal-info" onClick={this.toggleDropDown.bind(this)}>
+            <span
+              className={this.state.dropdown ? "logged-in active" : "logged-in"}
+            >
+              <div
+                className="personal-info"
+                onClick={this.toggleDropDown.bind(this)}
+              >
                 <span className="meta">
                   <h2>manaus_t</h2>
                   <h3>300 rep</h3>
                 </span>
-                <img src="https://manatran.github.io/favicon.png" alt="github-logo" />
+                <img
+                  src="https://manatran.github.io/favicon.png"
+                  alt="github-logo"
+                />
                 <i className="material-icons">arrow_drop_down</i>
               </div>
 
               {this.state.dropdown ? (
                 <div className="dropdown">
                   <h2>Options</h2>
-                  <a href="/"><i className="material-icons">account_circle</i>Profile</a>
-                  <a href="/"><i className="material-icons">build</i>Settings</a>
+                  <a href="/">
+                    <i className="material-icons">account_circle</i>Profile
+                  </a>
+                  <a href="/">
+                    <i className="material-icons">build</i>Settings
+                  </a>
 
                   <div className="alt-links links">
                     <a href="/">Code challenges</a>
@@ -66,12 +76,19 @@ class Navigation extends Component {
                     <a href="/">Terms of use</a>
                   </div>
 
-                  <a href="/"><i className="material-icons">exit_to_app</i>Log out</a>
+                  <a
+                    href="/"
+                    onClick={e => {
+                      e.preventDefault();
+                      // logout
+                    }}
+                  >
+                    <i className="material-icons">exit_to_app</i>Log out
+                  </a>
                 </div>
               ) : null}
             </span>
           </div>
-
         </div>
       </nav>
     );
