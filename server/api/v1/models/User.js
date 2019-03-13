@@ -14,6 +14,11 @@ const UserSchema = new Schema(
       required: true,
       unique: true
     },
+    reputation: {
+      type: Number,
+      default: 0,
+      required: true
+    },
     is_admin: {
       type: Boolean,
       default: false,

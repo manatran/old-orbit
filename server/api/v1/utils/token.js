@@ -2,8 +2,8 @@ const config = require("./../../../config/config");
 const jwt = require("jsonwebtoken");
 
 module.exports = {
-  createToken: auth => {
-    return jwt.sign({ id: auth.id }, config.auth.jwtSecret);
+  createToken: payload => {
+    return jwt.sign(payload, config.auth.jwtSecret, { expiresIn: 604800 });
   },
   generateToken: (req, res, next) => {
     req.token = createToken(req.auth);

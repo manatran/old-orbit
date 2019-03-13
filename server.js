@@ -1,7 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path");
+const auth = require("./server/api/v1/providers/auth")();
 const v1Routes = require("./server/api/routes");
 
 const app = express();
@@ -18,6 +20,12 @@ mongoose
   })
   .then(success => console.log("MongoDB connected"))
   .catch(error => console.log(error));
+
+// CORS options
+app.use(cors());
+
+// Initialize passport via provider
+app.use(auth.initialize());
 
 // Express settings
 app.use(bodyParser.json());

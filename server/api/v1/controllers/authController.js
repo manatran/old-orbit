@@ -1,5 +1,6 @@
 const request = require("request");
 const User = require("./../models/User");
+const tokenUtils = require("./../utils/token");
 const errorHandler = require("./../utils/errorHandler");
 const config = require("./../../../config/config");
 
@@ -50,24 +51,22 @@ const getUser = (res, access_token) => {
     },
     (error, response, body) => {
       const user = JSON.parse(body);
-      registerUser(res, access_token, user);
+      signinUser(res, access_token, user);
     }
   );
 };
 
-// Register user
-const registerUser = (res, access_token, user) => {
+// Signin user
+const signinUser = (res, access_token, user) => {
   // Check database for user
   User.findOne({ username: user.login }).then(dbuser => {
     if (dbuser) {
-      // TODO: Login
-      res.json({
-        error: "User already exists"
-      });
+      // Return Bearer token
+      const token = createToken(res, dbuser);
+      console.log(token);
+      return res.redirect(`/callback?token=${token}`);
     }
 
-    console.log(JSON.parse(user));
-    console.log(user.login);
     // Create new user
     const newUser = new User({
       access_token: access_token,
@@ -78,14 +77,20 @@ const registerUser = (res, access_token, user) => {
       if (err) {
         return res.status(500).json({ error: err });
       }
-
-      // TODO: Login as new user
-      res.status(201).json(newUser);
+      // Return Bearer token
+      const token = createToken(res, newUser);
+      console.log(token);
+      return res.redirect(`/callback?token=${token}`);
     });
   });
+};
 
-  /* TODO:
-    1. Register user if does not yet exist
-    2. Create JWT
-  */
+// Return bearer token
+const createToken = (res, user) => {
+  const payload = {
+    access_token: user.access_token,
+    username: user.username
+  };
+  const token = tokenUtils.createToken(payload);
+  return token;
 };
