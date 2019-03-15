@@ -1,59 +1,32 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+module.exports = (db, DataTypes) => {
+  const Post = db.define("post", {
+    title: DataTypes.STRING,
+    content: DataTypes.STRING,
+    pinned: DataTypes.BOOLEAN
+  });
 
-// Create Schema
-const PostSchema = new Schema(
-  {
-    author: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-      required: true
-    },
-    title: {
-      type: String,
-      required: true
-    },
-    content: {
-      type: String,
-      required: true
-    },
-    comments: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Comment"
-      }
-    ],
-    votes: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "User"
-      }
-    ],
-    category: {
-      type: Schema.Types.ObjectId,
-      ref: "Category",
-      required: true
-    },
-    tags: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Tag"
-      }
-    ],
-    pinned: {
-      type: Boolean,
-      default: false
-    }
-  },
-  {
-    timestamps: {
-      createdAt: "created_at",
-      updatedAt: "updated_at"
-    }
-  }
-);
+  // Relations
+  Post.associate = models => {
+    Post.belongsToMany(models.User, {
+      through: "postLikes"
+    });
 
-// Virtuals
-PostSchema.virtual("id").get(() => this._id);
+    Post.belongsToMany(models.Tag, {
+      through: "postTags"
+    });
 
-module.exports = mongoose.model("Post", PostSchema);
+    Post.hasMany(models.Comment, {
+      as: "comments"
+    });
+
+    Post.belongsTo(models.Category, {
+      foreignKey: "subject"
+    });
+
+    Post.belongsTo(models.User, {
+      foreignKey: "author"
+    });
+  };
+
+  return Post;
+};

@@ -1,36 +1,26 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+module.exports = (db, DataTypes) => {
+  const Report = db.define("report", {
+    content: DataTypes.STRING
+  });
 
-// Create Schema
-const ReportSchema = new Schema(
-  {
-    author: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-      required: true
-    },
-    content: {
-      type: String
-    },
-    tag: {
-      type: Schema.Types.ObjectId,
-      ref: "Tag",
-      required: true
-    },
-    resolved_by: {
-      type: Schema.Types.ObjectId,
-      ref: "User"
-    }
-  },
-  {
-    timestamps: {
-      createdAt: "created_at",
-      updatedAt: "updated_at"
-    }
-  }
-);
+  // Relations
+  Report.associate = models => {
+    Report.belongsToMany(models.Tag, {
+      through: "reportTags"
+    });
 
-// Virtuals
-ReportSchema.virtual("id").get(() => this._id);
+    Report.belongsTo(models.Post, {
+      foreignKey: "parentPost"
+    });
 
-module.exports = mongoose.model("Report", ReportSchema);
+    Report.belongsTo(models.User, {
+      foreignKey: "author"
+    });
+
+    Report.belongsTo(models.User, {
+      foreignKey: "resolvedBy"
+    });
+  };
+
+  return Report;
+};

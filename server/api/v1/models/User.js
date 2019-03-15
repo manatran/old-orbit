@@ -1,51 +1,31 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
-
-// Create Schema
-const UserSchema = new Schema(
-  {
+module.exports = (db, DataTypes) => {
+  const User = db.define("user", {
+    accessToken: {
+      type: DataTypes.STRING,
+      unique: true
+    },
     username: {
-      type: String,
-      required: true,
+      type: DataTypes.STRING,
       unique: true
     },
-    access_token: {
-      type: String,
-      required: true,
-      unique: true
-    },
-    reputation: {
-      type: Number,
-      default: 0,
-      required: true
-    },
-    is_admin: {
-      type: Boolean,
-      default: false,
-      required: true
-    },
-    subscriptions: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Category"
-      }
-    ],
-    blacklist: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "User"
-      }
-    ]
-  },
-  {
-    timestamps: {
-      createdAt: "created_at",
-      updatedAt: "updated_at"
-    }
-  }
-);
+    reputation: DataTypes.INTEGER,
+    isAdmin: DataTypes.BOOLEAN
+  });
 
-// Virtuals
-UserSchema.virtual("id").get(() => this._id);
+  // Relations
+  User.associate = models => {
+    User.belongsToMany(models.User, {
+      through: "blacklist",
+      foreignKey: "blocked",
+      as: "blocked"
+    });
 
-module.exports = mongoose.model("User", UserSchema);
+    User.belongsToMany(models.Category, {
+      through: "subscriptions",
+      foreignKey: "user",
+      as: "subscription"
+    });
+  };
+
+  return User;
+};

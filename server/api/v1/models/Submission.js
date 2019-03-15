@@ -1,62 +1,33 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+module.exports = (db, DataTypes) => {
+  const Submission = db.define("submission", {
+    title: DataTypes.STRING,
+    content: DataTypes.STRING,
+    githubUrl: DataTypes.STRING,
+    thumbnail: DataTypes.STRING
+  });
 
-// Create Schema
-const SubmissionSchema = new Schema(
-  {
-    author: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-      required: true
-    },
-    title: {
-      type: String,
-      required: true
-    },
-    content: {
-      type: String,
-      required: true
-    },
-    challenge: {
-      type: Schema.Types.ObjectId,
-      ref: "Challenge"
-    },
-    github_url: {
-      type: String,
-      required: true
-    },
-    thumbnail: {
-      type: String,
-      required: true
-    },
-    votes: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "User"
-      }
-    ],
-    comments: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Comment"
-      }
-    ],
-    tags: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Tag"
-      }
-    ]
-  },
-  {
-    timestamps: {
-      createdAt: "created_at",
-      updatedAt: "updated_at"
-    }
-  }
-);
+  // Relations
+  Submission.associate = models => {
+    Submission.belongsToMany(models.User, {
+      through: "submissionLikes"
+    });
 
-// Virtuals
-SubmissionSchema.virtual("id").get(() => this._id);
+    Submission.belongsToMany(models.Tag, {
+      through: "submissionTags"
+    });
 
-module.exports = mongoose.model("Submission", SubmissionSchema);
+    Submission.hasMany(models.Comment, {
+      as: "comments"
+    });
+
+    Submission.belongsTo(models.Challenge, {
+      foreignKey: "contest"
+    });
+
+    Submission.belongsTo(models.User, {
+      foreignKey: "author"
+    });
+  };
+
+  return Submission;
+};

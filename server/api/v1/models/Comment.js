@@ -1,46 +1,19 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+module.exports = (db, DataTypes) => {
+  const Comment = db.define("comment", {
+    content: DataTypes.STRING,
+    pinned: DataTypes.BOOLEAN
+  });
 
-// Create Schema
-const CommentSchema = new Schema(
-  {
-    author: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-      required: true
-    },
-    content: {
-      type: String,
-      required: true
-    },
-    comments: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Comment"
-      }
-    ],
-    votes: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "User"
-      }
-    ],
-    tags: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Tag"
-      }
-    ]
-  },
-  {
-    timestamps: {
-      createdAt: "created_at",
-      updatedAt: "updated_at"
-    }
-  }
-);
+  // Relations
+  Comment.associate = models => {
+    Comment.belongsToMany(models.User, {
+      through: "commentLikes"
+    });
 
-// Virtuals
-CommentSchema.virtual("id").get(() => this._id);
+    Comment.belongsTo(models.User, {
+      foreignKey: "author"
+    });
+  };
 
-module.exports = mongoose.model("Comment", CommentSchema);
+  return Comment;
+};
