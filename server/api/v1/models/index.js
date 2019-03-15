@@ -12,16 +12,16 @@ const db = new Sequelize(dbConfig.database, dbConfig.user, dbConfig.password, {
 });
 
 const models = {
-  Category: db.import("./category"),
-  Challenge: db.import("./challenge"),
-  Comment: db.import("./comment"),
-  Subcomment: db.import("./subcomment"),
-  Post: db.import("./post"),
-  Report: db.import("./report"),
-  Revision: db.import("./revision"),
-  Submission: db.import("./submission"),
-  Tag: db.import("./tag"),
-  User: db.import("./user")
+  Category: db.import("./Category"),
+  Challenge: db.import("./Challenge"),
+  Comment: db.import("./Comment"),
+  Subcomment: db.import("./Subcomment"),
+  Post: db.import("./Post"),
+  Report: db.import("./Report"),
+  Revision: db.import("./Revision"),
+  Submission: db.import("./Submission"),
+  Tag: db.import("./Tag"),
+  User: db.import("./User")
 };
 
 Object.keys(models).forEach(modelName => {
