@@ -29,14 +29,9 @@ exports.get_user = (req, res, next) => {
   // Check for user in database
   models.User.findOne({
     where: { username: username },
-    attributes: [
-      "id",
-      "username",
-      "reputation",
-      "isAdmin",
-      "createdAt",
-      "updatedAt"
-    ]
+    attributes: {
+      exclude: ["accessToken"]
+    }
   }).then(profile => {
     if (!profile) {
       return res.status(404).json({ error: "User not found" });
@@ -56,5 +51,28 @@ exports.get_user = (req, res, next) => {
         res.json({ ...user, profile: profile });
       }
     );
+  });
+};
+
+// Delete user
+exports.delete_user = (req, res, next) => {
+  if (!req.user) {
+    return res.status(404).json({ error: "User not found" });
+  }
+
+  const { username } = req.user;
+  models.User.findOne({ where: { username: username } }).then(user => {
+    user
+      .destroy()
+      .then(success => {
+        res.status(200).json({
+          success: "User successfully deleted"
+        });
+      })
+      .catch(err => {
+        res.status(500).json({
+          error: err
+        });
+      });
   });
 };
