@@ -1,5 +1,5 @@
 const request = require("request");
-const User = require("./../models/User");
+const models = require("./../models");
 const tokenUtils = require("./../utils/token");
 const errorHandler = require("./../utils/errorHandler");
 const config = require("./../../../config/config");
@@ -32,7 +32,6 @@ exports.github = (req, res, next) => {
           next
         );
       }
-
       getUser(res, access_token);
     }
   );
@@ -59,7 +58,7 @@ const getUser = (res, access_token) => {
 // Signin user
 const signinUser = (res, access_token, user) => {
   // Check database for user
-  User.findOne({ username: user.login }).then(dbuser => {
+  models.User.findOne({ where: { username: user.login } }).then(dbuser => {
     if (dbuser) {
       // Return Bearer token
       const token = createToken(res, dbuser);
@@ -67,19 +66,22 @@ const signinUser = (res, access_token, user) => {
     }
 
     // Create new user
-    const newUser = new User({
-      access_token: access_token,
-      username: user.login
-    });
+    const args = {
+      accessToken: access_token,
+      username: user.login,
+      isAdmin: false,
+      reputation: 0
+    };
 
-    newUser.save((err, post) => {
-      if (err) {
+    models.User.create(args)
+      .then(user => {
+        // Return Bearer token
+        const token = createToken(res, args);
+        return res.redirect(`/callback?token=${token}`);
+      })
+      .catch(err => {
         return res.status(500).json({ error: err });
-      }
-      // Return Bearer token
-      const token = createToken(res, newUser);
-      return res.redirect(`/callback?token=${token}`);
-    });
+      });
   });
 };
 

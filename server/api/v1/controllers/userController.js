@@ -1,5 +1,5 @@
 const request = require("request");
-const User = require("./../models/User");
+const models = require("./../models");
 
 // Get current user
 exports.current_user = (req, res, next) => {
@@ -27,7 +27,17 @@ exports.get_user = (req, res, next) => {
   const { username } = req.params;
 
   // Check for user in database
-  User.findOne({ username: username }).then(profile => {
+  models.User.findOne({
+    where: { username: username },
+    attributes: [
+      "id",
+      "username",
+      "reputation",
+      "isAdmin",
+      "createdAt",
+      "updatedAt"
+    ]
+  }).then(profile => {
     if (!profile) {
       return res.status(404).json({ error: "User not found" });
     }

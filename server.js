@@ -8,13 +8,6 @@ const models = require("./server/api/v1/models");
 
 const app = express();
 
-// Connect to Postgres
-// const db = require("./server/db");
-
-// db.authenticate()
-//   .then(() => console.log("Connected to Postgres"))
-//   .catch(err => console.log("Error connecting", err));
-
 // CORS options
 app.use(cors());
 
@@ -27,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Set static folder and API routes
 app.use(express.static(path.join(__dirname, "client/build")));
-// app.use("", v1Routes);
+app.use("", v1Routes);
 app.use("/*", express.static(path.join(__dirname, "client/build")));
 
 // Launch server

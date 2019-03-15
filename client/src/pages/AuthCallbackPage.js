@@ -9,6 +9,7 @@ class AuthCallback extends Component {
       redirect: false
     };
   }
+
   componentDidMount() {
     // Get token from URL parameter
     const params = new URLSearchParams(this.props.location.search);
