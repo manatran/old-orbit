@@ -1,6 +1,7 @@
 .login-header {
   margin-top: 48px;
-  background-image: url('./../../assets/pattern.png'), linear-gradient(to right, #3C95D1, #BE62BB);
+  background-image: url("./../../assets/pattern.png"),
+    linear-gradient(to right, #3c95d1, #be62bb);
   padding: 64px 0;
   color: white;
 }
@@ -18,11 +19,11 @@
 }
 
 .login-header h1 {
-  font-family: 'Segoe UI', "Roboto", sans-serif
+  font-family: "Segoe UI", "Roboto", sans-serif;
 }
 
 .login-header p {
-  color: #F9F9F9;
+  color: #f9f9f9;
 }
 
 .login-header .login-buttons {
@@ -39,17 +40,17 @@
 
 .login-header .login-buttons h2 {
   font-size: 20px;
-  color: #F9F9F9;
+  color: #f9f9f9;
 }
 
-
 .small-header {
-  padding: 16px;
+  padding: 32px;
   box-sizing: border-box;
   width: 100%;
   color: white;
-  border-radius: 8px ;
-  background-image: url('./../../assets/pattern.png'), linear-gradient(to right, #37C862, #1A8FB4);
+  border-radius: 8px;
+  background-image: url("./../../assets/pattern.png"),
+    linear-gradient(to right, #37c862, #1a8fb4);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -66,7 +67,7 @@
 
 .small-header .description {
   text-align: right;
-  color: #F9F9F9;
+  color: #f9f9f9;
   align-items: flex-end;
 }
 
@@ -74,26 +75,26 @@
   color: white;
   margin: 0;
   font-size: 24px;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 }
 
 .small-header h3 {
   margin: 0;
   font-size: 20px;
-  font-family: "Roboto Light", 'Roboto', sans-serif;
+  font-family: "Roboto Light", "Roboto", sans-serif;
   font-weight: 200;
 }
 
 .small-header .description h3 {
   font-weight: 700;
-  font-family: "Roboto Bold", 'Roboto', sans-serif;
+  font-family: "Roboto Bold", "Roboto", sans-serif;
 }
 
 .small-header .description a {
   display: flex;
   flex-direction: row;
   align-items: center;
-  color: #DBECF8;
+  color: #dbecf8;
   text-align: right;
   font-size: 14px;
   margin: 8px 0;

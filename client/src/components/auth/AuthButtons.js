@@ -17,6 +17,7 @@ class Auth extends Component {
 
         <a
           href="/"
+          title="Not yet available"
           className="button gl-login disabled"
           onClick={e => e.preventDefault()}
         >

@@ -6,6 +6,7 @@ exports.current_user = (req, res, next) => {
   if (!req.user) {
     return res.status(404).json({ error: "User not found" });
   }
+
   // Fetch user data from GitHub
   request.get(
     `https://api.github.com/users/${req.user.username}`,
@@ -60,6 +61,7 @@ exports.delete_user = (req, res, next) => {
     return res.status(404).json({ error: "User not found" });
   }
 
+  // Find and delete user from database
   const { username } = req.user;
   models.User.findOne({ where: { username: username } }).then(user => {
     user

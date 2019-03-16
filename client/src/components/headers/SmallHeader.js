@@ -1,20 +1,37 @@
-import React, { Component } from 'react';
-import './header.css';
+import React, { Component } from "react";
+import "./header.css";
 
 class SmallHeader extends Component {
   render() {
-    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ];
     return (
-      <header className="small-header">
+      <a href="/" className="small-header">
         <div className="title">
           <h2>This month's challenge</h2>
           <h3>CSS Grid</h3>
         </div>
         <div className="description">
-          <h3>{`${months[new Date().getMonth()]} ${new Date().getFullYear()}`}</h3>
-          <a href="/">See details <i className="material-icons">keyboard_arrow_right</i></a>
+          <h3>{`${
+            months[new Date().getMonth()]
+          } ${new Date().getFullYear()}`}</h3>
+          {/* <a href="/">
+            See details <i className="material-icons">keyboard_arrow_right</i>
+          </a> */}
         </div>
-      </header>
+      </a>
     );
   }
 }

@@ -7,8 +7,8 @@
 .spinner:before {
   display: block;
   content: "";
-  width: 64px;
-  height: 64px;
+  width: inherit;
+  height: inherit;
   border-radius: 50%;
   box-sizing: border-box;
   border: 2px solid rgba(255, 64, 64);

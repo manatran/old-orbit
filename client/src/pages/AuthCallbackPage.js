@@ -16,7 +16,7 @@ class AuthCallback extends Component {
     const token = params.get("token");
 
     if (!token) {
-      this.setState({ redirect: true });
+      // this.setState({ redirect: true });
     } else {
       // Get user info
       fetch(`/api/v1/user`, {
@@ -44,7 +44,7 @@ class AuthCallback extends Component {
           alignItems: "center"
         }}
       >
-        {this.state.redirect ? <Redirect to="/" /> : <Spinner />}
+        {this.state.redirect ? <Redirect to="/" /> : <Spinner size="64" />}
       </main>
     );
   }

@@ -76,13 +76,7 @@ class Navigation extends Component {
                     <a href="/">Terms of use</a>
                   </div>
 
-                  <a
-                    href="/"
-                    onClick={e => {
-                      e.preventDefault();
-                      // logout
-                    }}
-                  >
+                  <a href="/logout">
                     <i className="material-icons">exit_to_app</i>Log out
                   </a>
                 </div>
