@@ -1,7 +1,6 @@
 const request = require("request");
 const models = require("./../models");
 const tokenUtils = require("./../utils/token");
-const errorHandler = require("./../utils/errorHandler");
 const config = require("./../../../config/config");
 
 // Signup user through GitHub
@@ -9,7 +8,7 @@ exports.github = (req, res, next) => {
   const { code } = req.query;
 
   if (!code) {
-    return errorHandler.handleAPIError(500, "Code not found", next);
+    return res.status(500).json({ error: "Could not get code" });
   }
 
   // POST code to GitHub to receive Access Token
@@ -26,11 +25,7 @@ exports.github = (req, res, next) => {
       const { access_token } = body;
 
       if (!access_token) {
-        return errorHandler.handleAPIError(
-          500,
-          "Could not get access token",
-          next
-        );
+        return res.status(500).json({ error: "Could not get access token" });
       }
       getUser(res, access_token);
     }

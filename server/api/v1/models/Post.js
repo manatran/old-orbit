@@ -20,11 +20,13 @@ module.exports = (db, DataTypes) => {
     });
 
     Post.belongsTo(models.Category, {
-      foreignKey: "subject"
+      foreignKey: "subjectId",
+      as: "subject"
     });
 
     Post.belongsTo(models.User, {
-      foreignKey: "author"
+      foreignKey: "authorId",
+      as: "author"
     });
   };
 
