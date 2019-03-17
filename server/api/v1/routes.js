@@ -7,6 +7,7 @@ const authController = require("./controllers/authController");
 const userController = require("./controllers/userController");
 const postController = require("./controllers/postController");
 const categoryController = require("./controllers/categoryController");
+const tagController = require("./controllers/tagController");
 
 // Routes
 router.get("/author", (req, res) => {
@@ -52,5 +53,12 @@ router.delete(
   auth.authenticateJWT(),
   categoryController.delete_category
 );
+
+// Tag routes
+router.get("/tags", tagController.get_tags);
+router.post("/tags", auth.authenticateJWT(), tagController.create_tag);
+router.get("/tags/:id", tagController.get_tag);
+router.patch("/tags/:id", auth.authenticateJWT(), tagController.update_tag);
+router.delete("/tags/:id", auth.authenticateJWT(), tagController.delete_tag);
 
 module.exports = router;

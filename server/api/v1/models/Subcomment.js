@@ -9,10 +9,6 @@ module.exports = (db, DataTypes) => {
       through: "subcommentLikes"
     });
 
-    Subcomment.hasMany(models.Tag, {
-      as: "tags"
-    });
-
     Subcomment.hasOne(models.Comment, {
       foreignKey: "parentComment"
     });
