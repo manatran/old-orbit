@@ -4,16 +4,22 @@ const models = require("./../models");
 exports.get_post = (req, res, next) => {
   const { id } = req.params;
   models.Post.findById(id, {
-    include: {
-      model: models.User,
-      as: "author",
-      attributes: {
-        exclude: ["accessToken"]
+    include: [
+      {
+        model: models.User,
+        as: "author",
+        attributes: {
+          exclude: ["accessToken"]
+        }
+      },
+      {
+        model: models.Category,
+        as: "subject"
       }
-    }
+    ]
   })
     .then(post => {
-      res.json(post);
+      res.status(200).json(post);
     })
     .catch(err => {
       return res.status(500).json({ error: err });
@@ -24,16 +30,22 @@ exports.get_post = (req, res, next) => {
 exports.get_posts = (req, res, next) => {
   const { id } = req.params;
   models.Post.findAll({
-    include: {
-      model: models.User,
-      as: "author",
-      attributes: {
-        exclude: ["accessToken"]
+    include: [
+      {
+        model: models.User,
+        as: "author",
+        attributes: {
+          exclude: ["accessToken"]
+        }
+      },
+      {
+        model: models.Category,
+        as: "subject"
       }
-    }
+    ]
   })
     .then(posts => {
-      res.json(posts);
+      res.status(200).json(posts);
     })
     .catch(err => {
       return res.status(401).json({ error: err });
@@ -43,11 +55,11 @@ exports.get_posts = (req, res, next) => {
 // Create post
 exports.create_post = (req, res, next) => {
   const { id } = req.user;
-  const { title, content } = req.body;
+  const { title, content, subject } = req.body;
 
-  if (!title || !content) {
+  if (!title || !content || !subject) {
     return res.status(400).json({
-      error: "Post must have both title and content"
+      error: "Post must have both title, content and subject"
     });
   }
 
@@ -55,7 +67,8 @@ exports.create_post = (req, res, next) => {
     title: title,
     content: content,
     pinned: false,
-    authorId: id
+    authorId: id,
+    subjectId: subject
   };
 
   models.Post.create(args)
@@ -67,21 +80,25 @@ exports.create_post = (req, res, next) => {
     });
 };
 
-// Edit post
+// Update post
 exports.update_post = (req, res, next) => {
   const { id } = req.params;
-  const { title, content } = req.body;
+  const { title, content, subject } = req.body;
 
   models.Post.findById(id)
     .then(post => {
       const fields = [];
       if (title) fields.push("title");
       if (content) fields.push("content");
+      if (subject) fields.push("subjectId");
 
       post
-        .update({ title: title, content: content }, { fields: fields })
+        .update(
+          { title: title, content: content, subjectId: subject },
+          { fields: fields }
+        )
         .then(newPost => {
-          return res.status(202).json(newPost);
+          res.status(202).json(newPost);
         })
         .catch(err => {
           return res.status(500).json({ error: err });

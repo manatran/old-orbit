@@ -21,11 +21,13 @@ module.exports = (db, DataTypes) => {
     });
 
     Submission.belongsTo(models.Challenge, {
-      foreignKey: "contest"
+      foreignKey: "contestId",
+      as: "contest"
     });
 
     Submission.belongsTo(models.User, {
-      foreignKey: "author"
+      foreignKey: "authorId",
+      as: "author"
     });
   };
 

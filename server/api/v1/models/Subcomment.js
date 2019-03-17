@@ -18,7 +18,8 @@ module.exports = (db, DataTypes) => {
     });
 
     Subcomment.belongsTo(models.User, {
-      foreignKey: "author"
+      foreignKey: "authorId",
+      as: "author"
     });
   };
 

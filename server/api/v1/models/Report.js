@@ -10,15 +10,18 @@ module.exports = (db, DataTypes) => {
     });
 
     Report.belongsTo(models.Post, {
-      foreignKey: "parentPost"
+      foreignKey: "parentPostId",
+      as: "parentPost"
     });
 
     Report.belongsTo(models.User, {
-      foreignKey: "author"
+      foreignKey: "authorId",
+      as: "author"
     });
 
     Report.belongsTo(models.User, {
-      foreignKey: "resolvedBy"
+      foreignKey: "resolvedById",
+      as: "resolvedBy"
     });
   };
 

@@ -8,11 +8,13 @@ module.exports = (db, DataTypes) => {
   // Relations
   Revision.associate = models => {
     Revision.belongsTo(models.Post, {
-      foreignKey: "parentPost"
+      foreignKey: "parentPostId",
+      as: "parentPost"
     });
 
     Revision.belongsTo(models.User, {
-      foreignKey: "author"
+      foreignKey: "authorId",
+      as: "author"
     });
   };
 

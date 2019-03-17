@@ -6,6 +6,7 @@ const auth = require("./providers/auth")();
 const authController = require("./controllers/authController");
 const userController = require("./controllers/userController");
 const postController = require("./controllers/postController");
+const categoryController = require("./controllers/categoryController");
 
 // Routes
 router.get("/author", (req, res) => {
@@ -32,5 +33,24 @@ router.post("/posts", auth.authenticateJWT(), postController.create_post);
 router.get("/posts/:id", postController.get_post);
 router.patch("/posts/:id", auth.authenticateJWT(), postController.update_post);
 router.delete("/posts/:id", auth.authenticateJWT(), postController.delete_post);
+
+// Category routes
+router.get("/categories", categoryController.get_categories);
+router.post(
+  "/categories",
+  auth.authenticateJWT(),
+  categoryController.create_category
+);
+router.get("/categories/:id", categoryController.get_category);
+router.patch(
+  "/categories/:id",
+  auth.authenticateJWT(),
+  categoryController.update_category
+);
+router.delete(
+  "/categories/:id",
+  auth.authenticateJWT(),
+  categoryController.delete_category
+);
 
 module.exports = router;
