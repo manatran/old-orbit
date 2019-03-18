@@ -6,12 +6,5 @@ module.exports = (db, DataTypes) => {
     til: DataTypes.DATE
   });
 
-  // Relations
-  Challenge.associate = models => {
-    Challenge.hasOne(models.Category, {
-      foreignKey: "parentCategory"
-    });
-  };
-
   return Challenge;
 };

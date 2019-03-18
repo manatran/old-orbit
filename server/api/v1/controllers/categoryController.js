@@ -39,7 +39,14 @@ exports.get_categories = (req, res, next) => {
 
 // Create category
 exports.create_category = (req, res, next) => {
+  const { isAdmin } = req.user;
   const { name, description, thumbnail, parent } = req.body;
+
+  if (!isAdmin) {
+    return res.status(401).json({
+      error: "User is not authorized to create categories"
+    });
+  }
 
   if (!name || !description) {
     return res.status(400).json({
@@ -66,7 +73,14 @@ exports.create_category = (req, res, next) => {
 // Update category
 exports.update_category = (req, res, next) => {
   const { id } = req.params;
+  const { isAdmin } = req.user;
   const { name, description, thumbnail } = req.body;
+
+  if (!isAdmin) {
+    return res.status(401).json({
+      error: "User is not authorized to update categories"
+    });
+  }
 
   models.Category.findById(id)
     .then(category => {
@@ -95,6 +109,14 @@ exports.update_category = (req, res, next) => {
 // Delete category
 exports.delete_category = (req, res, next) => {
   const { id } = req.params;
+  const { isAdmin } = req.user;
+
+  if (!isAdmin) {
+    return res.status(401).json({
+      error: "User is not authorized to delete categories"
+    });
+  }
+
   models.Category.findById(id)
     .then(category => {
       category
