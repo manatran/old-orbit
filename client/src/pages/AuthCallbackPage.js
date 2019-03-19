@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router";
 import Spinner from "./../components/spinner";
+import { apiUrl } from "./../env";
 
 class AuthCallback extends Component {
   constructor(props) {
@@ -16,10 +17,10 @@ class AuthCallback extends Component {
     const token = params.get("token");
 
     if (!token) {
-      // this.setState({ redirect: true });
+      this.setState({ redirect: true });
     } else {
       // Get user info
-      fetch(`/api/v1/user`, {
+      fetch(`${apiUrl}/api/v1/user`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -27,10 +28,13 @@ class AuthCallback extends Component {
         .then(res => res.json())
         .then(res => {
           localStorage.setItem("token", `Bearer ${token}`);
-          localStorage.setItem("user", res);
+          localStorage.setItem("user", JSON.stringify(res));
           this.setState({ redirect: true });
         })
-        .catch(err => console.log("error", err));
+        .catch(err => {
+          console.log("error", err);
+          this.setState({ redirect: true });
+        });
     }
   }
 

@@ -74,3 +74,15 @@ main {
   max-width: 1275px;
   margin: 16px auto;
 }
+.body.spaced {
+  margin-top: 64px;
+}
+
+aside {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 66px;
+  width: 250px;
+  margin-right: 16px;
+  box-sizing: border-box;
+}

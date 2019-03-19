@@ -5,6 +5,7 @@ import Homepage from "./../pages/Homepage";
 import Authpage from "./../pages/Authpage";
 import AuthCallback from "./../pages/AuthCallbackPage";
 import LogoutPage from "./../pages/LogoutPage";
+import ProfilePage from "./../pages/ProfilePage";
 
 class Main extends Component {
   render() {
@@ -16,8 +17,9 @@ class Main extends Component {
           <Redirect from="/login" to="/signup" />
           <Route exact path="/callback" component={AuthCallback} />
           <Route exact path="/logout" component={LogoutPage} />
-          <Route exact path="/" component={Homepage} />
           <Redirect from="/home" to="/" />
+          <Route exact path="/" component={Homepage} />
+          <Route exact path="/:username" component={ProfilePage} />
           <Redirect from="*" to="/" />
         </Switch>
       </React.Fragment>

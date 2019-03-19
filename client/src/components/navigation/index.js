@@ -58,7 +58,7 @@ class Navigation extends Component {
               {this.state.dropdown ? (
                 <div className="dropdown">
                   <h2>Options</h2>
-                  <a href="/">
+                  <a href="/profile">
                     <i className="material-icons">account_circle</i>Profile
                   </a>
                   <a href="/">
