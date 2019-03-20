@@ -30,7 +30,10 @@ a {
   text-decoration: none;
 }
 
+button,
 a.button {
+  cursor: pointer;
+  outline: none;
   margin-bottom: 16px;
   font-weight: 700;
   display: block;
@@ -45,9 +48,17 @@ a.button {
   border: solid 1px #40a3e6;
 }
 
+button.light,
 a.button.light {
   color: #40a3e6;
   background-color: transparent;
+}
+
+button.danger,
+a.button.danger {
+  background-color: transparent;
+  border: solid 1px #e64040;
+  color: #e64040;
 }
 
 p.light {

@@ -6,8 +6,14 @@ class Navigation extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dropdown: false
+      dropdown: false,
+      username: ""
     };
+  }
+
+  componentWillMount() {
+    const { login } = JSON.parse(localStorage.getItem("user"));
+    this.setState({ username: login });
   }
 
   toggleDropDown() {
@@ -58,10 +64,10 @@ class Navigation extends Component {
               {this.state.dropdown ? (
                 <div className="dropdown">
                   <h2>Options</h2>
-                  <a href="/profile">
+                  <a href={`/user/${this.state.username}`}>
                     <i className="material-icons">account_circle</i>Profile
                   </a>
-                  <a href="/">
+                  <a href="/settings">
                     <i className="material-icons">build</i>Settings
                   </a>
 

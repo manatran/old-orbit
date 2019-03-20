@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router";
 import Profile from "./../components/profile";
 import ProfileSidebar from "./../components/profile/Sidebar";
 import Spinner from "./../components/spinner";
