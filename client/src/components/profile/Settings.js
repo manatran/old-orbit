@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Settings extends Component {
   render() {
     return (
-      <main>
+      <section className={`settings ${this.props.className}`}>
         <button
           className="button danger"
           onClick={e => {
@@ -12,7 +12,7 @@ class Settings extends Component {
         >
           Delete account
         </button>
-      </main>
+      </section>
     );
   }
 }

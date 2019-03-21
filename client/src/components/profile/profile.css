@@ -13,10 +13,12 @@
   margin-top: 16px;
   margin-bottom: 0;
 }
+
 .profile-sidebar .rep {
   color: #dc0690;
   margin: 0;
 }
+
 .profile-sidebar .bio {
   font-size: 14px;
   color: #999;
@@ -24,9 +26,15 @@
 }
 
 .profile-sidebar .button.light {
-  color: #999;
-  border-color: #d7d7d7;
+  color: #666;
+  border-color: #a7a7a7;
   font-size: 12px;
+  transition: 0.2s;
+}
+
+.hidden {
+  height: 0;
+  overflow: hidden;
 }
 
 .profile-sidebar h3 {

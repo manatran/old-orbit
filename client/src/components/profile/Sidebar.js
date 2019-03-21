@@ -1,8 +1,15 @@
 import React, { Component } from "react";
+import Settings from "./Settings";
 import Lang from "./../sidebar/Lang";
 import "./profile.css";
 
 class ProfileSidebar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      settings: false
+    };
+  }
   render() {
     return (
       <aside className="profile-sidebar">
@@ -15,11 +22,20 @@ class ProfileSidebar extends Component {
           <p className="rep">{this.props.reputation} rep</p>
           <p className="bio">{this.props.bio}</p>
           {this.props.currUser ? (
-            <a href="/settings" className="button light">
-              Settings
-            </a>
+            <React.Fragment>
+              <button
+                className="button light"
+                onClick={() =>
+                  this.setState({ settings: !this.state.settings })
+                }
+              >
+                Settings
+              </button>
+              <Settings className={this.state.settings ? "" : "hidden"} />
+            </React.Fragment>
           ) : null}
         </section>
+
         <section className="badges">
           <h3>Badges</h3>
           <div className="badge">
@@ -37,6 +53,7 @@ class ProfileSidebar extends Component {
             <h4>Participant</h4>
           </div>
         </section>
+
         <section className="communities">
           <h3>Most active in</h3>
           <div className="langs">
