@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import logo from "./../../assets/logo.png";
 import "./nav.css";
+import Searchbar from "./Searchbar";
 
 class Navigation extends Component {
   constructor(props) {
@@ -12,12 +13,11 @@ class Navigation extends Component {
   }
 
   componentWillMount() {
-    const { login } = JSON.parse(localStorage.getItem("user"));
-    this.setState({ username: login });
-  }
-
-  toggleDropDown() {
-    this.setState({ dropdown: !this.state.dropdown });
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      const { login } = user;
+      this.setState({ username: login });
+    }
   }
 
   render() {
@@ -38,17 +38,16 @@ class Navigation extends Component {
           </div>
 
           <div className="column">
-            <span className="search">
-              <i className="material-icons">search</i>
-              <input type="text" placeholder="Search Orbit..." />
-            </span>
+            <Searchbar />
 
             <span
               className={this.state.dropdown ? "logged-in active" : "logged-in"}
             >
               <div
                 className="personal-info"
-                onClick={this.toggleDropDown.bind(this)}
+                onClick={() => {
+                  this.setState({ dropdown: !this.state.dropdown });
+                }}
               >
                 <span className="meta">
                   <h2>manaus_t</h2>
@@ -70,6 +69,11 @@ class Navigation extends Component {
                   <a href="/settings">
                     <i className="material-icons">build</i>Settings
                   </a>
+
+                  <div className="links">
+                    <a href="/ask">Ask a question</a>
+                    <a href="/submit">Submit a challenge</a>
+                  </div>
 
                   <div className="alt-links links">
                     <a href="/">Code challenges</a>

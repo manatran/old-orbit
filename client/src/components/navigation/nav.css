@@ -74,9 +74,10 @@ nav .nav-links a {
   margin-right: 16px;
 }
 
-nav .search {
+.search {
   border: solid 1px #d7d7d7;
   color: #999;
+  background-color: white;
   padding: 0 8px;
   border-radius: 4px;
   display: flex;
@@ -85,20 +86,21 @@ nav .search {
   max-width: 314px;
 }
 
-nav .search input {
+.search input {
   outline: none;
   border: none;
   flex: 1;
   padding: 8px 0;
   width: 100%;
+  margin: 0;
   color: #666;
 }
 
-nav .search ::placeholder {
+.search ::placeholder {
   color: #999;
 }
 
-nav .search i.material-icons {
+.search i.material-icons {
   font-size: 20px;
   margin-right: 4px;
   user-select: none;

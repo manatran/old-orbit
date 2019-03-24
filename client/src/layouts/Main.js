@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-import Navigation from "./../components/navigation";
-import Homepage from "./../pages/Homepage";
-import Authpage from "./../pages/Authpage";
-import AuthCallback from "./../pages/AuthCallbackPage";
-import LogoutPage from "./../pages/LogoutPage";
-import ProfilePage from "./../pages/ProfilePage";
+import Navigation from "../components/navigation";
+import HomePage from "../pages/HomePage";
+import Authpage from "../pages/AuthPage";
+import AuthCallback from "../pages/AuthCallbackPage";
+import LogoutPage from "../pages/LogoutPage";
+import ProfilePage from "../pages/ProfilePage";
+import AskPage from "../pages/AskPage";
 
 class Main extends Component {
   render() {
@@ -18,8 +19,9 @@ class Main extends Component {
           <Route exact path="/callback" component={AuthCallback} />
           <Route exact path="/logout" component={LogoutPage} />
           <Redirect from="/home" to="/" />
-          <Route exact path="/" component={Homepage} />
+          <Route exact path="/" component={HomePage} />
           <Route exact path="/user/:username" component={ProfilePage} />
+          <Route exact path="/ask" component={AskPage} />
           <Redirect from="*" to="/" />
         </Switch>
       </React.Fragment>

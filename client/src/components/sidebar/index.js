@@ -1,17 +1,20 @@
-import React, { Component } from 'react';
-import Lang from './Lang';
-import website from './../../assets/icons/website.png';
-import twitter from './../../assets/icons/twitter.png';
-import github from './../../assets/icons/github.png';
-import linkedin from './../../assets/icons/linkedin.png';
+import React, { Component } from "react";
+import Lang from "./Lang";
+import website from "./../../assets/icons/website.png";
+import twitter from "./../../assets/icons/twitter.png";
+import github from "./../../assets/icons/github.png";
+import linkedin from "./../../assets/icons/linkedin.png";
 
 class Sidebar extends Component {
-
   render() {
     return (
       <aside>
-        <a href="/" className="button">Ask a question</a>
-        <a href="/" className="button light">Submit your creation</a>
+        <a href="/ask" className="button">
+          Ask a question
+        </a>
+        <a href="/submit" className="button light">
+          Submit your creation
+        </a>
 
         <section className="popular">
           <h2>Popular categories</h2>
@@ -61,16 +64,32 @@ class Sidebar extends Component {
           </section>
 
           <section className="social">
-            <a href="https://manatran.github.io" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://manatran.github.io"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img src={website} alt="Website" />
             </a>
-            <a href="https://twitter.com/manaus_t" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://twitter.com/manaus_t"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img src={twitter} alt="Twitter" />
             </a>
-            <a href="https://github.com/manatran" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://github.com/manatran"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img src={github} alt="GitHub" />
             </a>
-            <a href="https://www.linkedin.com/in/manaustransez/" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://www.linkedin.com/in/manaustransez/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img src={linkedin} alt="Linkedin" />
             </a>
           </section>
