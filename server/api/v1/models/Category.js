@@ -1,6 +1,9 @@
 module.exports = (db, DataTypes) => {
   const Category = db.define("category", {
-    name: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      unique: true
+    },
     description: DataTypes.STRING,
     thumbnail: DataTypes.STRING
   });

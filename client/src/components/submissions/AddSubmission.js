@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import './submissions.css';
+import React, { Component } from "react";
+import "./submissions.css";
 
 class AddSubmission extends Component {
   render() {
     return (
-      <a href="/" className="submission add-submission">
+      <a href="/submit" className="submission add-submission">
         <div className="background">
           <i className="material-icons">library_add</i>
         </div>

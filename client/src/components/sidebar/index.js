@@ -6,15 +6,42 @@ import github from "./../../assets/icons/github.png";
 import linkedin from "./../../assets/icons/linkedin.png";
 
 class Sidebar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      token: ""
+    };
+  }
+
+  componentWillMount() {
+    const token = localStorage.getItem("token");
+    if (token) {
+      this.setState({ token: token });
+    }
+  }
+
   render() {
     return (
       <aside>
-        <a href="/ask" className="button">
-          Ask a question
-        </a>
-        <a href="/submit" className="button light">
-          Submit your creation
-        </a>
+        {this.state.token ? (
+          <React.Fragment>
+            <a href="/ask" className="button">
+              Ask a question
+            </a>
+            <a href="/submit" className="button light">
+              Submit your creation
+            </a>
+          </React.Fragment>
+        ) : (
+          <React.Fragment>
+            <a href="/signup" className="button">
+              Ask a question
+            </a>
+            <a href="/signup" className="button light">
+              Submit your creation
+            </a>
+          </React.Fragment>
+        )}
 
         <section className="popular">
           <h2>Popular categories</h2>

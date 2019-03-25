@@ -94,30 +94,6 @@ class Question extends Component {
                           e.preventDefault();
                         }}
                       >
-                        <i className="material-icons">bookmark</i>
-                        Save post
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="/"
-                        className="disabled"
-                        onClick={e => {
-                          e.preventDefault();
-                        }}
-                      >
-                        <i className="material-icons">not_interested</i>
-                        Hide post
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="/"
-                        className="disabled"
-                        onClick={e => {
-                          e.preventDefault();
-                        }}
-                      >
                         <i className="material-icons">report</i>
                         Report post
                       </a>

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import Submission from './index';
-import AddSubmission from './AddSubmission';
-import './submissions.css';
+import React, { Component } from "react";
+import Submission from "./index";
+import AddSubmission from "./AddSubmission";
+import "./submissions.css";
 
 class PopularSubmissions extends Component {
   render() {
@@ -31,7 +31,10 @@ class PopularSubmissions extends Component {
           />
           <AddSubmission />
         </div>
-        <a href="/" className="link">View all submissions <i className="material-icons">keyboard_arrow_right</i></a>
+        <a href="/" className="link">
+          View all submissions{" "}
+          <i className="material-icons">keyboard_arrow_right</i>
+        </a>
       </section>
     );
   }

@@ -106,6 +106,17 @@ nav .nav-links a {
   user-select: none;
 }
 
+nav .button.light {
+  padding: 8px 24px;
+  font-size: 14px;
+  width: auto;
+  margin: 0;
+  margin-left: 8px;
+  border: solid 1px #999;
+  color: #999;
+  font-weight: 500;
+}
+
 nav .logged-in {
   margin-left: 16px;
   padding: 4px 8px;
@@ -192,6 +203,10 @@ nav .dropdown .links {
   padding: 4px;
   border-top: solid 1px #d7d7d7;
   border-bottom: solid 1px #d7d7d7;
+}
+
+nav .dropdown .links a {
+  margin: 4px 0;
 }
 
 nav .dropdown a {
