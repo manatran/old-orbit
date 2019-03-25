@@ -81,7 +81,7 @@ class Question extends Component {
                       </a>
                     </li>
                     <li>
-                      <a href="/">
+                      <a href={`/user/${this.props.author}`}>
                         <i className="material-icons">account_circle</i>
                         {this.props.author}'s profile
                       </a>

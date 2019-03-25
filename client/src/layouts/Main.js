@@ -7,6 +7,7 @@ import AuthCallback from "../pages/AuthCallbackPage";
 import LogoutPage from "../pages/LogoutPage";
 import ProfilePage from "../pages/ProfilePage";
 import AskPage from "../pages/AskPage";
+import SubmitPage from "../pages/SubmitPage";
 
 class Main extends Component {
   render() {
@@ -22,6 +23,7 @@ class Main extends Component {
           <Route exact path="/" component={HomePage} />
           <Route exact path="/user/:username" component={ProfilePage} />
           <Route exact path="/ask" component={AskPage} />
+          <Route exact path="/submit" component={SubmitPage} />
           <Redirect from="*" to="/" />
         </Switch>
       </React.Fragment>

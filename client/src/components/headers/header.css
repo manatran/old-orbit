@@ -1,4 +1,4 @@
-.login-header {
+.big-header {
   margin-top: 48px;
   background-image: url("./../../assets/pattern.png"),
     linear-gradient(to right, #3c95d1, #be62bb);
@@ -6,39 +6,39 @@
   color: white;
 }
 
-.login-header .container {
+.big-header .container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
-.login-header .intro,
-.login-header .login-buttons {
+.big-header .intro,
+.big-header .login-buttons {
   width: 50%;
 }
 
-.login-header h1 {
+.big-header h1 {
   font-family: "Segoe UI", "Roboto", sans-serif;
 }
 
-.login-header p {
+.big-header p {
   color: #f9f9f9;
 }
 
-.login-header .login-buttons {
+.big-header .login-buttons {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.login-header .login-buttons .logo {
+.big-header .login-buttons .logo {
   width: 64px;
   height: 64px;
 }
 
-.login-header .login-buttons h2 {
+.big-header .login-buttons h2 {
   font-size: 20px;
   color: #f9f9f9;
 }
@@ -103,13 +103,41 @@
   font-size: 20px;
 }
 
+header.big-header.logged-in {
+  background-image: url("./../../assets/pattern.png"),
+    linear-gradient(to right, #37c862, #1a8fb4);
+  padding: 32px 0;
+}
+header.logged-in .info {
+  text-align: right;
+  max-width: 45%;
+}
+header .info h2 {
+  color: white;
+}
+header.logged-in .buttons {
+  justify-content: flex-start;
+}
+header.logged-in .button {
+  color: white;
+  border-color: #303030;
+  background-color: #303030;
+  margin: 0;
+}
+header.logged-in .button.light {
+  color: white;
+  background-color: transparent;
+  border-color: white;
+  margin-right: 16px;
+}
+
 @media only screen and (max-width: 720px) {
-  .login-header .container {
+  .big-header .container {
     flex-direction: column;
   }
 
-  .login-header .login-buttons,
-  .login-header .intro {
+  .big-header .login-buttons,
+  .big-header .intro {
     width: 100%;
   }
 
@@ -120,5 +148,15 @@
   .small-header .title,
   .small-header .description {
     width: 100%;
+  }
+
+  header.logged-in .info {
+    width: 100%;
+    max-width: 100%;
+    text-align: left;
+  }
+
+  header.logged-in .buttons {
+    display: none;
   }
 }

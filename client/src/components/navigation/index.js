@@ -17,7 +17,11 @@ class Navigation extends Component {
     const token = localStorage.getItem("token");
     if (token && user) {
       const { login } = user;
+      const { avatar_url } = user;
+      const { reputation } = user.profile;
       this.setState({ username: login });
+      this.setState({ profilepic: avatar_url });
+      this.setState({ rep: reputation });
       this.setState({ token: token });
     }
   }
@@ -55,13 +59,10 @@ class Navigation extends Component {
                   }}
                 >
                   <span className="meta">
-                    <h2>manaus_t</h2>
-                    <h3>300 rep</h3>
+                    <h2>{this.state.username}</h2>
+                    <h3>{this.state.rep} rep</h3>
                   </span>
-                  <img
-                    src="https://manatran.github.io/favicon.png"
-                    alt="github-logo"
-                  />
+                  <img src={this.state.profilepic} alt="User" />
                   <i className="material-icons">arrow_drop_down</i>
                 </div>
 

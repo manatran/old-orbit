@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import LoginHeader from "./../components/headers/LoginHeader";
+import LoggedInHeader from "./../components/headers/LoggedInHeader";
 import SmallHeader from "./../components/headers/SmallHeader";
 import PopularSubmissions from "./../components/submissions/PopularSubmissions";
 import Sidebar from "./../components/sidebar";
@@ -7,14 +8,30 @@ import Question from "./../components/questions/";
 import Spinner from "./../components/spinner";
 
 class Homepage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      token: ""
+    };
+  }
+
+  componentWillMount() {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      this.props.history.push("/");
+      return true;
+    }
+    this.setState({ token: token });
+  }
+
   render() {
     return (
       <div>
-        <LoginHeader />
+        {this.state.token ? <LoggedInHeader /> : <LoginHeader />}
         <div className="body">
           <Sidebar />
           <main>
-            <SmallHeader />
+            {this.state.token ? null : <SmallHeader />}
             <PopularSubmissions />
             <section className="questions" style={{ marginTop: "32px" }}>
               <h2>Popular questions</h2>
@@ -23,7 +40,7 @@ class Homepage extends Component {
                 thumbnail="https://cdn.auth0.com/blog/vuejs/vue-logo.png"
                 category="Vue.js"
                 tag="Good question"
-                author="manaus_t"
+                author="manatran"
                 likes="800"
                 comments="300"
               />
@@ -32,7 +49,7 @@ class Homepage extends Component {
                 thumbnail="https://cdn.auth0.com/blog/vuejs/vue-logo.png"
                 category="Vue.js"
                 tag="Good question"
-                author="manaus_t"
+                author="manatran"
                 likes="800"
                 comments="300"
               />
@@ -41,7 +58,7 @@ class Homepage extends Component {
                 thumbnail="https://cdn.auth0.com/blog/vuejs/vue-logo.png"
                 category="Vue.js"
                 tag="Good question"
-                author="manaus_t"
+                author="manatran"
                 likes="800"
                 comments="300"
               />
@@ -50,7 +67,7 @@ class Homepage extends Component {
                 thumbnail="https://cdn.auth0.com/blog/vuejs/vue-logo.png"
                 category="Vue.js"
                 tag="Good question"
-                author="manaus_t"
+                author="manatran"
                 likes="800"
                 comments="300"
               />
@@ -59,7 +76,7 @@ class Homepage extends Component {
                 thumbnail="https://cdn.auth0.com/blog/vuejs/vue-logo.png"
                 category="Vue.js"
                 tag="Good question"
-                author="manaus_t"
+                author="manatran"
                 likes="800"
                 comments="300"
               />
@@ -68,7 +85,7 @@ class Homepage extends Component {
                 thumbnail="https://cdn.auth0.com/blog/vuejs/vue-logo.png"
                 category="Vue.js"
                 tag="Good question"
-                author="manaus_t"
+                author="manatran"
                 likes="800"
                 comments="300"
               />
@@ -77,7 +94,7 @@ class Homepage extends Component {
                 thumbnail="https://cdn.auth0.com/blog/vuejs/vue-logo.png"
                 category="Vue.js"
                 tag="Good question"
-                author="manaus_t"
+                author="manatran"
                 likes="800"
                 comments="300"
               />
@@ -86,7 +103,7 @@ class Homepage extends Component {
                 thumbnail="https://cdn.auth0.com/blog/vuejs/vue-logo.png"
                 category="Vue.js"
                 tag="Good question"
-                author="manaus_t"
+                author="manatran"
                 likes="800"
                 comments="300"
               />
@@ -95,7 +112,7 @@ class Homepage extends Component {
                 thumbnail="https://cdn.auth0.com/blog/vuejs/vue-logo.png"
                 category="Vue.js"
                 tag="Good question"
-                author="manaus_t"
+                author="manatran"
                 likes="800"
                 comments="300"
               />
@@ -104,7 +121,7 @@ class Homepage extends Component {
                 thumbnail="https://cdn.auth0.com/blog/vuejs/vue-logo.png"
                 category="Vue.js"
                 tag="Good question"
-                author="manaus_t"
+                author="manatran"
                 likes="800"
                 comments="300"
               />
@@ -113,7 +130,7 @@ class Homepage extends Component {
                 thumbnail="https://cdn.auth0.com/blog/vuejs/vue-logo.png"
                 category="Vue.js"
                 tag="Good question"
-                author="manaus_t"
+                author="manatran"
                 likes="800"
                 comments="300"
               />
@@ -122,7 +139,7 @@ class Homepage extends Component {
                 thumbnail="https://cdn.auth0.com/blog/vuejs/vue-logo.png"
                 category="Vue.js"
                 tag="Good question"
-                author="manaus_t"
+                author="manatran"
                 likes="800"
                 comments="300"
               />
