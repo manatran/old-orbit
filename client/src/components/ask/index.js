@@ -43,7 +43,7 @@ class Ask extends Component {
         this.setState({ error: "" });
       })
       .catch(err => {
-        this.setState({ error: err });
+        this.setState({ error: err.error });
       });
   }
 

@@ -57,7 +57,7 @@ exports.create_submission = (req, res, next) => {
   const { id } = req.user;
   const { title, content, githubUrl, contestId, thumbnail } = req.body;
 
-  if ((!title || !content || !githubUrl, contestId)) {
+  if (!title || !content || !githubUrl || !contestId) {
     return res.status(400).json({
       error:
         "Submission must have title, content, github url, thumbnail and belongs to contest"
