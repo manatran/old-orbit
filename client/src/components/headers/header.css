@@ -103,32 +103,18 @@
   font-size: 20px;
 }
 
-header.big-header.logged-in {
+.big-header.logged-in {
+  display: flex;
   background-image: url("./../../assets/pattern.png"),
     linear-gradient(to right, #37c862, #1a8fb4);
   padding: 32px 0;
 }
-header.logged-in .info {
+.logged-in .info {
   text-align: right;
   max-width: 45%;
 }
-header .info h2 {
+.logged-in .info h2 {
   color: white;
-}
-header.logged-in .buttons {
-  justify-content: flex-start;
-}
-header.logged-in .button {
-  color: white;
-  border-color: #303030;
-  background-color: #303030;
-  margin: 0;
-}
-header.logged-in .button.light {
-  color: white;
-  background-color: transparent;
-  border-color: white;
-  margin-right: 16px;
 }
 
 @media only screen and (max-width: 720px) {
@@ -150,13 +136,9 @@ header.logged-in .button.light {
     width: 100%;
   }
 
-  header.logged-in .info {
+  .logged-in .info {
     width: 100%;
     max-width: 100%;
     text-align: left;
-  }
-
-  header.logged-in .buttons {
-    display: none;
   }
 }

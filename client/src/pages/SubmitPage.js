@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Submit from "./../components/submit";
+import Sidebar from "./../components/ask/Sidebar";
 
 class SubmitPage extends Component {
   constructor(props) {
@@ -20,7 +22,8 @@ class SubmitPage extends Component {
   render() {
     return (
       <div className="body spaced">
-        <main>hello world</main>
+        <Sidebar submit />
+        <Submit />
       </div>
     );
   }

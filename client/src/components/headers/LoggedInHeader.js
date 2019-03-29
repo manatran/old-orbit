@@ -17,21 +17,13 @@ class LoggedInHeader extends Component {
       "December"
     ];
     return (
-      <header className="big-header logged-in">
+      <a href="/" className="big-header logged-in">
         <div className="container">
           <div className="intro">
             <h1>This month's challenge</h1>
             <h3>{`${
               months[new Date().getMonth()]
             } ${new Date().getFullYear()}`}</h3>
-            <div className="buttons">
-              <a href="/submissions" className="button light">
-                View all submissions
-              </a>
-              <a href="/submit" className="button">
-                Submit your creation
-              </a>
-            </div>
           </div>
           <div className="info">
             <h2>CSS Grid</h2>
@@ -43,7 +35,7 @@ class LoggedInHeader extends Component {
             <p>Be creative and have fun!</p>
           </div>
         </div>
-      </header>
+      </a>
     );
   }
 }

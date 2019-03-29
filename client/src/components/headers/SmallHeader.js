@@ -27,9 +27,6 @@ class SmallHeader extends Component {
           <h3>{`${
             months[new Date().getMonth()]
           } ${new Date().getFullYear()}`}</h3>
-          {/* <a href="/">
-            See details <i className="material-icons">keyboard_arrow_right</i>
-          </a> */}
         </div>
       </a>
     );

@@ -7,11 +7,19 @@ class Guidelines extends Component {
       <aside>
         <section className="guidelines">
           <h2>Guidelines</h2>
-          <ol>
-            <li>Do your research</li>
-            <li>Be kind and respectful</li>
-            <li>Keep an open mind</li>
-          </ol>
+          {this.props.submit ? (
+            <ol>
+              <li>Original content only</li>
+              <li>Be kind and respectful</li>
+              <li>Keep an open mind</li>
+            </ol>
+          ) : (
+            <ol>
+              <li>Do your research</li>
+              <li>Be kind and respectful</li>
+              <li>Keep an open mind</li>
+            </ol>
+          )}
         </section>
         <section className="markdown">
           <h2>Markdown</h2>
