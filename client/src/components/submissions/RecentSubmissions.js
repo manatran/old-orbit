@@ -4,7 +4,7 @@ import AddSubmission from "./AddSubmission";
 import "./submissions.css";
 import { apiUrl } from "../../env";
 
-class PopularSubmissions extends Component {
+class RecentSubmissions extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,7 +16,7 @@ class PopularSubmissions extends Component {
     fetch(`${apiUrl}/api/v1/submissions/recent`)
       .then(res => res.json())
       .then(res => {
-        this.setState({ submissions: res.body });
+        this.setState({ submissions: res });
       })
       .catch(err => {
         console.error(err);
@@ -31,8 +31,9 @@ class PopularSubmissions extends Component {
           {this.state.submissions
             ? this.state.submissions.map((el, i) => (
                 <Submission
+                  key={el.id}
                   title={el.title}
-                  subtitle={`by ${el.author.login}`}
+                  subtitle={`by ${el.author.username}`}
                   background={el.thumbnail}
                 />
               ))
@@ -48,4 +49,4 @@ class PopularSubmissions extends Component {
   }
 }
 
-export default PopularSubmissions;
+export default RecentSubmissions;

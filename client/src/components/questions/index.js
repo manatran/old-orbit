@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { getTimeDifference } from "../../helpers";
 import "./questions.css";
 
 class Question extends Component {
@@ -22,7 +23,10 @@ class Question extends Component {
 
         <a href="/" className="question-body">
           <h2>
-            {this.props.title} <span className="tag">{this.props.tag}</span>
+            {this.props.title}{" "}
+            {this.props.tag ? (
+              <span className="tag">{this.props.tag}</span>
+            ) : null}
           </h2>
           <p className="light">
             <span className="category">
@@ -30,7 +34,11 @@ class Question extends Component {
               {this.props.category}
             </span>
             <span className="meta">
-              Asked <span className="time">5 minutes ago</span> by
+              Asked{" "}
+              <span className="time" title={this.props.timestamp}>
+                {getTimeDifference(this.props.timestamp)}
+              </span>{" "}
+              by
               <span className="author">
                 <i className="material-icons admin">verified_user</i>
                 {this.props.author}

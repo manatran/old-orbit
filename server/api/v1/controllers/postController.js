@@ -28,8 +28,33 @@ exports.get_post = (req, res, next) => {
 
 // Get all posts
 exports.get_posts = (req, res, next) => {
-  const { id } = req.params;
   models.Post.findAll({
+    include: [
+      {
+        model: models.User,
+        as: "author",
+        attributes: {
+          exclude: ["accessToken"]
+        }
+      },
+      {
+        model: models.Category,
+        as: "subject"
+      }
+    ]
+  })
+    .then(posts => {
+      res.status(200).json(posts);
+    })
+    .catch(err => {
+      return res.status(401).json({ error: err });
+    });
+};
+
+// Get recent posts
+exports.get_recent_posts = (req, res, next) => {
+  models.Post.findAll({
+    order: [["createdAt", "ASC"]],
     include: [
       {
         model: models.User,

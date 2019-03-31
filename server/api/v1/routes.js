@@ -36,19 +36,20 @@ router.get("/user/:username", userController.get_user);
 
 // Post routes
 router.get("/posts", postController.get_posts);
+router.get("/posts/recent", postController.get_recent_posts);
 router.post("/posts", auth.authenticateJWT(), postController.create_post);
-router.get("/posts/:id", postController.get_post);
+router.get("/post/:id", postController.get_post);
 router.patch("/posts/:id", auth.authenticateJWT(), postController.update_post);
 router.delete("/posts/:id", auth.authenticateJWT(), postController.delete_post);
 
 // Submission routes
 router.get("/submissions", submissionController.get_submissions);
+router.get("/submissions/recent", submissionController.get_recent_submissions);
 router.post(
   "/submissions",
   auth.authenticateJWT(),
   submissionController.create_submission
 );
-router.get("/submissions/recent", submissionController.get_recent_submissions);
 router.get("/submission/:id", submissionController.get_submission);
 router.patch(
   "/submissions/:id",
