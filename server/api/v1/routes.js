@@ -48,7 +48,8 @@ router.post(
   auth.authenticateJWT(),
   submissionController.create_submission
 );
-router.get("/submissions/:id", submissionController.get_submission);
+router.get("/submissions/recent", submissionController.get_recent_submissions);
+router.get("/submission/:id", submissionController.get_submission);
 router.patch(
   "/submissions/:id",
   auth.authenticateJWT(),
