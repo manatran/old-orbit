@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Settings from "./Settings";
-import Lang from "./../sidebar/Lang";
 import "./profile.css";
 
 class ProfileSidebar extends Component {
@@ -31,7 +30,10 @@ class ProfileSidebar extends Component {
               >
                 Settings
               </button>
-              <Settings className={this.state.settings ? "" : "hidden"} />
+              <Settings
+                history={this.props.history}
+                className={this.state.settings ? "" : "hidden"}
+              />
             </React.Fragment>
           ) : null}
         </section>
@@ -51,42 +53,6 @@ class ProfileSidebar extends Component {
               alt={`${this.props.username}'s profile`}
             />
             <h4>Participant</h4>
-          </div>
-        </section>
-
-        <section className="communities">
-          <h3>Most active in</h3>
-          <div className="langs">
-            <Lang
-              url="/"
-              icon="https://manatran.github.io/favicon.png"
-              title="Javascript"
-              subs="12.500"
-            />
-            <Lang
-              url="/"
-              icon="https://manatran.github.io/favicon.png"
-              title="Javascript"
-              subs="12.500"
-            />
-            <Lang
-              url="/"
-              icon="https://manatran.github.io/favicon.png"
-              title="Javascript"
-              subs="12.500"
-            />
-            <Lang
-              url="/"
-              icon="https://manatran.github.io/favicon.png"
-              title="Javascript"
-              subs="12.500"
-            />
-            <Lang
-              url="/"
-              icon="https://manatran.github.io/favicon.png"
-              title="Javascript"
-              subs="12.500"
-            />
           </div>
         </section>
       </aside>

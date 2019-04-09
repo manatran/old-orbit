@@ -47,7 +47,6 @@
   margin: 32px 0;
   padding: 16px 0;
   border-top: solid 1px #d7d7d7;
-  border-bottom: solid 1px #d7d7d7;
 }
 
 .profile-sidebar .badge {
@@ -67,6 +66,15 @@
   color: #666;
   font-size: 16px;
   margin: 0;
+}
+
+.profile-sidebar .button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.profile-sidebar .button-container .button {
+  width: 45%;
 }
 
 .tab-nav {

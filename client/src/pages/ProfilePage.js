@@ -40,6 +40,7 @@ class ProfilePage extends Component {
         {this.state.user ? (
           <React.Fragment>
             <ProfileSidebar
+              history={this.props.history}
               thumbnail={this.state.user.avatar_url}
               username={this.state.user.login}
               name={this.state.user.name}
