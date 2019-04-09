@@ -57,7 +57,8 @@ const signinUser = (res, access_token, user) => {
     if (dbuser) {
       // Return Bearer token
       const token = createToken(res, dbuser);
-      return res.redirect(`/callback?token=${token}`);
+      // TODO: remove localhost
+      return res.redirect(`http://localhost:3000/callback?token=${token}`);
     }
 
     // Create new user

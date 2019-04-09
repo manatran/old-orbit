@@ -24,8 +24,30 @@ exports.get_comment = (req, res, next) => {
 
 // Get all comments
 exports.get_comments = (req, res, next) => {
-  const { id } = req.params;
   models.Comment.findAll({
+    include: [
+      {
+        model: models.User,
+        as: "author",
+        attributes: {
+          exclude: ["accessToken"]
+        }
+      }
+    ]
+  })
+    .then(comments => {
+      res.status(200).json(comments);
+    })
+    .catch(err => {
+      return res.status(401).json({ error: err });
+    });
+};
+
+// Get comments by author
+exports.get_comments_by_author = (req, res, next) => {
+  const { authorId } = req.params;
+  models.Comment.findAll({
+    where: { authorId: authorId },
     include: [
       {
         model: models.User,

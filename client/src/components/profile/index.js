@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import Submissions from "./Submissions";
+import Questions from "./Questions";
+import Replies from "./Replies";
 
 class Profile extends Component {
   constructor(props) {
@@ -36,7 +39,18 @@ class Profile extends Component {
             All replies
           </a>
         </section>
-        <p>hello world</p>
+        {(() => {
+          switch (this.state.currTab) {
+            case null:
+              return <Submissions user={this.props.user} />;
+            case "questions":
+              return <Questions user={this.props.user} />;
+            case "replies":
+              return <Replies user={this.props.user} />;
+            default:
+              return <Submissions user={this.props.user} />;
+          }
+        })()}
       </main>
     );
   }

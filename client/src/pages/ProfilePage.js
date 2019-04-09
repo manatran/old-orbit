@@ -47,7 +47,7 @@ class ProfilePage extends Component {
               reputation={this.state.user.profile.reputation}
               currUser={this.state.currUser}
             />
-            <Profile />
+            <Profile user={this.state.user.profile.id} />
           </React.Fragment>
         ) : (
           <Spinner size="32" />

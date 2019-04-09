@@ -51,6 +51,33 @@ exports.get_submissions = (req, res, next) => {
     });
 };
 
+// Get submissions by author
+exports.get_submissions_by_author = (req, res, next) => {
+  const { authorId } = req.params;
+  models.Submission.findAll({
+    where: { authorId: authorId },
+    include: [
+      {
+        model: models.User,
+        as: "author",
+        attributes: {
+          exclude: ["accessToken"]
+        }
+      },
+      {
+        model: models.Challenge,
+        as: "contest"
+      }
+    ]
+  })
+    .then(submissions => {
+      res.status(200).json(submissions);
+    })
+    .catch(err => {
+      return res.status(401).json({ error: err });
+    });
+};
+
 // Get recent submissions
 exports.get_recent_submissions = (req, res, next) => {
   models.Submission.findAll({

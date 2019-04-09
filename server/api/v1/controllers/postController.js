@@ -77,6 +77,33 @@ exports.get_recent_posts = (req, res, next) => {
     });
 };
 
+//Get post by author
+exports.get_posts_by_author = (req, res, next) => {
+  const { authorId } = req.params;
+  models.Post.findAll({
+    where: { authorId: authorId },
+    include: [
+      {
+        model: models.User,
+        as: "author",
+        attributes: {
+          exclude: ["accessToken"]
+        }
+      },
+      {
+        model: models.Category,
+        as: "subject"
+      }
+    ]
+  })
+    .then(posts => {
+      res.status(200).json(posts);
+    })
+    .catch(err => {
+      return res.status(401).json({ error: err });
+    });
+};
+
 // Create post
 exports.create_post = (req, res, next) => {
   const { id } = req.user;

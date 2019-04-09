@@ -8,8 +8,8 @@ Orbit is a beginner-friendly community for developers.
 ## Technologies
 
 - Node.js
-- GraphQL
-- React
+- React.js
+- PostgreSQL
 
 ## Installation and setup
 

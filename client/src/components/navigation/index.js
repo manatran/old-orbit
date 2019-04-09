@@ -31,7 +31,7 @@ class Navigation extends Component {
 
           <div className="column">
             <Searchbar />
-            {this.props.auth.token ? (
+            {this.props.auth.authenticated ? (
               <span
                 className={
                   this.state.dropdown ? "logged-in active" : "logged-in"

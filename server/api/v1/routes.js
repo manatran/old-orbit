@@ -37,6 +37,7 @@ router.get("/user/:username", userController.get_user);
 // Post routes
 router.get("/posts", postController.get_posts);
 router.get("/posts/recent", postController.get_recent_posts);
+router.get("/posts/author/:authorId", postController.get_posts_by_author);
 router.post("/posts", auth.authenticateJWT(), postController.create_post);
 router.get("/post/:id", postController.get_post);
 router.patch("/posts/:id", auth.authenticateJWT(), postController.update_post);
@@ -45,6 +46,10 @@ router.delete("/posts/:id", auth.authenticateJWT(), postController.delete_post);
 // Submission routes
 router.get("/submissions", submissionController.get_submissions);
 router.get("/submissions/recent", submissionController.get_recent_submissions);
+router.get(
+  "/submissions/author/:authorId",
+  submissionController.get_submissions_by_author
+);
 router.post(
   "/submissions",
   auth.authenticateJWT(),
@@ -109,11 +114,16 @@ router.delete(
 
 // Comment routes
 router.get("/comments", commentController.get_comments);
+router.get(
+  "/comments/author/:authorId",
+  commentController.get_comments_by_author
+);
 router.post(
   "/comments",
   auth.authenticateJWT(),
   commentController.create_comment
 );
+
 router.get("/comments/:id", commentController.get_comment);
 router.delete(
   "/comments/:id",
