@@ -16,7 +16,7 @@ class Guidelines extends Component {
           ) : (
             <ol>
               <li>Do your research</li>
-              <li>Be kind and respectful</li>
+              <li>Remember the human</li>
               <li>Keep an open mind</li>
             </ol>
           )}
