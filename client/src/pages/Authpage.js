@@ -1,10 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Auth from "./../components/auth";
 
 class Authpage extends Component {
   componentWillMount() {
-    const token = localStorage.getItem("token");
-    if (token) {
+    if (this.props.auth.authenticated) {
       this.props.history.push("/");
     }
   }
@@ -18,4 +18,8 @@ class Authpage extends Component {
   }
 }
 
-export default Authpage;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps)(Authpage);

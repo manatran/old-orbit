@@ -26,8 +26,8 @@ app.use("/*", express.static(path.join(__dirname, "client/build")));
 // Launch server
 const port = process.env.PORT || 5000;
 
-// models.sequelize.sync({ force: true }).then(() => {
-app.listen(port, () => {
-  console.log(`Server now running on port ${port}`);
+models.sequelize.sync({ force: true }).then(() => {
+  app.listen(port, () => {
+    console.log(`Server now running on port ${port}`);
+  });
 });
-// });

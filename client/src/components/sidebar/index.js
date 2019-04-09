@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Lang from "./Lang";
 import website from "./../../assets/icons/website.png";
 import twitter from "./../../assets/icons/twitter.png";
@@ -6,42 +7,15 @@ import github from "./../../assets/icons/github.png";
 import linkedin from "./../../assets/icons/linkedin.png";
 
 class Sidebar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      token: ""
-    };
-  }
-
-  componentWillMount() {
-    const token = localStorage.getItem("token");
-    if (token) {
-      this.setState({ token: token });
-    }
-  }
-
   render() {
     return (
       <aside>
-        {this.state.token ? (
-          <React.Fragment>
-            <a href="/ask" className="button">
-              Ask a question
-            </a>
-            <a href="/submit" className="button light">
-              Submit your creation
-            </a>
-          </React.Fragment>
-        ) : (
-          <React.Fragment>
-            <a href="/signup" className="button">
-              Ask a question
-            </a>
-            <a href="/signup" className="button light">
-              Submit your creation
-            </a>
-          </React.Fragment>
-        )}
+        <a href="/ask" className="button">
+          Ask a question
+        </a>
+        <a href="/submit" className="button light">
+          Submit your creation
+        </a>
 
         <section className="popular">
           <h2>Popular categories</h2>
@@ -85,7 +59,7 @@ class Sidebar extends Component {
               <a href="/">Question forum</a>
             </div>
             <div className="column">
-              <a href="/">Privacy policy</a>
+              <a href="/privacy">Privacy policy</a>
               <a href="/">Terms of use</a>
             </div>
           </section>
@@ -130,4 +104,8 @@ class Sidebar extends Component {
   }
 }
 
-export default Sidebar;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps)(Sidebar);

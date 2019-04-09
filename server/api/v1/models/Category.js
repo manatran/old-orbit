@@ -5,7 +5,8 @@ module.exports = (db, DataTypes) => {
       unique: true
     },
     description: DataTypes.STRING,
-    thumbnail: DataTypes.STRING
+    thumbnail: DataTypes.STRING,
+    subscribers: DataTypes.INTEGER
   });
 
   // Relations

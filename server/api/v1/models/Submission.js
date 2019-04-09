@@ -3,7 +3,8 @@ module.exports = (db, DataTypes) => {
     title: DataTypes.STRING,
     content: DataTypes.STRING,
     githubUrl: DataTypes.STRING,
-    thumbnail: DataTypes.STRING
+    thumbnail: DataTypes.STRING,
+    totalLikes: DataTypes.INTEGER
   });
 
   // Relations

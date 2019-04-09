@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import LoginHeader from "../components/headers/LoginHeader";
 import LoggedInHeader from "../components/headers/LoggedInHeader";
 import SmallHeader from "../components/headers/SmallHeader";
@@ -7,30 +8,14 @@ import RecentQuestions from "../components/questions/RecentQuestions";
 import Sidebar from "../components/sidebar";
 
 class Homepage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      token: ""
-    };
-  }
-
-  componentWillMount() {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      this.props.history.push("/");
-      return true;
-    }
-    this.setState({ token: token });
-  }
-
   render() {
     return (
       <div>
-        {this.state.token ? <LoggedInHeader /> : <LoginHeader />}
+        {this.props.auth.token ? <LoggedInHeader /> : <LoginHeader />}
         <div className="body">
           <Sidebar />
           <main>
-            {this.state.token ? null : <SmallHeader />}
+            {this.props.auth.token ? null : <SmallHeader />}
             <RecentSubmissions />
             <RecentQuestions />
           </main>
@@ -40,4 +25,8 @@ class Homepage extends Component {
   }
 }
 
-export default Homepage;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps)(Homepage);

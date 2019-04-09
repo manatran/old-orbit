@@ -2,7 +2,8 @@ module.exports = (db, DataTypes) => {
   const Post = db.define("post", {
     title: DataTypes.STRING,
     content: DataTypes.STRING,
-    pinned: DataTypes.BOOLEAN
+    pinned: DataTypes.BOOLEAN,
+    totalLikes: DataTypes.INTEGER
   });
 
   // Relations

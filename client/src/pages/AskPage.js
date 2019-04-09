@@ -1,23 +1,16 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Ask from "../components/ask";
 import Sidebar from "../components/ask/Sidebar";
 import Research from "../components/ask/Research";
 
 class Askpage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      token: ""
-    };
-  }
-
   componentWillMount() {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      this.props.history.push("/");
+    if (!this.props.auth.authenticated) {
+      this.props.history.push("/signup");
       return true;
     }
-    this.setState({ token: token });
+    this.setState({ token: this.props.auth.token });
   }
 
   render() {
@@ -26,11 +19,15 @@ class Askpage extends Component {
         <Sidebar />
         <main>
           <Research />
-          <Ask token={this.state.token} />
+          <Ask token={this.props.auth.token} />
         </main>
       </div>
     );
   }
 }
 
-export default Askpage;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps)(Askpage);

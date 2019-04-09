@@ -108,6 +108,13 @@ exports.create_submission = (req, res, next) => {
     });
 };
 
+// Like submission
+exports.like_submission = (req, res, next) => {
+  const { id } = req.params;
+  // TODO
+  // check if user has liked submission, then increment/decrement
+};
+
 // Update submission
 exports.update_submission = (req, res, next) => {
   const { id } = req.params;

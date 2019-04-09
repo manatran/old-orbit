@@ -1,22 +1,15 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Submit from "./../components/submit";
 import Sidebar from "./../components/ask/Sidebar";
 
 class SubmitPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      token: ""
-    };
-  }
-
   componentWillMount() {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      this.props.history.push("/");
+    if (!this.props.auth.authenticated) {
+      this.props.history.push("/signup");
       return true;
     }
-    this.setState({ token: token });
+    this.setState({ token: this.props.auth.token });
   }
 
   render() {
@@ -29,4 +22,8 @@ class SubmitPage extends Component {
   }
 }
 
-export default SubmitPage;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps)(SubmitPage);

@@ -1,29 +1,15 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import logo from "./../../assets/logo.png";
-import "./nav.css";
 import Searchbar from "./Searchbar";
+import "./nav.css";
 
 class Navigation extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dropdown: false,
-      username: ""
+      dropdown: false
     };
-  }
-
-  componentWillMount() {
-    const user = JSON.parse(localStorage.getItem("user"));
-    const token = localStorage.getItem("token");
-    if (token && user) {
-      const { login } = user;
-      const { avatar_url } = user;
-      const { reputation } = user.profile;
-      this.setState({ username: login });
-      this.setState({ profilepic: avatar_url });
-      this.setState({ rep: reputation });
-      this.setState({ token: token });
-    }
   }
 
   render() {
@@ -45,8 +31,7 @@ class Navigation extends Component {
 
           <div className="column">
             <Searchbar />
-
-            {this.state.token ? (
+            {this.props.auth.token ? (
               <span
                 className={
                   this.state.dropdown ? "logged-in active" : "logged-in"
@@ -59,17 +44,17 @@ class Navigation extends Component {
                   }}
                 >
                   <span className="meta">
-                    <h2>{this.state.username}</h2>
-                    <h3>{this.state.rep} rep</h3>
+                    <h2>{this.props.auth.user.login}</h2>
+                    <h3>{this.props.auth.user.profile.reputation} rep</h3>
                   </span>
-                  <img src={this.state.profilepic} alt="User" />
+                  <img src={this.props.auth.user.avatar_url} alt="User" />
                   <i className="material-icons">arrow_drop_down</i>
                 </div>
 
                 {this.state.dropdown ? (
                   <div className="dropdown">
                     <h2>Options</h2>
-                    <a href={`/user/${this.state.username}`}>
+                    <a href={`/user/${this.props.auth.user.login}`}>
                       <i className="material-icons">account_circle</i>Profile
                     </a>
                     <a href="/settings">
@@ -88,7 +73,7 @@ class Navigation extends Component {
                     </div>
 
                     <div className="links">
-                      <a href="/">Privacy policy</a>
+                      <a href="/privacy">Privacy policy</a>
                       <a href="/">Terms of use</a>
                     </div>
 
@@ -110,4 +95,8 @@ class Navigation extends Component {
   }
 }
 
-export default Navigation;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps)(Navigation);

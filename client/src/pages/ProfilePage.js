@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Profile from "./../components/profile";
 import ProfileSidebar from "./../components/profile/Sidebar";
 import Spinner from "./../components/spinner";
@@ -18,14 +19,18 @@ class ProfilePage extends Component {
     fetch(`${apiUrl}/api/v1/user/${this.props.match.params.username}`)
       .then(res => res.json())
       .then(user => {
-        const { login } = JSON.parse(localStorage.getItem("user"));
+        const { login } = this.props.auth.user;
         if (login === user.login) {
           this.setState({ currUser: true });
+        }
+        if (user.error) {
+          this.props.history.push("/");
         }
         this.setState({ user: user });
       })
       .catch(err => {
         console.log(err);
+        this.props.history.push("/");
       });
   }
 
@@ -52,4 +57,8 @@ class ProfilePage extends Component {
   }
 }
 
-export default ProfilePage;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps)(ProfilePage);

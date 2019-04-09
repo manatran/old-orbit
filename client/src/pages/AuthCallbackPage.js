@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { setCurrentUser, setToken } from "../actions/authActions";
 import { Redirect } from "react-router";
 import Spinner from "./../components/spinner";
 import { apiUrl } from "./../env";
@@ -27,8 +29,8 @@ class AuthCallback extends Component {
       })
         .then(res => res.json())
         .then(res => {
-          localStorage.setItem("token", `Bearer ${token}`);
-          localStorage.setItem("user", JSON.stringify(res));
+          this.props.setToken(`Bearer ${token}`);
+          this.props.setCurrentUser(res);
           this.setState({ redirect: true });
         })
         .catch(err => {
@@ -54,4 +56,18 @@ class AuthCallback extends Component {
   }
 }
 
-export default AuthCallback;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setCurrentUser: userData => dispatch(setCurrentUser(userData)),
+    setToken: token => dispatch(setToken(token))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AuthCallback);

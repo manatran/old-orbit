@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Redirect } from "react-router";
+import { logout } from "../actions/authActions";
 import Spinner from "./../components/spinner";
 
 class Logoutpage extends Component {
@@ -11,7 +13,7 @@ class Logoutpage extends Component {
   }
 
   componentDidMount() {
-    localStorage.clear();
+    this.props.logout();
     this.setState({ redirect: true });
   }
 
@@ -31,4 +33,17 @@ class Logoutpage extends Component {
   }
 }
 
-export default Logoutpage;
+const mapStateToProps = state => {
+  return {};
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    logout: () => dispatch(logout())
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Logoutpage);

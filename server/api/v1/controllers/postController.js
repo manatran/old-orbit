@@ -105,6 +105,13 @@ exports.create_post = (req, res, next) => {
     });
 };
 
+// Like post
+exports.like_post = (req, res, next) => {
+  const { id } = req.params;
+  // TODO
+  // check if user has liked post, then increment/decrement
+};
+
 // Update post
 exports.update_post = (req, res, next) => {
   const { id } = req.params;
