@@ -175,6 +175,10 @@ nav .logged-in i.material-icons {
   color: #999;
 }
 
+.admin-link {
+  color: #40a3e6 !important;
+}
+
 nav .dropdown {
   min-width: 148px;
   position: absolute;

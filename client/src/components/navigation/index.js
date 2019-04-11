@@ -26,6 +26,11 @@ class Navigation extends Component {
               <a href="/">Code challenges</a>
               <a href="/">Challenge suggestions</a>
               <a href="/">Question forum</a>
+              {this.props.auth.user.profile.isAdmin ? (
+                <a href="/dashboard" className="admin-link">
+                  Dashboard
+                </a>
+              ) : null}
             </div>
           </div>
 
@@ -70,6 +75,11 @@ class Navigation extends Component {
                       <a href="/">Code challenges</a>
                       <a href="/">Challenge suggestions</a>
                       <a href="/">Question forum</a>
+                      {this.props.auth.user.profile.isAdmin ? (
+                        <a href="/dashboard" className="admin-link">
+                          Dashboard
+                        </a>
+                      ) : null}
                     </div>
 
                     <div className="links">

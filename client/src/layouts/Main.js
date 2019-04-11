@@ -9,6 +9,7 @@ import ProfilePage from "../pages/ProfilePage";
 import AskPage from "../pages/AskPage";
 import SubmitPage from "../pages/SubmitPage";
 import PrivacyPage from "../pages/PrivacyPage";
+import DashboardPage from "../pages/DashboardPage";
 
 class Main extends Component {
   render() {
@@ -26,6 +27,7 @@ class Main extends Component {
           <Route exact path="/ask" component={AskPage} />
           <Route exact path="/submit" component={SubmitPage} />
           <Route exact path="/privacy" component={PrivacyPage} />
+          <Route exact path="/dashboard" component={DashboardPage} />
           <Redirect from="*" to="/" />
         </Switch>
       </React.Fragment>
