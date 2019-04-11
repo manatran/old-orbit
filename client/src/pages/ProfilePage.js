@@ -46,6 +46,7 @@ class ProfilePage extends Component {
               name={this.state.user.name}
               bio={this.state.user.bio}
               reputation={this.state.user.profile.reputation}
+              isAdmin={this.state.user.profile.isAdmin}
               currUser={this.state.currUser}
             />
             <Profile user={this.state.user.profile.id} />

@@ -11,7 +11,12 @@ class DashboardPage extends Component {
   render() {
     return (
       <div className="body spaced">
-        <p>hello world</p>
+        <aside>
+          <p>sidebar</p>
+        </aside>
+        <main>
+          <p>content</p>
+        </main>
       </div>
     );
   }

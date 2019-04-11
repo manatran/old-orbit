@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Settings from "./Settings";
+import adminBadge from "../../assets/icons/badge-admin.png";
 import "./profile.css";
 
 class ProfileSidebar extends Component {
@@ -38,23 +39,15 @@ class ProfileSidebar extends Component {
           ) : null}
         </section>
 
-        <section className="badges">
-          <h3>Badges</h3>
-          <div className="badge">
-            <img
-              src={this.props.thumbnail}
-              alt={`${this.props.username}'s profile`}
-            />
-            <h4>Moderator</h4>
-          </div>
-          <div className="badge">
-            <img
-              src={this.props.thumbnail}
-              alt={`${this.props.username}'s profile`}
-            />
-            <h4>Participant</h4>
-          </div>
-        </section>
+        {this.props.isAdmin ? (
+          <section className="badges">
+            <h3>Badges</h3>
+            <div className="badge">
+              <img src={adminBadge} alt="Site administrator" />
+              <h4>Moderator</h4>
+            </div>
+          </section>
+        ) : null}
       </aside>
     );
   }
