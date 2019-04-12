@@ -9,7 +9,11 @@ import ProfilePage from "../pages/ProfilePage";
 import AskPage from "../pages/AskPage";
 import SubmitPage from "../pages/SubmitPage";
 import PrivacyPage from "../pages/PrivacyPage";
+import TermsPage from "../pages/TermsPage";
 import DashboardPage from "../pages/DashboardPage";
+import ChallengesPage from "../pages/ChallengesPage";
+import SuggestionsPage from "../pages/SuggestionsPage";
+import QuestionsPage from "../pages/QuestionsPage";
 
 class Main extends Component {
   render() {
@@ -26,8 +30,12 @@ class Main extends Component {
           <Route exact path="/user/:username" component={ProfilePage} />
           <Route exact path="/ask" component={AskPage} />
           <Route exact path="/submit" component={SubmitPage} />
-          <Route exact path="/privacy" component={PrivacyPage} />
+          <Route exact path="/challenges" component={ChallengesPage} />
+          <Route exact path="/suggestions" component={SuggestionsPage} />
+          <Route exact path="/questions" component={QuestionsPage} />
           <Route exact path="/dashboard" component={DashboardPage} />
+          <Route exact path="/privacy" component={PrivacyPage} />
+          <Route exact path="/terms" component={TermsPage} />
           <Redirect from="*" to="/" />
         </Switch>
       </React.Fragment>

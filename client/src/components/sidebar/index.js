@@ -60,7 +60,7 @@ class Sidebar extends Component {
             </div>
             <div className="column">
               <a href="/privacy">Privacy policy</a>
-              <a href="/">Terms of use</a>
+              <a href="/terms">Terms of use</a>
             </div>
           </section>
 
