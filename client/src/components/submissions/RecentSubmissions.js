@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Submission from "./index";
 import AddSubmission from "./AddSubmission";
 import "./submissions.css";
@@ -40,10 +41,10 @@ class RecentSubmissions extends Component {
             : null}
           <AddSubmission />
         </div>
-        <a href="/" className="link">
+        <Link to="/" className="link">
           View all submissions{" "}
           <i className="material-icons">keyboard_arrow_right</i>
-        </a>
+        </Link>
       </section>
     );
   }

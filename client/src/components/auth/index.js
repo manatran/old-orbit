@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import AuthButtons from "./AuthButtons";
 import Logo from "./../../assets/logo.png";
 import "./auth.css";
@@ -16,14 +17,14 @@ class Auth extends Component {
 
         <p className="small">
           Signing up signifies that you have read and agree to the{" "}
-          <a href="/terms">Terms of Service</a> and{" "}
-          <a href="/privacy">Privacy Policy</a>.
+          <Link to="/terms">Terms of Service</Link> and{" "}
+          <Link to="/privacy">Privacy Policy</Link>.
         </p>
 
         <div className="divider">or</div>
-        <a href="/" className="button light">
+        <Link to="/" className="button light">
           Continue as visitor
-        </a>
+        </Link>
       </section>
     );
   }

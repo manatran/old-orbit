@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import Lang from "./Lang";
 import website from "./../../assets/icons/website.png";
 import twitter from "./../../assets/icons/twitter.png";
@@ -10,12 +11,12 @@ class Sidebar extends Component {
   render() {
     return (
       <aside>
-        <a href="/ask" className="button">
+        <Link to="/ask" className="button">
           Ask a question
-        </a>
-        <a href="/submit" className="button light">
+        </Link>
+        <Link to="/submit" className="button light">
           Submit your creation
-        </a>
+        </Link>
 
         <section className="popular">
           <h2>Popular categories</h2>
@@ -54,13 +55,13 @@ class Sidebar extends Component {
         <footer>
           <section className="nav">
             <div className="column">
-              <a href="/">Code challenges</a>
-              <a href="/">Challenge suggestions</a>
-              <a href="/">Question forum</a>
+              <Link to="/challenges">Code challenges</Link>
+              <Link to="/suggestions">Challenge suggestions</Link>
+              <Link to="/questions">Question forum</Link>
             </div>
             <div className="column">
-              <a href="/privacy">Privacy policy</a>
-              <a href="/terms">Terms of use</a>
+              <Link to="/privacy">Privacy policy</Link>
+              <Link to="/terms">Terms of use</Link>
             </div>
           </section>
 

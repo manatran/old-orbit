@@ -162,19 +162,11 @@ class PrivacyPage extends Component {
           <p>
             You may request details of personal information which we hold about
             you under the Data Protection Act 1998. A small fee will be payable.
-            If you would like a copy of the information held on you please write
-            to the address on our{" "}
-            <a href="/contact/">&#8216;contact us&#8217; page</a>.
           </p>
           <p>
             If you believe that any information we are holding on you is
             incorrect or incomplete, please contact us immediately. We will
             promptly correct any information found to be incorrect.
-          </p>
-          <h3>Any Questions?</h3>
-          <p>
-            If you have any questions or concerns about our privacy policy,
-            please <a href="/contact/">contact us</a>.{" "}
           </p>
         </main>
       </div>

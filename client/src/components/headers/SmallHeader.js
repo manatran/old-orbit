@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./header.css";
 
 class SmallHeader extends Component {
@@ -18,7 +19,7 @@ class SmallHeader extends Component {
       "December"
     ];
     return (
-      <a href="/" className="small-header">
+      <Link to="/" className="small-header">
         <div className="title">
           <h2>This month's challenge</h2>
           <h3>CSS Grid</h3>
@@ -28,7 +29,7 @@ class SmallHeader extends Component {
             months[new Date().getMonth()]
           } ${new Date().getFullYear()}`}</h3>
         </div>
-      </a>
+      </Link>
     );
   }
 }

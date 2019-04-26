@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class LoggedInHeader extends Component {
   render() {
@@ -17,7 +18,7 @@ class LoggedInHeader extends Component {
       "December"
     ];
     return (
-      <a href="/" className="big-header logged-in">
+      <Link to="/" className="big-header logged-in">
         <div className="container">
           <div className="intro">
             <h1>This month's challenge</h1>
@@ -35,7 +36,7 @@ class LoggedInHeader extends Component {
             <p>Be creative and have fun!</p>
           </div>
         </div>
-      </a>
+      </Link>
     );
   }
 }

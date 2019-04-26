@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class TermsPage extends Component {
   render() {
@@ -7,7 +8,7 @@ class TermsPage extends Component {
         <main style={{ width: `720px`, margin: `0 auto` }}>
           <h2 id="terms">Terms of Use (the “Terms”)</h2>
           <p>
-            We are <a href="http://www.qualitynonsense.com">Orbit</a>, a company
+            We are <Link to="/">Orbit</Link>, a company
             registered in England and Wales with a company number of 05889123
             and a registered office at 27 Mortimer Street, London W1T 3BL, the
             United Kingdom (hereafter the “<strong>QNL</strong>”, “
@@ -19,7 +20,7 @@ class TermsPage extends Component {
             website Placeholder.com (the “<strong>Website</strong>”). These
             Terms apply to all users of, and visitors to, the Website. Your use
             of the Website means that you accept and agree to abide by these
-            Terms and our <a href="/privacy">Privacy and Cookies Policy</a>{" "}
+            Terms and our <Link to="/privacy">Privacy and Cookies Policy</Link>{" "}
             which is deemed to form part of these Terms. These Terms take effect
             from the date of your first use of the Website.
           </p>
@@ -82,7 +83,7 @@ class TermsPage extends Component {
                   <li>
                     Except in relation to reviews which you post and personally
                     identifiable information (which is covered under our{" "}
-                    <a href="/privacy">Privacy and Cookies Policy</a>) any
+                    <Link to="/privacy">Privacy and Cookies Policy</Link>) any
                     material you send or post to the Website shall be considered
                     neither confidential nor proprietary. We shall have no
                     obligations with respect to such material and shall be free
@@ -118,10 +119,6 @@ class TermsPage extends Component {
                       otherwise use it for commercial purposes.
                     </li>
                     <li>
-                      If you wish to reproduce any of our Website content
-                      commercially (including as part of any company website)
-                      please contact us{" "}
-                      <a href="/contact/">using our feedback form</a>.
                       Permission to reproduce any of our content is at our sole
                       discretion.
                     </li>
@@ -191,14 +188,7 @@ class TermsPage extends Component {
             <li>
               <strong>4. Availability of the Website:</strong> We make no
               promise that the Website will meet your requirements. We cannot
-              guarantee that the Website will be fault-free. If a fault occurs
-              with the Website you should report it to{" "}
-              <a href="/contact/">using our feedback form</a> and we will
-              attempt to correct the fault as soon as we reasonably can. Your
-              access to the Website may be occasionally restricted to allow for
-              repairs, maintenance or the introduction of new facilities or
-              services. We will attempt to restore the Website as soon as we
-              reasonably can.
+              guarantee that the Website will be fault-free.
             </li>
             <li>
               <strong>5. General Terms</strong>
@@ -253,13 +243,6 @@ class TermsPage extends Component {
               </ol>
             </li>
           </ol>
-          <p>
-            If at any time you would like to contact us about your views or any
-            enquiry relating to these Terms or Quality Nonsense Limited more
-            generally, you can do so by using{" "}
-            <a href="/contact/">our feedback form</a> or write to us at Quality
-            Nonsense Limited, 27 Mortimer Street, London W1T 3BL.
-          </p>
         </main>
       </div>
     );

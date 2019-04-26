@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { getTimeDifference } from "../../helpers";
 import "./questions.css";
 
@@ -21,7 +22,7 @@ class Question extends Component {
 
         <img src={this.props.thumbnail} alt={this.props.category} />
 
-        <a href="/" className="question-body">
+        <Link to="/" className="question-body">
           <h2>
             {this.props.title}{" "}
             {this.props.tag ? (
@@ -45,13 +46,13 @@ class Question extends Component {
               </span>
             </span>
           </p>
-        </a>
+        </Link>
 
         <div className="options">
-          <a href="/" className="comments">
+          <Link to="/" className="comments">
             {this.props.comments}
             <i className="material-icons">comments</i>
-          </a>
+          </Link>
           <span
             onClick={() => {
               this.setState({ dropdown: !this.state.dropdown });
@@ -83,20 +84,20 @@ class Question extends Component {
                   </h2>
                   <ul>
                     <li>
-                      <a href="/">
+                      <Link to="/">
                         <i className="material-icons">timeline</i>
                         More from {this.props.category}
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href={`/user/${this.props.author}`}>
+                      <Link to={`/user/${this.props.author}`}>
                         <i className="material-icons">account_circle</i>
                         {this.props.author}'s profile
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
-                        href="/"
+                      <Link
+                        to="/"
                         className="disabled"
                         onClick={e => {
                           e.preventDefault();
@@ -104,7 +105,7 @@ class Question extends Component {
                       >
                         <i className="material-icons">report</i>
                         Report post
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>

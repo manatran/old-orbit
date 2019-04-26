@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import logo from "./../../assets/logo.png";
 import Searchbar from "./Searchbar";
 import "./nav.css";
@@ -17,19 +18,19 @@ class Navigation extends Component {
       <nav>
         <div className="nav-container container">
           <div className="column">
-            <a href="/" className="logo">
+            <Link to="/" className="logo">
               <img src={logo} alt="Orbit" />
               <span>Orbit</span>
-            </a>
+            </Link>
 
             <div className="nav-links">
-              <a href="/challenges">Code challenges</a>
-              <a href="/suggestions">Challenge suggestions</a>
-              <a href="/questions">Question forum</a>
+              <Link to="/challenges">Code challenges</Link>
+              <Link to="/suggestions">Challenge suggestions</Link>
+              <Link to="/questions">Question forum</Link>
               {this.props.auth.user.profile && this.props.auth.user.profile.isAdmin ? (
-                <a href="/dashboard" className="admin-link">
+                <Link to="/dashboard" className="admin-link">
                   Dashboard
-                </a>
+                </Link>
               ) : null}
             </div>
           </div>
@@ -59,41 +60,41 @@ class Navigation extends Component {
                 {this.state.dropdown ? (
                   <div className="dropdown">
                     <h2>Options</h2>
-                    <a href={`/user/${this.props.auth.user.login}`}>
+                    <Link to={`/user/${this.props.auth.user.login}`}>
                       <i className="material-icons">account_circle</i>Profile
-                    </a>
+                    </Link>
 
                     <div className="links">
-                      <a href="/ask">Ask a question</a>
-                      <a href="/submit">Submit a challenge</a>
+                      <Link to="/ask">Ask a question</Link>
+                      <Link to="/submit">Submit a challenge</Link>
                     </div>
 
                     <div className="alt-links links">
-                      <a href="/challenges">Code challenges</a>
-                      <a href="/suggestions">Challenge suggestions</a>
-                      <a href="/questions">Question forum</a>
+                      <Link to="/challenges">Code challenges</Link>
+                      <Link to="/suggestions">Challenge suggestions</Link>
+                      <Link to="/questions">Question forum</Link>
                       {this.props.auth.user.profile && this.props.auth.user.profile.isAdmin ? (
-                        <a href="/dashboard" className="admin-link">
+                        <Link to="/dashboard" className="admin-link">
                           Dashboard
-                        </a>
+                        </Link>
                       ) : null}
                     </div>
 
                     <div className="links">
-                      <a href="/privacy">Privacy policy</a>
-                      <a href="/terms">Terms of use</a>
+                      <Link to="/privacy">Privacy policy</Link>
+                      <Link to="/terms">Terms of use</Link>
                     </div>
 
-                    <a href="/logout">
+                    <Link to="/logout">
                       <i className="material-icons">exit_to_app</i>Log out
-                    </a>
+                    </Link>
                   </div>
                 ) : null}
               </span>
             ) : (
-              <a href="/signup" className="button light">
+              <Link to="/signup" className="button light">
                 Sign up
-              </a>
+              </Link>
             )}
           </div>
         </div>
