@@ -26,7 +26,7 @@ class Navigation extends Component {
               <a href="/challenges">Code challenges</a>
               <a href="/suggestions">Challenge suggestions</a>
               <a href="/questions">Question forum</a>
-              {this.props.auth.user.profile.isAdmin ? (
+              {this.props.auth.user.profile && this.props.auth.user.profile.isAdmin ? (
                 <a href="/dashboard" className="admin-link">
                   Dashboard
                 </a>
@@ -62,9 +62,6 @@ class Navigation extends Component {
                     <a href={`/user/${this.props.auth.user.login}`}>
                       <i className="material-icons">account_circle</i>Profile
                     </a>
-                    <a href="/settings">
-                      <i className="material-icons">build</i>Settings
-                    </a>
 
                     <div className="links">
                       <a href="/ask">Ask a question</a>
@@ -75,7 +72,7 @@ class Navigation extends Component {
                       <a href="/challenges">Code challenges</a>
                       <a href="/suggestions">Challenge suggestions</a>
                       <a href="/questions">Question forum</a>
-                      {this.props.auth.user.profile.isAdmin ? (
+                      {this.props.auth.user.profile && this.props.auth.user.profile.isAdmin ? (
                         <a href="/dashboard" className="admin-link">
                           Dashboard
                         </a>

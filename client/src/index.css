@@ -29,7 +29,9 @@ a {
   color: #40a3e6;
   text-decoration: none;
 }
-
+button:focus{
+  outline: none;
+}
 button.button,
 a.button {
   cursor: pointer;
@@ -61,6 +63,27 @@ a.button.danger {
   color: #e64040;
 }
 
+.vertical-tabs {
+  display: flex;
+  flex-direction: column;
+}
+.vertical-tabs button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px 16px 8px 13px;
+  margin-bottom: 8px;
+  text-align: center;
+  border-left: solid 3px transparent;
+  color: #999999;
+}
+
+.vertical-tabs .active{
+  color: #40a3e6;
+  border-left-color: #40a3e6;
+  background-color: #E9E9E9;
+}
+
 p.light {
   font-size: 12px;
   color: #a7a7a7;
@@ -69,9 +92,16 @@ p.error {
   font-size: 14px;
   color: #e64040;
 }
+p.success {
+  font-size: 14px;
+  color: #40a3e6;
+}
 
 main {
   width: 100%;
+}
+main section h2 {
+  margin-top: 0;
 }
 
 .container {

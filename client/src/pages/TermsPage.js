@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class PrivacyPage extends Component {
+class TermsPage extends Component {
   render() {
     return (
       <div className="body spaced">
@@ -266,4 +266,4 @@ class PrivacyPage extends Component {
   }
 }
 
-export default PrivacyPage;
+export default TermsPage;

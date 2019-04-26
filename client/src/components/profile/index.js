@@ -7,41 +7,40 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currTab: null
+      tab: "submissions"
     };
   }
 
-  componentWillMount() {
-    const currTab = new URLSearchParams(window.location.search).get("tab");
-    this.setState({ currTab: currTab });
+  setActiveTab(tab){
+    this.setState({ tab });
   }
 
   render() {
     return (
       <main>
         <section className="tab-nav">
-          <a
-            href={window.location.pathname}
-            className={this.state.currTab === null ? "active" : ""}
+          <button
+            onClick={() => {this.setActiveTab("submissions")}}
+            className={this.state.tab === "submissions" ? "active" : ""}
           >
             All submissions
-          </a>
-          <a
-            href={`${window.location.pathname}?tab=questions`}
-            className={this.state.currTab === "questions" ? "active" : ""}
+          </button>
+          <button
+            onClick={() => {this.setActiveTab("questions")}}
+            className={this.state.tab === "questions" ? "active" : ""}
           >
             All questions
-          </a>
-          <a
-            href={`${window.location.pathname}?tab=replies`}
-            className={this.state.currTab === "replies" ? "active" : ""}
+          </button>
+          <button
+            onClick={() => {this.setActiveTab("replies")}}
+            className={this.state.tab === "replies" ? "active" : ""}
           >
             All replies
-          </a>
+          </button>
         </section>
         {(() => {
-          switch (this.state.currTab) {
-            case null:
+          switch (this.state.tab) {
+            case "submissions":
               return <Submissions user={this.props.user} />;
             case "questions":
               return <Questions user={this.props.user} />;

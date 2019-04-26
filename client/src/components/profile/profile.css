@@ -85,13 +85,18 @@
   padding-top: 16px;
 }
 
-.tab-nav a {
+.tab-nav button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  color: #999;
   padding: 8px 16px 7px;
   display: inline-block;
   border-bottom: solid 2px transparent;
 }
 
-.tab-nav a.active {
+.tab-nav button.active {
   color: #40a3e6;
   border-bottom-color: #40a3e6;
 }

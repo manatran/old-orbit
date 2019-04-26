@@ -5,7 +5,7 @@ class Lang extends Component {
 
   render() {
     return (
-      <a href={this.props.url} className="lang">
+      <a href={this.props.url} className={`lang ${this.props.big ? "big" : null}`}>
         <img src={this.props.icon} alt="logo" />
         <div className="meta">
           <p>{this.props.title}</p>
