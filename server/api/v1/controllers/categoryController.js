@@ -25,7 +25,7 @@ exports.get_categories = (req, res, next) => {
     include: [
       {
         model: models.Category,
-        as: "parentCategory"
+        as: "parent"
       }
     ]
   })

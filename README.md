@@ -15,7 +15,13 @@ Orbit is a beginner-friendly community for developers.
 
 Some initial setup is required before running this project.
 
-First, you must add your database credentials, your GitHub app credentials (create a OAuth app at https://github.com/settings/developers), and a JSON webtokens secret key to the `/server/config/config.js` file. You have to create this file yourself. Here is a template of what this file looks like:
+The config file is located in `/server/config/config.js`. This file contains the following: 
+
+- Database credentials
+- Github OAuth app credentials
+- JSON Webtokens secret key
+
+You have to create this file yourself. Here is a template of what this file looks like:
 
 ```js
 module.exports = {

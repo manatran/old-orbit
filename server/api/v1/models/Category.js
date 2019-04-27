@@ -11,8 +11,9 @@ module.exports = (db, DataTypes) => {
 
   // Relations
   Category.associate = models => {
-    Category.hasOne(models.Category, {
-      foreignKey: "parentCategory"
+    Category.belongsTo(models.Category, {
+      foreignKey: "parentCategory",
+      as: "parent"
     });
   };
 
