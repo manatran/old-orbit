@@ -4,26 +4,26 @@ import Submit from "./../components/submit";
 import Sidebar from "./../components/ask/Sidebar";
 
 class SubmitPage extends Component {
-  componentWillMount() {
-    if (!this.props.auth.authenticated) {
-      this.props.history.push("/signup");
-      return true;
-    }
-    this.setState({ token: this.props.auth.token });
-  }
+	constructor(props) {
+		super(props)
+		if (!this.props.auth.authenticated) {
+			this.props.history.push("/signup");
+			return true;
+		}
+	}
 
-  render() {
-    return (
-      <div className="body spaced">
-        <Sidebar submit />
-        <Submit />
-      </div>
-    );
-  }
+	render() {
+		return (
+			<div className="body spaced">
+				<Sidebar submit />
+				<Submit />
+			</div>
+		);
+	}
 }
 
 const mapStateToProps = state => ({
-  auth: state.auth
+	auth: state.auth
 });
 
 export default connect(mapStateToProps)(SubmitPage);

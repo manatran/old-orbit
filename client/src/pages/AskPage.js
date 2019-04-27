@@ -5,29 +5,30 @@ import Sidebar from "../components/ask/Sidebar";
 import Research from "../components/ask/Research";
 
 class Askpage extends Component {
-  componentWillMount() {
-    if (!this.props.auth.authenticated) {
-      this.props.history.push("/signup");
-      return true;
-    }
-    this.setState({ token: this.props.auth.token });
-  }
+	constructor(props) {
+		super(props);
+		if (!this.props.auth.authenticated) {
+			this.props.history.push("/signup");
+			return true;
+		}
 
-  render() {
-    return (
-      <div className="body spaced">
-        <Sidebar />
-        <main>
-          <Research />
-          <Ask token={this.props.auth.token} />
-        </main>
-      </div>
-    );
-  }
+	}
+
+	render() {
+		return (
+			<div className="body spaced">
+				<Sidebar />
+				<main>
+					<Research />
+					<Ask history={this.props.history} token={this.props.auth.token} />
+				</main>
+			</div>
+		);
+	}
 }
 
 const mapStateToProps = state => ({
-  auth: state.auth
+	auth: state.auth
 });
 
 export default connect(mapStateToProps)(Askpage);

@@ -9,6 +9,7 @@ class Categories extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			showForm: false,
 			categories: [],
 			success: false,
 			error: "",
@@ -71,6 +72,11 @@ class Categories extends Component {
 		}
 	}
 
+	toggleForm = () => {
+		const { showForm } = this.state;
+		this.setState({ showForm: !showForm });
+	}
+
 	componentDidMount() {
 		fetch(`${apiUrl}/api/v1/categories`)
 			.then(res => res.json())
@@ -82,75 +88,81 @@ class Categories extends Component {
 	}
 
 	render() {
-		const { categories } = this.state;
+		const { categories, showForm } = this.state;
 		return (
 			<div>
-				<h2>Create new category</h2>
-				<form onSubmit={(e) => { this.createCategory(e) }}>
-					{this.state.error ? <p className="error">{this.state.error}</p> : null}
-					{this.state.success ? <p className="success">New category created!</p> : null}
+				{showForm &&
+					<>
+						<h2>Create new category</h2>
+						<form onSubmit={(e) => { this.createCategory(e) }}>
+							{this.state.error ? <p className="error">{this.state.error}</p> : null}
+							{this.state.success ? <p className="success">New category created!</p> : null}
 
-					<input
-						type="text"
-						value={this.state.name}
-						onChange={e => {
-							this.setState({ name: e.target.value });
-						}}
-						placeholder="Category name"
-					/>
-
-					<input
-						type="text"
-						value={this.state.slug}
-						onChange={e => {
-							this.setState({ slug: e.target.value });
-						}}
-						placeholder="Category slug"
-					/>
-
-					<input
-						type="text"
-						value={this.state.description}
-						onChange={e => {
-							this.setState({ description: e.target.value });
-						}}
-						placeholder="Category description"
-					/>
-
-					<select
-						onChange={e => {
-							this.setState({ parent: e.target.value });
-							console.log(e.target.value)
-						}}
-					>
-						<option hidden>Parent category</option>
-						<option value={null}>None</option>
-						{categories && categories.map(el => (
-							<option key={el.id} value={el.id}>{el.name}</option>
-						))}
-					</select>
-
-					<div className="image-input">
-						{this.state.thumbnail ? (
-							<div
-								className="thumbnail"
-								style={{ backgroundImage: `url(${this.state.thumbnail})` }}
+							<input
+								type="text"
+								value={this.state.name}
+								onChange={e => {
+									this.setState({ name: e.target.value });
+								}}
+								placeholder="Category name"
 							/>
-						) : null}
-						<input
-							type="text"
-							placeholder="Thumbnail URL"
-							value={this.state.thumbnail}
-							onChange={e => {
-								this.setState({ thumbnail: e.target.value });
-							}}
-						/>
-					</div>
 
-					<button type="submit" className="button">Submit category</button>
+							<input
+								type="text"
+								value={this.state.slug}
+								onChange={e => {
+									this.setState({ slug: e.target.value });
+								}}
+								placeholder="Category slug"
+							/>
 
-				</form>
+							<input
+								type="text"
+								value={this.state.description}
+								onChange={e => {
+									this.setState({ description: e.target.value });
+								}}
+								placeholder="Category description"
+							/>
 
+							<select
+								onChange={e => {
+									this.setState({ parent: e.target.value });
+								}}
+							>
+								<option hidden>Parent category</option>
+								<option value={null}>None</option>
+								{categories && categories.map(el => (
+									<option key={el.id} value={el.id}>{el.name}</option>
+								))}
+							</select>
+
+							<div className="image-input">
+								{this.state.thumbnail ? (
+									<div
+										className="thumbnail"
+										style={{ backgroundImage: `url(${this.state.thumbnail})` }}
+									/>
+								) : null}
+								<input
+									type="text"
+									placeholder="Thumbnail URL"
+									value={this.state.thumbnail}
+									onChange={e => {
+										this.setState({ thumbnail: e.target.value });
+									}}
+								/>
+							</div>
+
+							<button type="submit" className="button">Submit category</button>
+
+						</form>
+					</>
+				}
+
+				<button className={`button ${showForm && 'light'}`} onClick={this.toggleForm}>
+					{showForm ? `Cancel` : `New category`}
+				</button>
 
 				<h2>Manage Categories</h2>
 				{categories && categories.map(el => (

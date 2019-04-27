@@ -40,8 +40,8 @@ class Ask extends Component {
 		})
 			.then(res => res.json())
 			.then(res => {
-				console.log(res);
 				this.setState({ error: "" });
+				this.props.history.push(`/questions/${res.id}`)
 			})
 			.catch(err => {
 				this.setState({ error: err.error });
@@ -70,6 +70,7 @@ class Ask extends Component {
 				<form onSubmit={this.onSubmit.bind(this)}>
 					<select
 						onChange={e => {
+							console.log(e.target.value)
 							this.setState({ subject: e.target.value });
 						}}
 					>

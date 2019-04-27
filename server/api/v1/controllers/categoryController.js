@@ -3,7 +3,7 @@ const models = require("./../models");
 // Get category by id
 exports.get_category = (req, res, next) => {
 	const { id } = req.params;
-	models.Category.findById(id, {
+	models.Category.findByPk(id, {
 		include: [
 			{
 				model: models.Category,
@@ -92,7 +92,7 @@ exports.update_category = (req, res, next) => {
 		});
 	}
 
-	models.Category.findById(id)
+	models.Category.findByPk(id)
 		.then(category => {
 			const fields = [];
 			if (name) fields.push("name");
@@ -127,7 +127,7 @@ exports.delete_category = (req, res, next) => {
 		});
 	}
 
-	models.Category.findById(id)
+	models.Category.findByPk(id)
 		.then(category => {
 			category
 				.destroy()

@@ -19,7 +19,7 @@ class Submit extends Component {
 		};
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		// TODO
 		// GET CONTEST
 	}
