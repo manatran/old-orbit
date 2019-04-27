@@ -27,8 +27,18 @@ aside .popular {
   margin: 0;
 }
 
-.lang .meta .light {
-  font-size: 12px;
+.lang .meta .description {
+	font-size: 12px;
+	font-family: "Roboto SemiBold";
+	font-weight: 700;
+  color: #999;
+}
+
+.lang .meta .subs {
+	margin-top: 4px;
+	font-size: 12px;
+	font-family: "Roboto", "Roboto", sans-serif;
+	font-weight: 300;
   color: #999;
 }
 
@@ -43,7 +53,6 @@ aside .popular {
   color: #666;
   font-family: "Roboto Black", "Roboto", sans-serif;
   font-weight: 900;
-  text-transform: uppercase;
 }
 .lang.big .meta .light {
   font-size: 14px;
