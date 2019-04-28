@@ -88,6 +88,7 @@ class Ask extends Component {
 						}}
 						placeholder="Your specific question"
 					/>
+					<p className="light">Enter 2 line breaks for a new paragraph.</p>
 					<SimpleMDE
 						options={{
 							placeholder: "Provide some details and show your research"

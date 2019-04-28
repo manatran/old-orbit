@@ -2,12 +2,13 @@ const models = require("./../models");
 
 // Get category by id
 exports.get_category = (req, res, next) => {
-	const { id } = req.params;
-	models.Category.findByPk(id, {
+	const { slug } = req.params;
+	models.Category.findOne({
+		where: { slug: slug },
 		include: [
 			{
 				model: models.Category,
-				as: "parentCategory"
+				as: "parent"
 			}
 		]
 	})

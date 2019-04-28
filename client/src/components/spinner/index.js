@@ -4,15 +4,18 @@ import "./spinner.css";
 class Spinner extends Component {
 	constructor(props) {
 		super(props);
-		if (!this.props.size) this.props.size = 24;
+		this.state = {
+			size: 24
+		}
+		if (this.props.size) this.state.size = this.props.size;
 	}
 
 	render() {
 		return (
 			<div
 				style={{
-					height: `${this.props.size}px`,
-					width: `${this.props.size}px`
+					height: `${this.state.size}px`,
+					width: `${this.state.size}px`
 				}}
 				className="spinner"
 			/>

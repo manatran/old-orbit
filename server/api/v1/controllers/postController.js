@@ -54,7 +54,7 @@ exports.get_posts = (req, res, next) => {
 // Get recent posts
 exports.get_recent_posts = (req, res, next) => {
 	models.Post.findAll({
-		order: [["createdAt", "ASC"]],
+		order: [["createdAt", "DESC"]],
 		include: [
 			{
 				model: models.User,

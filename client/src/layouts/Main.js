@@ -15,6 +15,7 @@ import ChallengesPage from "../pages/ChallengesPage";
 import SuggestionsPage from "../pages/SuggestionsPage";
 import QuestionsPage from "../pages/QuestionsPage";
 import QuestionsDetailPage from "../pages/QuestionsDetailPage";
+import SubjectPage from "../pages/SubjectPage";
 
 class Main extends Component {
 	render() {
@@ -35,6 +36,7 @@ class Main extends Component {
 					<Route exact path="/suggestions" component={SuggestionsPage} />
 					<Route exact path="/questions" component={QuestionsPage} />
 					<Route exact path="/questions/:id" component={QuestionsDetailPage} />
+					<Route exact path="/subject/:slug" component={SubjectPage} />
 					<Route exact path="/dashboard" component={DashboardPage} />
 					<Route exact path="/privacy" component={PrivacyPage} />
 					<Route exact path="/terms" component={TermsPage} />

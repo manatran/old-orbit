@@ -1,0 +1,28 @@
+.subject-header {
+	display: block;
+	width: 100%;
+	background-color: #40a3e6 ;
+	margin-top: 48px;
+	box-sizing: border-box;
+	padding-top: 16px;
+	padding-bottom: 16px;
+}
+.subject-header .container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.subject-header img {
+	height: 60px;
+	width: 60px;
+	background-color: white;
+	border: solid 4px white;
+	border-radius: 8px;
+	margin-right: 16px;
+}
+
+.subject-header .info {
+	font-family: "Roboto Medium", "Roboto", sans-serif;
+	font-size: 16px;
+	color: white;
+}

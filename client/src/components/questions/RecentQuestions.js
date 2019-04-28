@@ -35,6 +35,7 @@ class RecentQuestions extends Component {
 					id={el.id}
 					title={el.title}
 					thumbnail={el.subject.thumbnail}
+					likes={el.totalLikes || 0}
 					category={el.subject.name}
 					author={el.author.username}
 					timestamp={el.createdAt}
