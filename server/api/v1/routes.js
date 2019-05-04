@@ -75,6 +75,8 @@ router.post(
 	categoryController.create_category
 );
 router.get("/categories/:slug", categoryController.get_category);
+router.get("/category/popular", categoryController.get_popular_categories);
+router.get("/category/posts/:slug", categoryController.get_category_posts);
 router.patch(
 	"/categories/:id",
 	auth.authenticateJWT(),

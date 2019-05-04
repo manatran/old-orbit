@@ -38,6 +38,53 @@ exports.get_categories = (req, res, next) => {
 		});
 };
 
+// Get popular categories
+exports.get_popular_categories = (req, res, next) => {
+	models.Category.findAll({
+		limit: 5,
+		order: [["subscribers", "DESC"]],
+	})
+		.then(categories => {
+			res.json(categories);
+		})
+		.catch(err => {
+			return res.status(500).json({ error: err });
+		});
+}
+
+// Get all posts from category
+exports.get_category_posts = (req, res, next) => {
+	const { slug } = req.params;
+	models.Category.findOne({
+		where: { slug: slug }
+	})
+		.then(category => {
+			models.Post.findAll({
+				where: { subjectId: category.id },
+				include: [
+					{
+						model: models.User,
+						as: "author",
+						attributes: {
+							exclude: ["accessToken"]
+						}
+					},
+					{
+						model: models.Category,
+						as: "subject"
+					}
+				]
+			}).then(posts => {
+				res.json(posts);
+			}).catch(err => {
+				return res.status(500).json({ error: err });
+			});
+		})
+		.catch(err => {
+			return res.status(500).json({ error: err });
+		});
+}
+
 // Create category
 exports.create_category = (req, res, next) => {
 	const { isAdmin } = req.user;
