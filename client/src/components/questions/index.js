@@ -41,8 +41,8 @@ class Question extends Component {
 							</span>{" "}
 							by
               <span className="author">
-								<i className="material-icons admin">verified_user</i>
-								{this.props.author}
+								{this.props.author.isAdmin && <i className="material-icons admin">verified_user</i>}
+								{this.props.author.username}
 							</span>
 						</span>
 					</p>
