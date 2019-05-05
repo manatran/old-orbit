@@ -21,8 +21,15 @@
 	margin-right: 16px;
 }
 
-.subject-header .info {
+.subject-header .info p {
+	font-size: 14px;
+	font-weight: 200;
+	font-family: "Roboto Light", "Roboto", sans-serif;
+	color: #eee;
+	margin: 0;
+}
+.subject-header .info p.title {
 	font-family: "Roboto Medium", "Roboto", sans-serif;
-	font-size: 16px;
+	font-size: 20px;
 	color: white;
 }

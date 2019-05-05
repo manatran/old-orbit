@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 import Spinner from "../components/spinner";
 import Sidebar from '../components/sidebar';
 import Header from '../components/subject/Header';
@@ -13,8 +14,9 @@ class QuestionsDetailPage extends Component {
 		super(props);
 		this.state = {
 			question: null,
-			comments: null,
-			loading: true
+			comments: [],
+			loading: true,
+			content: ""
 		}
 	}
 
@@ -34,15 +36,53 @@ class QuestionsDetailPage extends Component {
 		fetch(`${apiUrl}/api/v1/comments/${id}`)
 			.then(res => res.json())
 			.then(comments => {
-				this.setState({ comments })
+				this.setState({ comments });
+				this.setState({ content: "" })
 			})
 			.catch(err => {
 				console.log(err)
 			})
 	}
 
+	createComment = () => {
+		const { content } = this.state;
+		const { token } = this.props.auth;
+		const { id } = this.props.match.params;
+
+		if (content) {
+			const body = {
+				content: content,
+				postId: id
+			};
+
+			fetch(`${apiUrl}/api/v1/comments`, {
+				method: "POST",
+				headers: {
+					Authorization: token,
+					Accept: "application/json",
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify(body)
+			})
+				.then(res => res.json())
+				.then(comment => {
+					if (!comment.error) {
+						this.setState({
+							comments: [
+								comment,
+								...this.state.comments
+							]
+						})
+					}
+				})
+				.catch(err => {
+					console.log(err);
+				})
+		}
+	}
+
 	render() {
-		const { loading, question, comments } = this.state;
+		const { loading, question, comments, content } = this.state;
 		return (
 			<div>
 				{!loading ? (
@@ -59,8 +99,10 @@ class QuestionsDetailPage extends Component {
 												minHeight: "600px",
 												hideIcons: ["guide", "fullscreen", "side-by-side"],
 											}}
+											value={content}
+											onChange={content => this.setState({ content })}
 										/>
-										<button className="button">Comment</button>
+										<button onClick={this.createComment} className="button">Comment</button>
 										<CommentsList comments={comments} />
 									</ main>
 								</div>
@@ -77,4 +119,8 @@ class QuestionsDetailPage extends Component {
 	}
 }
 
-export default QuestionsDetailPage;
+const mapStateToProps = state => ({
+	auth: state.auth
+});
+
+export default connect(mapStateToProps)(QuestionsDetailPage);

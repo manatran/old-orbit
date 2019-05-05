@@ -1,35 +1,35 @@
 module.exports = (db, DataTypes) => {
-  const Post = db.define("post", {
-    title: DataTypes.STRING,
-    content: DataTypes.STRING,
-    pinned: DataTypes.BOOLEAN,
-    totalLikes: DataTypes.INTEGER
-  });
+	const Post = db.define("post", {
+		title: DataTypes.STRING,
+		content: DataTypes.TEXT,
+		pinned: DataTypes.BOOLEAN,
+		totalLikes: DataTypes.INTEGER
+	});
 
-  // Relations
-  Post.associate = models => {
-    Post.belongsToMany(models.User, {
-      through: "postLikes"
-    });
+	// Relations
+	Post.associate = models => {
+		Post.belongsToMany(models.User, {
+			through: "postLikes"
+		});
 
-    Post.belongsToMany(models.Tag, {
-      through: "postTags"
-    });
+		Post.belongsToMany(models.Tag, {
+			through: "postTags"
+		});
 
-    Post.hasMany(models.Comment, {
-      as: "comments"
-    });
+		Post.hasMany(models.Comment, {
+			as: "comments"
+		});
 
-    Post.belongsTo(models.Category, {
-      foreignKey: "subjectId",
-      as: "subject"
-    });
+		Post.belongsTo(models.Category, {
+			foreignKey: "subjectId",
+			as: "subject"
+		});
 
-    Post.belongsTo(models.User, {
-      foreignKey: "authorId",
-      as: "author"
-    });
-  };
+		Post.belongsTo(models.User, {
+			foreignKey: "authorId",
+			as: "author"
+		});
+	};
 
-  return Post;
+	return Post;
 };

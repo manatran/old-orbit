@@ -247,6 +247,27 @@
 	color: #999;
 	width: 18px;
 }
+.content .title {
+	font-size: 20px;
+	padding-bottom: 16px;
+	border-bottom: solid 1px #d7d7d7;
+}
+.md h1, .md h2, .md h3, .md h4, .md h5, .md h6 {
+	color: #999;
+	font-family: "Roboto Light", "Roboto", sans-serif;
+}
+.md h2 {
+	font-size: 1.5em;
+}
+.md blockquote {
+	margin: 0;
+	padding: 1px 16px;
+	border-left: solid 3px rgba(64, 163, 230, 0.5);
+	background-color: #fafbfc;
+}
+.md img {
+	max-width: 100%;
+}
 
 @media only screen and (max-width: 720px) {
   .question img,

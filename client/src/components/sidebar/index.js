@@ -41,7 +41,7 @@ class Sidebar extends Component {
         </Link>
 
 				<section className="popular">
-					{categories ? (
+					{categories && categories.length > 0 ? (
 						<>
 							<h2>Popular categories</h2>
 							{categories.map((el, i) => (

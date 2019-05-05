@@ -168,7 +168,7 @@ class Categories extends Component {
 				{categories && categories.map(el => (
 					<Lang
 						key={el.id}
-						url={`/categories/${el.slug}`}
+						url={`/subject/${el.slug}`}
 						icon={el.thumbnail}
 						title={el.name}
 						description={el.description}

@@ -12,6 +12,7 @@ export default class SubjectHeader extends Component {
 					<img src={subject.thumbnail} alt={subject.title} />
 					<div className="info">
 						<p className="title">{subject.name}</p>
+						<p>{subject.description}</p>
 					</div>
 				</div>
 			</Link>

@@ -4,10 +4,14 @@ import Comment from "./index";
 class CommentsList extends Component {
 	render() {
 		const { comments } = this.props;
-		if (comments && comments.lenght > 0) {
+		if (comments && comments.length > 0) {
 			return (
 				comments.map((el, i) => (
-					<Comment />
+					<Comment
+						key={el.id}
+						content={el.content}
+						author={el.author}
+					/>
 				))
 			)
 		}

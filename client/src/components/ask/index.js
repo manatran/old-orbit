@@ -15,7 +15,7 @@ class Ask extends Component {
 		};
 	}
 
-	onSubmit(e) {
+	onSubmit = (e) => {
 		e.preventDefault();
 		const { title, content, subject } = this.state;
 		if (!title || !content || !subject) {
@@ -29,6 +29,8 @@ class Ask extends Component {
 			subject: subject
 		};
 
+		console.log(body)
+
 		fetch(`${apiUrl}/api/v1/posts`, {
 			method: "POST",
 			headers: {
@@ -40,8 +42,12 @@ class Ask extends Component {
 		})
 			.then(res => res.json())
 			.then(res => {
-				this.setState({ error: "" });
-				this.props.history.push(`/questions/${res.id}`)
+				if (!res.error) {
+					this.setState({ error: "" });
+					this.props.history.push(`/questions/${res.id}`)
+					return true
+				}
+				this.setState({ error: JSON.stringify(res.error) });
 			})
 			.catch(err => {
 				this.setState({ error: err.error });
@@ -56,7 +62,7 @@ class Ask extends Component {
 			})
 			.catch(err => {
 				this.setState({ error: err })
-			})
+			});
 	}
 
 	render() {
@@ -67,12 +73,9 @@ class Ask extends Component {
 
 				{this.state.error ? <p className="error">{this.state.error}</p> : null}
 
-				<form onSubmit={this.onSubmit.bind(this)}>
+				<form onSubmit={this.onSubmit}>
 					<select
-						onChange={e => {
-							console.log(e.target.value)
-							this.setState({ subject: e.target.value });
-						}}
+						onChange={e => this.setState({ subject: e.target.value })}
 					>
 						<option hidden>Choose a community</option>
 						{categories.map(el => (
@@ -83,9 +86,7 @@ class Ask extends Component {
 					<input
 						type="text"
 						value={this.state.title}
-						onChange={e => {
-							this.setState({ title: e.target.value });
-						}}
+						onChange={e => this.setState({ title: e.target.value })}
 						placeholder="Your specific question"
 					/>
 					<p className="light">Enter 2 line breaks for a new paragraph.</p>
@@ -93,9 +94,7 @@ class Ask extends Component {
 						options={{
 							placeholder: "Provide some details and show your research"
 						}}
-						onChange={val => {
-							this.setState({ content: val });
-						}}
+						onChange={val => this.setState({ content: val })}
 					/>
 					<button className="button">Submit question</button>
 				</form>
