@@ -2,15 +2,18 @@ import React, { Component } from 'react';
 import Spinner from "../components/spinner";
 import Sidebar from '../components/sidebar';
 import Header from '../components/subject/Header';
-import ReactMarkdown from "react-markdown";
+import CommentsList from '../components/comments/CommentsList';
 
 import { apiUrl } from "../env";
+import SimpleMDE from 'react-simplemde-editor';
+import QuestionDetail from '../components/questions/QuestionDetail';
 
 class QuestionsDetailPage extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			question: null,
+			comments: null,
 			loading: true
 		}
 	}
@@ -27,10 +30,19 @@ class QuestionsDetailPage extends Component {
 				this.setState({ loading: false });
 				this.props.history.push('/');
 			})
+
+		fetch(`${apiUrl}/api/v1/comments/${id}`)
+			.then(res => res.json())
+			.then(comments => {
+				this.setState({ comments })
+			})
+			.catch(err => {
+				console.log(err)
+			})
 	}
 
 	render() {
-		const { loading, question } = this.state;
+		const { loading, question, comments } = this.state;
 		return (
 			<div>
 				{!loading ? (
@@ -41,18 +53,15 @@ class QuestionsDetailPage extends Component {
 								<div className="body">
 									<Sidebar />
 									<main>
-										<h2>{question.title}</h2>
-										<div className="content">
-											<ReactMarkdown source={question.content} />
-										</div>
-										{/* <Question
-											id={question.id}
-											title={question.title}
-											thumbnail={question.subject.thumbnail}
-											category={question.subject.name}
-											author={question.author.username}
-											timestamp={question.createdAt}
-										/> */}
+										<QuestionDetail question={question} comments={comments ? comments.length : 0} />
+										<SimpleMDE
+											options={{
+												minHeight: "600px",
+												hideIcons: ["guide", "fullscreen", "side-by-side"],
+											}}
+										/>
+										<button className="button">Comment</button>
+										<CommentsList comments={comments} />
 									</ main>
 								</div>
 							</>

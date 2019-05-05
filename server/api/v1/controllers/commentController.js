@@ -1,9 +1,10 @@
 const models = require("./../models");
 
-// Get comment by id
+// Get comments by post id
 exports.get_comment = (req, res, next) => {
 	const { id } = req.params;
-	models.Comment.findByPk(id, {
+	models.Comment.findAll({
+		where: { postId: id },
 		include: [
 			{
 				model: models.User,
@@ -19,27 +20,6 @@ exports.get_comment = (req, res, next) => {
 		})
 		.catch(err => {
 			return res.status(500).json({ error: err });
-		});
-};
-
-// Get all comments
-exports.get_comments = (req, res, next) => {
-	models.Comment.findAll({
-		include: [
-			{
-				model: models.User,
-				as: "author",
-				attributes: {
-					exclude: ["accessToken"]
-				}
-			}
-		]
-	})
-		.then(comments => {
-			res.status(200).json(comments);
-		})
-		.catch(err => {
-			return res.status(401).json({ error: err });
 		});
 };
 

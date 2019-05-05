@@ -10,7 +10,7 @@ import QuestionsList from "../components/questions/QuestionsList";
 import ScrollTop from "../components/questions/ScrollTop";
 import Sidebar from "../components/sidebar";
 
-import {apiUrl} from "../env";
+import { apiUrl } from "../env";
 
 class Homepage extends Component {
 	constructor(props) {
@@ -42,22 +42,22 @@ class Homepage extends Component {
 			});
 	}
 
-  render() {
+	render() {
 		const { questions, submissions } = this.state;
 
-    return (
-      <div>
-        {this.props.auth.token ? <LoggedInHeader /> : <LoginHeader />}
-        <div className="body">
-          <Sidebar />
-          <main>
+		return (
+			<div>
+				{this.props.auth.token ? <LoggedInHeader /> : <LoginHeader />}
+				<div className="body">
+					<Sidebar />
+					<main>
 
 						{this.props.auth.token ? null : <SmallHeader />}
 
 						<section>
 							<h2>Recent submissions</h2>
 							<div className="submission-container">
-								<SubmissionsList submissions={submissions} />
+								<SubmissionsList submissions={submissions} hideWarning />
 								<AddSubmission />
 							</div>
 							<Link to="/" className="link">
@@ -71,15 +71,15 @@ class Homepage extends Component {
 							<QuestionsList questions={questions} />
 							<ScrollTop />
 						</section>
-          </main>
-        </div>
-      </div>
-    );
-  }
+					</main>
+				</div>
+			</div>
+		);
+	}
 }
 
 const mapStateToProps = state => ({
-  auth: state.auth
+	auth: state.auth
 });
 
 export default connect(mapStateToProps)(Homepage);

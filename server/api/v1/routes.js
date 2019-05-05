@@ -115,7 +115,7 @@ router.delete(
 );
 
 // Comment routes
-router.get("/comments", commentController.get_comments);
+router.get("/comments/:id", commentController.get_comment);
 router.get(
 	"/comments/author/:authorId",
 	commentController.get_comments_by_author
@@ -126,7 +126,6 @@ router.post(
 	commentController.create_comment
 );
 
-router.get("/comments/:id", commentController.get_comment);
 router.delete(
 	"/comments/:id",
 	auth.authenticateJWT(),
