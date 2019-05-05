@@ -1,0 +1,28 @@
+.meta.light i {
+	font-size: 12px;
+	margin-right: 2px;
+}
+.comment .meta.light .author:after, .subcomment .meta.light .author:after {
+	content: "●";
+	margin: 0 8px;
+	color: #999;
+}
+.comment .meta.light i, .subcomment .meta.light i {
+	position: relative;
+	top: 2px;
+}
+.comment, .subcomment {
+	padding: 8px 16px;
+	border: solid 1px #d7d7d7;
+	background-color: white;
+	border-left: solid 3px hsla(204, 77%, 58%, 0.75);
+	color: #666;
+}
+.comment .options span{
+	margin-right: 8px;
+	cursor: pointer;
+	user-select: none;
+}
+.subcomment {
+	margin-left: 16px;
+}

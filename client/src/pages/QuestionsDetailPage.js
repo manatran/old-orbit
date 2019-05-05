@@ -27,6 +27,7 @@ class QuestionsDetailPage extends Component {
 			.then(question => {
 				this.setState({ question });
 				this.setState({ loading: false });
+				document.title = question.title;
 			})
 			.catch(err => {
 				this.setState({ loading: false });
@@ -42,6 +43,10 @@ class QuestionsDetailPage extends Component {
 			.catch(err => {
 				console.log(err)
 			})
+	}
+
+	componentWillUnmount() {
+		document.title = "Orbit";
 	}
 
 	createComment = () => {
@@ -67,6 +72,7 @@ class QuestionsDetailPage extends Component {
 				.then(res => res.json())
 				.then(comment => {
 					if (!comment.error) {
+						this.setState({ content: "" });
 						this.setState({
 							comments: [
 								comment,
