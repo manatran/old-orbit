@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { getTimeDifference } from "../../helpers";
 import { apiUrl } from "../../env";
 import "./comments.css";
-import SimpleMDE from 'react-simplemde-editor';
 
 class Comment extends Component {
 	constructor(props) {
@@ -84,25 +83,22 @@ class Comment extends Component {
 					</p>
 					<p>{content}</p>
 					<p className="options light">
-						<span onClick={e => this.setState({ showCommentInput: !this.state.showCommentInput })}>
+						<span onClick={e => this.setState({
+							showCommentInput: !this.state.showCommentInput
+						})}>
 							{this.state.showCommentInput ? 'Cancel' : 'Reply'}
 						</span>
 						<span>
-							Share
-					</span>
-						<span>
 							Report
-					</span>
+						</span>
 					</p>
 					{this.state.showCommentInput && (
 						<>
-							<SimpleMDE
+							<textarea
+								placeholder={`Reply to ${author.username}'s comment`}
+								className="subcomment-input"
 								value={this.state.content}
-								onChange={content => this.setState({ content })}
-								options={{
-									hideIcons: ["guide", "fullscreen", "side-by-side"],
-									minHeight: "200px"
-								}}
+								onChange={e => this.setState({ content: e.target.value })}
 							/>
 							<div className="button-container">
 								<button
@@ -129,7 +125,7 @@ class Comment extends Component {
 								{((el.author && el.author.isAdmin) || auth.user.profile.isAdmin) && <i className="material-icons admin">verified_user</i>}
 								{(el.author && el.author.username) || auth.user.profile.username}
 							</Link>
-							{getTimeDifference(timestamp)}
+							{getTimeDifference(el.createdAt)}
 						</p>
 						<p>{el.content}</p>
 					</div>

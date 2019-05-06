@@ -15,6 +15,7 @@ class QuestionsList extends Component {
 						thumbnail={el.subject.thumbnail}
 						likes={el.totalLikes || 0}
 						category={el.subject.name}
+						slug={el.subject.slug}
 						author={el.author}
 						timestamp={el.createdAt}
 					/>

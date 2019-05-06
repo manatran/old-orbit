@@ -6,7 +6,6 @@ import Header from '../components/subject/Header';
 import CommentsList from '../components/comments/CommentsList';
 
 import { apiUrl } from "../env";
-import SimpleMDE from 'react-simplemde-editor';
 import QuestionDetail from '../components/questions/QuestionDetail';
 
 class QuestionsDetailPage extends Component {
@@ -100,12 +99,12 @@ class QuestionsDetailPage extends Component {
 									<Sidebar />
 									<main>
 										<QuestionDetail question={question} comments={comments ? comments.length : 0} />
-										<SimpleMDE
-											options={{
-												hideIcons: ["guide", "fullscreen", "side-by-side"],
-											}}
+										<textarea
+											placeholder="Post your comment. Remember the human!"
+											className="comment-input"
+											rows="10"
 											value={content}
-											onChange={content => this.setState({ content })}
+											onChange={e => this.setState({ content: e.target.value })}
 										/>
 										<button onClick={this.createComment} className="button">Comment</button>
 										<CommentsList comments={comments} />

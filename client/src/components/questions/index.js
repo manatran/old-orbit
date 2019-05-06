@@ -49,10 +49,6 @@ class Question extends Component {
 				</Link>
 
 				<div className="options">
-					<Link to="/" className="comments">
-						{this.props.comments}
-						<i className="material-icons">comments</i>
-					</Link>
 					<span
 						onClick={() => {
 							this.setState({ dropdown: !this.state.dropdown });
@@ -84,21 +80,20 @@ class Question extends Component {
 									</h2>
 									<ul>
 										<li>
-											<Link to="/">
+											<Link to={`/subject/${this.props.slug}`}>
 												<i className="material-icons">timeline</i>
 												More from {this.props.category}
 											</Link>
 										</li>
 										<li>
-											<Link to={`/user/${this.props.author}`}>
+											<Link to={`/user/${this.props.author.username}`}>
 												<i className="material-icons">account_circle</i>
-												{this.props.author}'s profile
+												{this.props.author.username}'s profile
                       </Link>
 										</li>
 										<li>
 											<Link
-												to="/"
-												className="disabled"
+												to="/report"
 												onClick={e => {
 													e.preventDefault();
 												}}
