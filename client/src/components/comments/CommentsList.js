@@ -10,6 +10,7 @@ class CommentsList extends Component {
 				comments.map((el, i) => (
 					<Comment
 						key={el.id}
+						id={el.id}
 						content={el.content}
 						author={el.author || auth.user.profile}
 						timestamp={el.createdAt}

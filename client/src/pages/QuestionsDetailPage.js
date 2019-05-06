@@ -27,7 +27,7 @@ class QuestionsDetailPage extends Component {
 			.then(question => {
 				this.setState({ question });
 				this.setState({ loading: false });
-				document.title = question.title;
+				document.title = `${question.title} - ${question.subject.name}`;
 			})
 			.catch(err => {
 				this.setState({ loading: false });
@@ -102,7 +102,6 @@ class QuestionsDetailPage extends Component {
 										<QuestionDetail question={question} comments={comments ? comments.length : 0} />
 										<SimpleMDE
 											options={{
-												minHeight: "600px",
 												hideIcons: ["guide", "fullscreen", "side-by-side"],
 											}}
 											value={content}

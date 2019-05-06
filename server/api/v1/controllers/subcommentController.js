@@ -1,31 +1,10 @@
 const models = require("./../models");
 
-// Get subcomment by id
-exports.get_subcomment = (req, res, next) => {
-	const { id } = req.params;
-	models.Subcomment.findByPk(id, {
-		include: [
-			{
-				model: models.User,
-				as: "author",
-				attributes: {
-					exclude: ["accessToken"]
-				}
-			}
-		]
-	})
-		.then(subcomment => {
-			res.status(200).json(subcomment);
-		})
-		.catch(err => {
-			return res.status(500).json({ error: err });
-		});
-};
-
-// Get all subcomments
+// Get subcomments by parent id
 exports.get_subcomments = (req, res, next) => {
 	const { id } = req.params;
 	models.Subcomment.findAll({
+		where: { parentCommentId: id },
 		include: [
 			{
 				model: models.User,

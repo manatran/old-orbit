@@ -50,6 +50,12 @@ a.button {
   border: solid 1px #40a3e6;
 }
 
+button.button.small,
+a.button.small {
+	padding: 8px;
+	width: 150px;
+}
+
 button.light,
 a.button.light {
   color: #40a3e6;
@@ -151,4 +157,55 @@ form select {
   box-sizing: border-box;
   border-radius: 4px;
   color: #666;
+}
+
+.icon-input,
+.image-input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 4px;
+}
+
+.icon-input {
+  background-color: white;
+  border: solid 1px #d7d7d7;
+  padding: 0 8px;
+  margin-bottom: 8px;
+}
+.icon-input img {
+  height: 32px;
+}
+.icon-input input {
+  border: none;
+  margin: 0;
+}
+
+.image-input .thumbnail {
+  height: 52px;
+  width: 52px;
+  background-position: center;
+  background-size: cover;
+  background-color: #999;
+  margin-right: 8px;
+  border-radius: 8px;
+}
+
+.inline-input {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	border-radius: 4px;
+}
+.inline-input button {
+	margin-left: 8px;
+}
+
+.button-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.button-container button {
+	margin-right: 8px;
 }

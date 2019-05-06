@@ -133,13 +133,12 @@ router.delete(
 );
 
 // Subcomment routes
-router.get("/subcomments", subcommentController.get_subcomments);
+router.get("/subcomments/:id", subcommentController.get_subcomments);
 router.post(
 	"/subcomments",
 	auth.authenticateJWT(),
 	subcommentController.create_subcomment
 );
-router.get("/subcomments/:id", subcommentController.get_subcomment);
 router.delete(
 	"/subcomments/:id",
 	auth.authenticateJWT(),
