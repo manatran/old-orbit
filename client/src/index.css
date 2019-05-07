@@ -159,6 +159,10 @@ form select {
   color: #666;
 }
 
+form input::placeholder {
+	color: #999;
+}
+
 .icon-input,
 .image-input {
   display: flex;

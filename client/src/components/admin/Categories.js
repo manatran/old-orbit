@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import Lang from "../sidebar/Lang";
+import CategoriesList from "../subject/CategoriesList";
 
 import { apiUrl } from "../../env";
 
@@ -10,7 +10,6 @@ class Categories extends Component {
 		super(props);
 		this.state = {
 			showForm: false,
-			categories: [],
 			success: false,
 			error: "",
 			name: "",
@@ -19,6 +18,7 @@ class Categories extends Component {
 			thumbnail: "",
 			parent: null
 		}
+		this.state.categories = this.props.categories;
 	}
 
 	createCategory(e) {
@@ -77,18 +77,8 @@ class Categories extends Component {
 		this.setState({ showForm: !showForm });
 	}
 
-	componentDidMount() {
-		fetch(`${apiUrl}/api/v1/categories`)
-			.then(res => res.json())
-			.then(categories => {
-				this.setState({ categories })
-			}).catch(err => {
-				console.log(err)
-			})
-	}
-
 	render() {
-		const { categories, showForm } = this.state;
+		const { showForm, categories } = this.state;
 		return (
 			<div>
 				{showForm &&
@@ -165,17 +155,7 @@ class Categories extends Component {
 				</button>
 
 				<h2>Manage Categories</h2>
-				{categories && categories.map(el => (
-					<Lang
-						key={el.id}
-						url={`/subject/${el.slug}`}
-						icon={el.thumbnail}
-						title={el.name}
-						description={el.description}
-						subs={el.subscribers || 0}
-						big
-					/>
-				))}
+				<CategoriesList categories={categories} />
 			</div>
 		)
 	}

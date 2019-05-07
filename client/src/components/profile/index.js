@@ -55,8 +55,21 @@ class Profile extends Component {
 		this.setState({ tab });
 	}
 
-	render() {
+	renderContent() {
 		const { submissions, questions, comments } = this.state;
+		switch (this.state.tab) {
+			case "submissions":
+				return <SubmissionsList submissions={submissions} />;
+			case "questions":
+				return <QuestionsList questions={questions} />;
+			case "replies":
+				return <CommentsList comments={comments} />;
+			default:
+				return <SubmissionsList submissions={submissions} />;
+		}
+	}
+
+	render() {
 		return (
 			<main>
 				<section className="tab-nav">
@@ -79,18 +92,8 @@ class Profile extends Component {
 						All replies
           </button>
 				</section>
-				{(() => {
-					switch (this.state.tab) {
-						case "submissions":
-							return <SubmissionsList submissions={submissions} />;
-						case "questions":
-							return <QuestionsList questions={questions} />;
-						case "replies":
-							return <CommentsList comments={comments} />;
-						default:
-							return <SubmissionsList submissions={submissions} />;
-					}
-				})()}
+
+				{this.renderContent()}
 			</main>
 		);
 	}
