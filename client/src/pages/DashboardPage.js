@@ -23,7 +23,6 @@ class DashboardPage extends Component {
 	}
 
 	componentDidMount() {
-		// TODO: add fetches for reports, categories, contests
 		const { auth } = this.props;
 
 		fetch(`${apiUrl}/api/v1/reports`, {
@@ -35,9 +34,7 @@ class DashboardPage extends Component {
 		})
 			.then(res => res.json())
 			.then(reports => {
-				if (!reports.error) {
-					this.setState({ reports })
-				}
+				if (!reports.error) this.setState({ reports });
 			}).catch(err => {
 				console.log(err)
 			})
@@ -45,21 +42,15 @@ class DashboardPage extends Component {
 		fetch(`${apiUrl}/api/v1/categories`)
 			.then(res => res.json())
 			.then(categories => {
-				this.setState({ categories })
+				if (!categories.error) this.setState({ categories });
 			}).catch(err => {
 				console.log(err)
 			})
 
-		fetch(`${apiUrl}/api/v1/challenges`, {
-			Authorization: auth.token,
-			Accept: "application/json",
-			"Content-Type": "application/json"
-		})
+		fetch(`${apiUrl}/api/v1/challenges`)
 			.then(res => res.json())
 			.then(contests => {
-				if (!contests.error) {
-					this.setState({ contests })
-				}
+				if (!contests.error) this.setState({ contests });
 			})
 			.catch(err => {
 				console.log(err);

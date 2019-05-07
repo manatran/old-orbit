@@ -1,27 +1,59 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from "react-redux";
 import ContestsList from '../contests/ContestsList';
+import { apiUrl } from "../../env";
 
 class Contests extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			showForm: false,
-			name: ""
+			name: "",
+			description: "",
+			from: "",
+			til: "",
+			contests: null
 		}
+		this.state.contests = this.props.contests;
 	}
 
 	createContest = (e) => {
 		e.preventDefault();
-		const { name } = this.state;
+		const { name, description, from, til } = this.state;
+		const { auth } = this.props;
+
 		const body = {
 			name: name,
+			description: description,
+			from: from,
+			til: til
 		}
-		console.log(body);
+
+		if (name && description && from && til) {
+			fetch(`${apiUrl}/api/v1/challenges`, {
+				method: "POST",
+				headers: {
+					Authorization: auth.token,
+					Accept: "application/json",
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify(body)
+			})
+				.then(res => res.json())
+				.then(contest => {
+					if (!contest.error) this.setState({ contests: [contest, ...this.state.contests] });
+				})
+				.catch(err => {
+					console.log(err);
+				})
+
+		}
+
 	}
 
 	render() {
-		const { showForm } = this.state;
-		const { contests } = this.props;
+		const { showForm, contests } = this.state;
+
 		return (
 			<div>
 				{showForm && (
@@ -36,6 +68,7 @@ class Contests extends Component {
 								}}
 								placeholder="Contest name"
 							/>
+							{/* TODO: add form inputs */}
 							<button className="button" type="submit">
 								Submit contest
 							</button>
@@ -55,4 +88,8 @@ class Contests extends Component {
 	}
 }
 
-export default Contests;
+const mapStateToProps = state => ({
+	auth: state.auth
+});
+
+export default connect(mapStateToProps)(Contests);
