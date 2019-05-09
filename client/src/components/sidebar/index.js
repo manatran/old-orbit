@@ -61,7 +61,7 @@ class Sidebar extends Component {
 					<section className="nav">
 						<div className="column">
 							<Link to="/challenges">Code challenges</Link>
-							<Link to="/suggestions">Challenge suggestions</Link>
+							<Link to="/subject/suggestion">Challenge suggestions</Link>
 							<Link to="/questions">Question forum</Link>
 						</div>
 						<div className="column">

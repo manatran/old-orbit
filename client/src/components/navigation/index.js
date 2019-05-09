@@ -31,7 +31,7 @@ class Navigation extends Component {
 
 						<div className="nav-links">
 							<Link to="/challenges">Code challenges</Link>
-							<Link to="/suggestions">Challenge suggestions</Link>
+							<Link to="/subject/suggestion">Challenge suggestions</Link>
 							<Link to="/questions">Question forum</Link>
 							{this.props.auth.user.profile && this.props.auth.user.profile.isAdmin ? (
 								<Link to="/dashboard" className="admin-link">
@@ -77,7 +77,7 @@ class Navigation extends Component {
 
 										<div className="alt-links links">
 											<Link to="/challenges">Code challenges</Link>
-											<Link to="/suggestions">Challenge suggestions</Link>
+											<Link to="/subject/suggestion">Challenge suggestions</Link>
 											<Link to="/questions">Question forum</Link>
 											{this.props.auth.user.profile && this.props.auth.user.profile.isAdmin ? (
 												<Link to="/dashboard" className="admin-link">

@@ -12,7 +12,6 @@ import PrivacyPage from "../pages/PrivacyPage";
 import TermsPage from "../pages/TermsPage";
 import DashboardPage from "../pages/DashboardPage";
 import ChallengesPage from "../pages/ChallengesPage";
-import SuggestionsPage from "../pages/SuggestionsPage";
 import QuestionsPage from "../pages/QuestionsPage";
 import QuestionsDetailPage from "../pages/QuestionsDetailPage";
 import SubjectPage from "../pages/SubjectPage";
@@ -34,7 +33,6 @@ class Main extends Component {
 					<Route exact path="/ask" component={AskPage} />
 					<Route exact path="/submit" component={SubmitPage} />
 					<Route exact path="/challenges" component={ChallengesPage} />
-					<Route exact path="/suggestions" component={SuggestionsPage} />
 					<Route exact path="/questions" component={QuestionsPage} />
 					<Route exact path="/questions/:id" component={QuestionsDetailPage} />
 					<Route exact path="/subject/:slug" component={SubjectPage} />

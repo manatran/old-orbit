@@ -102,7 +102,7 @@ class QuestionsDetailPage extends Component {
 										<textarea
 											placeholder="Post your comment. Remember the human!"
 											className="comment-input"
-											rows="10"
+											rows="6"
 											value={content}
 											onChange={e => this.setState({ content: e.target.value })}
 										/>

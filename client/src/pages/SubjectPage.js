@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 
 import Header from "../components/subject/Header";
 import QuestionsList from '../components/questions/QuestionsList';
 import Sidebar from '../components/sidebar';
-import ScrollTop from '../components/questions/ScrollTop';
+import Spinner from "../components/spinner";
+
+import SimpleMDE from "react-simplemde-editor";
 
 import { apiUrl } from "../env";
 
@@ -13,7 +16,10 @@ class SubjectPage extends Component {
 		this.state = {
 			subject: null,
 			questions: null,
-			slug: ''
+			slug: '',
+			title: "",
+			content: "",
+			error: ""
 		}
 	}
 
@@ -53,31 +59,88 @@ class SubjectPage extends Component {
 			})
 	}
 
+	onSubmit = (e) => {
+		e.preventDefault();
+		const { title, content } = this.state;
+		const { auth } = this.props;
+
+		if (!title || !content) {
+			this.setState({ error: "Please fill in all the fields" });
+			return true;
+		}
+
+		const body = {
+			title: title,
+			content: content,
+			subject: 6
+		};
+
+		fetch(`${apiUrl}/api/v1/posts`, {
+			method: "POST",
+			headers: {
+				Authorization: auth.token,
+				Accept: "application/json",
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(body)
+		})
+			.then(res => res.json())
+			.then(res => {
+				if (!res.error) {
+					this.setState({ error: "" });
+					this.props.history.push(`/questions/${res.id}`)
+					return true;
+				}
+				this.setState({ error: JSON.stringify(res.error) });
+			})
+			.catch(err => {
+				this.setState({ error: err.error });
+			});
+	}
+
 	render() {
-		const { subject, questions } = this.state;
+		const { loading, subject, questions } = this.state;
+		const { slug } = this.props.match.params;
 		return (
-			<div>
-				{subject ? (
-					<>
-						<Header subject={subject} />
-						<div className="body">
-							<Sidebar />
-							<main>
-								{questions
-									? (
-										<>
-											<QuestionsList questions={questions} />
-											<ScrollTop />
-										</>
-									) : (
-										<p className="light">This category has no posts yet. Feel free to ask some!</p>
-									)}
-							</main>
-						</div>
-					</>
-				) : null}
-			</div>
+			<>
+				{subject && <Header subject={subject} />}
+				<div className="body">
+					<Sidebar />
+					<main>
+						{slug === "suggestion" && (
+							<>
+								<h2>Submit a suggestion</h2>
+								<form onSubmit={this.onSubmit}>
+									{this.state.error && <p className="error">{this.state.error}</p>}
+									<input
+										type="text"
+										value={this.state.title}
+										onChange={e => this.setState({ title: e.target.value })}
+										placeholder="Your suggestion"
+									/>
+									<p className="light">Enter 2 line breaks for a new paragraph.</p>
+									<SimpleMDE
+										options={{
+											placeholder: "Provide some details"
+										}}
+										onChange={val => this.setState({ content: val })}
+									/>
+									<button className="button" type="submit">Create suggestion</button>
+								</form>
+							</>
+						)}
+						{loading
+							? <Spinner />
+							: <QuestionsList questions={questions} /> }
+					</main>
+				</div>
+			</>
 		)
 	}
 }
-export default SubjectPage;
+
+const mapStateToProps = state => ({
+	auth: state.auth
+});
+
+export default connect(mapStateToProps)(SubjectPage);

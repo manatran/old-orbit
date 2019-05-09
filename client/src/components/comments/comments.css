@@ -28,6 +28,7 @@
 }
 .comment-input, .subcomment-input {
 	width: 100%;
+	resize: vertical;
 	background-color: white;
 	padding: 16px;
 	box-sizing: border-box;

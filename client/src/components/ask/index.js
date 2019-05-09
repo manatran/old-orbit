@@ -45,7 +45,7 @@ class Ask extends Component {
 				if (!res.error) {
 					this.setState({ error: "" });
 					this.props.history.push(`/questions/${res.id}`)
-					return true
+					return true;
 				}
 				this.setState({ error: JSON.stringify(res.error) });
 			})
@@ -58,10 +58,10 @@ class Ask extends Component {
 		fetch(`${apiUrl}/api/v1/categories`)
 			.then(res => res.json())
 			.then(categories => {
-				this.setState({ categories })
+				this.setState({ categories });
 			})
 			.catch(err => {
-				this.setState({ error: err })
+				this.setState({ error: err });
 			});
 	}
 
@@ -71,7 +71,7 @@ class Ask extends Component {
 			<section className="ask">
 				<h2>Ask your question</h2>
 
-				{this.state.error ? <p className="error">{this.state.error}</p> : null}
+				{this.state.error && <p className="error">{this.state.error}</p>}
 
 				<form onSubmit={this.onSubmit}>
 					<select

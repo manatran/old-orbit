@@ -42,7 +42,7 @@ exports.get_categories = (req, res, next) => {
 exports.get_popular_categories = (req, res, next) => {
 	models.Category.findAll({
 		limit: 5,
-		order: [["subscribers", "DESC"]],
+		order: [["subscribers", "DESC"]]
 	})
 		.then(categories => {
 			res.json(categories);
