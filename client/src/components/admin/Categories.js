@@ -94,6 +94,15 @@ class Categories extends Component {
 								onChange={e => {
 									this.setState({ name: e.target.value });
 								}}
+								onBlur={() => {
+									if(!this.state.slug) {
+										const slug = this.state.name
+											.toLowerCase()
+											.replace(/[^\w ]+/g,'')
+											.replace(/ +/g,'-');
+										this.setState({ slug });
+									}
+								}}
 								placeholder="Category name"
 							/>
 
