@@ -15,7 +15,7 @@ Orbit is a beginner-friendly community for developers.
 
 Some initial setup is required before running this project.
 
-The config file is located in `/server/config/config.js`. This file contains the following: 
+The configuration is located in `/server/config/config.js`. This file contains the following: 
 
 - Database credentials
 - Github OAuth app credentials
