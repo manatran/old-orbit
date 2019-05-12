@@ -45,6 +45,11 @@ class Contests extends Component {
 				.then(contest => {
 					if (!contest.error){
 						this.setState({ contests: [contest, ...this.state.contests] });
+						this.setState({ title: "" });
+						this.setState({ description: "" });
+						this.setState({ from: "" });
+						this.setState({ til: "" });
+						this.setState({ showForm: false })
 					} else {
 						this.setState({ error: contest.error});
 					}
@@ -87,22 +92,28 @@ class Contests extends Component {
 							/>
 
 							<div className="small-inputs">
-							<input
-								type="date"
-								value={this.state.from}
-								onChange={e => {
-									this.setState({ from: e.target.value });
-								}}
-								placeholder="Contest start date"
-							/>
-							<input
-								type="date"
-								value={this.state.til}
-								onChange={e => {
-									this.setState({ til: e.target.value });
-								}}
-								placeholder="Contest end date"
-							/>
+								<div className="input">
+									<h5>Startdate</h5>
+									<input
+										type="date"
+										value={this.state.from}
+										onChange={e => {
+											this.setState({ from: e.target.value });
+										}}
+										placeholder="Contest start date"
+									/>
+								</div>
+								<div className="input">
+									<h5>Enddate</h5>
+									<input
+										type="date"
+										value={this.state.til}
+										onChange={e => {
+											this.setState({ til: e.target.value });
+										}}
+										placeholder="Contest end date"
+									/>
+								</div>
 							</div>
 
 							{/* TODO: add form inputs */}

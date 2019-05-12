@@ -6,7 +6,15 @@ module.exports = {
       (typeof value === "object" && Object.keys(value).length === 0) ||
       (typeof value === "string" && value.trim().length === 0)
     );
-  },
+	},
+	formatDate: (date) => {
+		date = new Date(date);
+		const day = date.getDate();
+		const month = date.getMonth();
+		const year = date.getFullYear();
+
+		return `${day}-${month}-${year}`;
+	},
   getTimeDifference: datetime => {
     datetime =
       typeof datetime !== "undefined" ? datetime : "2014-01-01 01:02:03.123456";

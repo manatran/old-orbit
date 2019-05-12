@@ -212,8 +212,11 @@ form input::placeholder, form textarea::placeholder {
 	justify-content: space-between;
 	align-items: center;
 }
-.small-inputs input {
+.small-inputs .input {
 	width: 48%;
+}
+.small-inputs .input h5 {
+	margin: 0;
 }
 
 .comment-input textarea {
