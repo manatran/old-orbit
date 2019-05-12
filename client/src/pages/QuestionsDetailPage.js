@@ -88,6 +88,8 @@ class QuestionsDetailPage extends Component {
 
 	render() {
 		const { loading, question, comments, content } = this.state;
+		const { auth } = this.props;
+
 		return (
 			<div>
 				{!loading ? (
@@ -99,13 +101,19 @@ class QuestionsDetailPage extends Component {
 									<Sidebar />
 									<main>
 										<QuestionDetail question={question} comments={comments ? comments.length : 0} />
-										<textarea
-											placeholder="Post your comment. Remember the human!"
-											className="comment-input"
-											rows="6"
-											value={content}
-											onChange={e => this.setState({ content: e.target.value })}
-										/>
+										<div className="comment-input">
+											<div className="user-info">
+												<img src={auth.user.avatar_url} alt="User"/>
+												<h2>Comment as {auth.user.login}</h2>
+											</div>
+											<textarea
+												placeholder="Post your comment. Remember the human!"
+												className="comment-input"
+												rows="6"
+												value={content}
+												onChange={e => this.setState({ content: e.target.value })}
+											/>
+										</div>
 										<button onClick={this.createComment} className="button">Comment</button>
 										<CommentsList comments={comments} />
 									</ main>

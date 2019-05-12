@@ -8,7 +8,8 @@ class Contests extends Component {
 		super(props);
 		this.state = {
 			showForm: false,
-			name: "",
+			error: "",
+			title: "",
 			description: "",
 			from: "",
 			til: "",
@@ -19,17 +20,18 @@ class Contests extends Component {
 
 	createContest = (e) => {
 		e.preventDefault();
-		const { name, description, from, til } = this.state;
+		const { title, description, from, til } = this.state;
 		const { auth } = this.props;
 
 		const body = {
-			name: name,
+			title: title,
 			description: description,
 			from: from,
 			til: til
 		}
 
-		if (name && description && from && til) {
+		console.log(body);
+		if (title && description && from && til && (from < til)) {
 			fetch(`${apiUrl}/api/v1/challenges`, {
 				method: "POST",
 				headers: {
@@ -41,12 +43,18 @@ class Contests extends Component {
 			})
 				.then(res => res.json())
 				.then(contest => {
-					if (!contest.error) this.setState({ contests: [contest, ...this.state.contests] });
+					if (!contest.error){
+						this.setState({ contests: [contest, ...this.state.contests] });
+					} else {
+						this.setState({ error: contest.error});
+					}
 				})
-				.catch(err => {
-					console.log(err);
+				.catch(error => {
+					this.setState({ error });
 				})
 
+		} else {
+			this.setState({ error: "Please fill in all the fields correctly."})
 		}
 
 	}
@@ -60,14 +68,43 @@ class Contests extends Component {
 					<>
 						<h2>Create contest</h2>
 						<form onSubmit={this.createContest}>
+							<p className="error">{this.state.error}</p>
 							<input
 								type="text"
-								value={this.state.name}
+								value={this.state.title}
 								onChange={e => {
-									this.setState({ name: e.target.value });
+									this.setState({ title: e.target.value });
 								}}
-								placeholder="Contest name"
+								placeholder="Contest title"
 							/>
+							<textarea
+								type="description"
+								value={this.state.description}
+								onChange={e => {
+									this.setState({ description: e.target.value });
+								}}
+								placeholder="Contest description"
+							/>
+
+							<div className="small-inputs">
+							<input
+								type="date"
+								value={this.state.from}
+								onChange={e => {
+									this.setState({ from: e.target.value });
+								}}
+								placeholder="Contest start date"
+							/>
+							<input
+								type="date"
+								value={this.state.til}
+								onChange={e => {
+									this.setState({ til: e.target.value });
+								}}
+								placeholder="Contest end date"
+							/>
+							</div>
+
 							{/* TODO: add form inputs */}
 							<button className="button" type="submit">
 								Submit contest

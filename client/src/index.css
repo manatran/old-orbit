@@ -148,7 +148,8 @@ pre.code {
 }
 
 form input,
-form select {
+form select,
+form textarea {
   padding: 16px;
   outline: none;
   border: solid 1px #d7d7d7;
@@ -159,7 +160,7 @@ form select {
   color: #666;
 }
 
-form input::placeholder {
+form input::placeholder, form textarea::placeholder {
 	color: #999;
 }
 
@@ -205,6 +206,44 @@ form input::placeholder {
 	margin-left: 8px;
 }
 
+.small-inputs {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+.small-inputs input {
+	width: 48%;
+}
+
+.comment-input textarea {
+	height: 64px;
+	transition: .2s;
+	border: solid 1px transparent;
+	padding-left: 0;
+}
+.comment-input textarea:focus {
+	height: 200px;
+	outline: none;
+	border: solid 1px #d7d7d7;
+	padding-left: 16px;
+}
+.comment-input .user-info {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.comment-input .user-info h2 {
+	margin: 0;
+	font-weight: 500;
+}
+.comment-input img {
+	height: 32px;
+	width: 32px;
+	border-radius: 50%;
+	margin-right: 8px;
+}
+
 .button-container {
 	display: flex;
 	flex-direction: row;
@@ -212,4 +251,7 @@ form input::placeholder {
 }
 .button-container button {
 	margin-right: 8px;
+}
+.button-container .light {
+	font-weight: 500;
 }
