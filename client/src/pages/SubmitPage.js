@@ -16,7 +16,7 @@ class SubmitPage extends Component {
 		return (
 			<div className="body spaced">
 				<Sidebar submit />
-				<Submit />
+				<Submit token={this.props.auth.token} history={this.props.history} />
 			</div>
 		);
 	}

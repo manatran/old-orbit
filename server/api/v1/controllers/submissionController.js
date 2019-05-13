@@ -82,7 +82,7 @@ exports.get_submissions_by_author = (req, res, next) => {
 exports.get_recent_submissions = (req, res, next) => {
 	models.Submission.findAll({
 		limit: 4,
-		order: [["createdAt", "ASC"]],
+		order: [["createdAt", "DESC"]],
 		include: [
 			{
 				model: models.User,

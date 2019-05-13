@@ -73,7 +73,7 @@ const signinUser = (res, access_token, user) => {
       .then(user => {
         // Return Bearer token
         const token = createToken(res, args);
-        return res.redirect(`/callback?token=${token}`);
+        return res.redirect(`http://localhost:3000/callback?token=${token}`);
       })
       .catch(err => {
         return res.status(500).json({ error: err });

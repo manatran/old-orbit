@@ -1,7 +1,7 @@
 module.exports = (db, DataTypes) => {
   const Submission = db.define("submission", {
     title: DataTypes.STRING,
-    content: DataTypes.STRING,
+    content: DataTypes.TEXT,
     githubUrl: DataTypes.STRING,
     thumbnail: DataTypes.STRING,
     totalLikes: DataTypes.INTEGER

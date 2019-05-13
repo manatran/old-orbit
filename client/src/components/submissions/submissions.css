@@ -1,5 +1,6 @@
 .submission {
-  min-height: 190px;
+	min-height: 190px;
+	max-width: 250px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -90,7 +91,11 @@ a.link {
 
   .submission .meta {
     display: none;
-  }
+	}
+
+	.submission .background {
+		border-radius: 8px;
+	}
 
   .submission.add-submission .background i.material-icons {
     font-size: 24px;

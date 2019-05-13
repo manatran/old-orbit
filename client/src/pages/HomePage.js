@@ -25,17 +25,17 @@ class Homepage extends Component {
 	componentDidMount() {
 		fetch(`${apiUrl}/api/v1/posts/recent`)
 			.then(res => res.json())
-			.then(res => {
-				this.setState({ questions: res });
+			.then(questions => {
+				this.setState({ questions });
 			})
 			.catch(err => {
 				console.log(err);
 			});
 
-		fetch(`${apiUrl}/api/v1/posts/recent`)
+		fetch(`${apiUrl}/api/v1/submissions/recent`)
 			.then(res => res.json())
-			.then(res => {
-				this.setState({ questions: res });
+			.then(submissions => {
+				this.setState({ submissions });
 			})
 			.catch(err => {
 				console.log(err);

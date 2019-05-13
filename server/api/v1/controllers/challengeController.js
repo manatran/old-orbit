@@ -1,4 +1,5 @@
 const models = require("./../models");
+const misc = require("../utils/misc");
 
 // Get challenge by id
 exports.get_challenge = (req, res, next) => {
@@ -11,6 +12,22 @@ exports.get_challenge = (req, res, next) => {
 			return res.status(500).json({ error: err });
 		});
 };
+
+// Get current challenge
+exports.get_current_challenge = (req, res, next) => {
+	models.Challenge.findOne({
+		where: {
+			year: misc.currentYear(),
+			month: misc.currentMonth()
+		}
+	})
+	.then(challenge => {
+		res.json(challenge);
+	})
+	.catch(err => {
+		return res.status(500).json({ error: err });
+	})
+}
 
 // Get all challenges
 exports.get_challenges = (req, res, next) => {

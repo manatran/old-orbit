@@ -97,6 +97,7 @@ router.delete("/tags/:id", auth.authenticateJWT(), tagController.delete_tag);
 
 // Challenge routes
 router.get("/challenges", challengeController.get_challenges);
+router.get("/challenges/current", challengeController.get_current_challenge);
 router.post(
 	"/challenges",
 	auth.authenticateJWT(),

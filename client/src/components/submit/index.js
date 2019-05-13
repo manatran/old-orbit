@@ -20,8 +20,16 @@ class Submit extends Component {
 	}
 
 	componentDidMount() {
-		// TODO
-		// GET CONTEST
+		fetch(`${apiUrl}/api/v1/challenges/current`)
+			.then(res => res.json())
+			.then(challenge => {
+				if(!challenge.error) {
+					this.setState({ contestId: challenge.id })
+				}
+			})
+			.catch(err => {
+				this.setState({ error: err.error });
+			});
 	}
 
 	onSubmit(e) {
@@ -52,8 +60,8 @@ class Submit extends Component {
 		})
 			.then(res => res.json())
 			.then(res => {
-				console.log(res);
 				this.setState({ error: "" });
+				this.props.history.push(`/questions/${res.id}`)
 			})
 			.catch(err => {
 				this.setState({ error: err.error });
