@@ -26,7 +26,7 @@ exports.get_challenges = (req, res, next) => {
 // Create challenge
 exports.create_challenge = (req, res, next) => {
 	const { isAdmin } = req.user;
-	const { title, description, from, til } = req.body;
+	const { title, description, month, year } = req.body;
 
 	if (!isAdmin) {
 		return res.status(401).json({
@@ -34,17 +34,17 @@ exports.create_challenge = (req, res, next) => {
 		});
 	}
 
-	if (!title || !description || !from || !til) {
+	if (!title || !description || !month || !year) {
 		return res.status(400).json({
-			error: "Challenge must have both title, description and deadlines"
+			error: "Challenge must have both title, description and date"
 		});
 	}
 
 	const args = {
 		title: title,
 		description: description,
-		from: from,
-		til: til
+		month: month,
+		year: year
 	};
 
 	models.Challenge.create(args)
@@ -60,7 +60,7 @@ exports.create_challenge = (req, res, next) => {
 exports.update_challenge = (req, res, next) => {
 	const { id } = req.params;
 	const { isAdmin } = req.user;
-	const { title, description, from, til } = req.body;
+	const { title, description, month, year } = req.body;
 
 	if (!isAdmin) {
 		return res.status(401).json({
@@ -73,12 +73,12 @@ exports.update_challenge = (req, res, next) => {
 			const fields = [];
 			if (title) fields.push("title");
 			if (description) fields.push("description");
-			if (from) fields.push("from");
-			if (til) fields.push("til");
+			if (month) fields.push("month");
+			if (year) fields.push("year");
 
 			challenge
 				.update(
-					{ title: title, description: description, from: from, til: til },
+					{ title: title, description: description, month: month, year: year },
 					{ fields: fields }
 				)
 				.then(newChallenge => {

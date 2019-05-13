@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Spinner from "../spinner";
-import { formatDate } from "../../helpers";
+import { capitalizeFirstLetter } from "../../helpers";
 
 import "./contests.css";
 
@@ -13,15 +13,15 @@ class ContestsList extends Component {
 				contests.length ? (
 					<>
 						<div className="contest-list-item">
-							<h5>Title</h5>
-							<h5>Startdate</h5>
-							<h5>Enddate</h5>
+							<h4>Title</h4>
+							<h4>Month</h4>
+							<h4>Year</h4>
 						</div>
 						{contests.map((el, i) => (
 							<div className="contest-list-item" key={el.id}>
 								<p>{el.title}</p>
-								<p>{formatDate(el.from)}</p>
-								<p>{formatDate(el.til)}</p>
+								<p>{capitalizeFirstLetter(el.month)}</p>
+								<p>{el.year}</p>
 							</div>
 						))}
 					</>

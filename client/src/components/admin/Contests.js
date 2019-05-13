@@ -11,27 +11,29 @@ class Contests extends Component {
 			error: "",
 			title: "",
 			description: "",
-			from: "",
-			til: "",
-			contests: null
+			month: "",
+			year: "",
+			contests: null,
+			currYear: 0
 		}
+		this.state.currYear = new Date().getFullYear();
 		this.state.contests = this.props.contests;
 	}
 
 	createContest = (e) => {
 		e.preventDefault();
-		const { title, description, from, til } = this.state;
+		const { title, description, month, year } = this.state;
 		const { auth } = this.props;
 
 		const body = {
 			title: title,
 			description: description,
-			from: from,
-			til: til
+			month: month,
+			year: year
 		}
 
 		console.log(body);
-		if (title && description && from && til && (from < til)) {
+		if (title && description && month && year) {
 			fetch(`${apiUrl}/api/v1/challenges`, {
 				method: "POST",
 				headers: {
@@ -47,8 +49,8 @@ class Contests extends Component {
 						this.setState({ contests: [contest, ...this.state.contests] });
 						this.setState({ title: "" });
 						this.setState({ description: "" });
-						this.setState({ from: "" });
-						this.setState({ til: "" });
+						this.setState({ month: "" });
+						this.setState({ year: "" });
 						this.setState({ showForm: false })
 					} else {
 						this.setState({ error: contest.error});
@@ -65,7 +67,7 @@ class Contests extends Component {
 	}
 
 	render() {
-		const { showForm, contests } = this.state;
+		const { showForm, contests, currYear } = this.state;
 
 		return (
 			<div>
@@ -93,27 +95,36 @@ class Contests extends Component {
 
 							<div className="small-inputs">
 								<div className="input">
-									<h5>Startdate</h5>
-									<input
-										type="date"
-										value={this.state.from}
-										onChange={e => {
-											this.setState({ from: e.target.value });
-										}}
-										placeholder="Contest start date"
-									/>
+									<select
+										onChange={e => this.setState({ month: e.target.value })}
+									>
+										<option hidden>Month</option>
+											<option value="jan">January</option>
+											<option value="feb">February</option>
+											<option value="mar">March</option>
+											<option value="apr">April</option>
+											<option value="may">May</option>
+											<option value="jun">June</option>
+											<option value="jul">July</option>
+											<option value="sep">September</option>
+											<option value="oct">October</option>
+											<option value="nov">November</option>
+											<option value="dec">December</option>
+									</select>
 								</div>
 								<div className="input">
-									<h5>Enddate</h5>
-									<input
-										type="date"
-										value={this.state.til}
-										onChange={e => {
-											this.setState({ til: e.target.value });
-										}}
-										placeholder="Contest end date"
-									/>
-								</div>
+									<select
+										onChange={e => this.setState({ year: e.target.value })}
+									>
+										<option hidden>Year</option>
+										<option value={currYear}>{currYear}</option>
+										<option value={currYear + 1}>{currYear + 1}</option>
+										<option value={currYear + 2}>{currYear + 2}</option>
+										<option value={currYear + 3}>{currYear + 3}</option>
+										<option value={currYear + 4}>{currYear + 4}</option>
+										<option value={currYear + 5}>{currYear + 5}</option>
+									</select>
+							</div>
 							</div>
 
 							{/* TODO: add form inputs */}
