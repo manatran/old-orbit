@@ -46,7 +46,7 @@ class Homepage extends Component {
 		const { questions, submissions } = this.state;
 
 		return (
-			<div>
+			<>
 				{this.props.auth.token ? <LoggedInHeader /> : <LoginHeader />}
 				<div className="body">
 					<Sidebar />
@@ -73,7 +73,7 @@ class Homepage extends Component {
 						</section>
 					</main>
 				</div>
-			</div>
+			</>
 		);
 	}
 }

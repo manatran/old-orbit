@@ -50,6 +50,7 @@ router.delete("/posts/:id", auth.authenticateJWT(), postController.delete_post);
 // Submission routes
 router.get("/submissions", submissionController.get_submissions);
 router.get("/submissions/recent", submissionController.get_recent_submissions);
+router.get("/submission/:year/:month", submissionController.get_submissions_by_month_and_year);
 router.get(
 	"/submissions/author/:authorId",
 	submissionController.get_submissions_by_author

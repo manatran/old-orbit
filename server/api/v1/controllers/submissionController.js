@@ -105,6 +105,49 @@ exports.get_recent_submissions = (req, res, next) => {
 		});
 };
 
+// Get submission by month and year
+exports.get_submissions_by_month_and_year = (req, res, next) => {
+	const { month, year } = req.params;
+
+	models.Challenge.findOne({
+		where: {
+			month: month,
+			year: Number(year),
+		},
+	})
+		.then(challenge => {
+			if(challenge) {
+				models.Submission.findAll({
+					where: { contestId: challenge.id },
+					include: [
+						{
+							model: models.User,
+							as: "author",
+							attributes: {
+								exclude: ["accessToken"]
+							}
+						},
+						{
+							model: models.Challenge,
+							as: "contest"
+						}
+					]
+				})
+				.then(submissions => {
+					res.status(200).json(submissions);
+				}).catch(err => {
+					return res.status(200).json([]);
+				})
+
+			} else {
+				res.satus(200).json([]);
+			}
+		})
+		.catch(err => {
+			return res.status(200).json([]);
+		});
+}
+
 // Create submission
 exports.create_submission = (req, res, next) => {
 	const { id } = req.user;

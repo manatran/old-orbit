@@ -137,6 +137,14 @@ aside {
   margin-right: 16px;
   box-sizing: border-box;
 }
+aside.filter {
+	width: 150px;
+  margin: 0 0 0 16px;
+}
+aside.filter input, aside.filter select {
+	padding: 4px;
+	width: 100%;
+}
 
 pre.code {
   background-color: #eee;
