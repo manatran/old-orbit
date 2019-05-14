@@ -15,6 +15,7 @@ import ChallengesPage from "../pages/ChallengesPage";
 import QuestionsPage from "../pages/QuestionsPage";
 import QuestionsDetailPage from "../pages/QuestionsDetailPage";
 import SubjectPage from "../pages/SubjectPage";
+import SearchPage from "../pages/SearchPage";
 
 class Main extends Component {
 
@@ -39,6 +40,7 @@ class Main extends Component {
 					<Route exact path="/dashboard" component={DashboardPage} />
 					<Route exact path="/privacy" component={PrivacyPage} />
 					<Route exact path="/terms" component={TermsPage} />
+					<Route exact path="/search" component={SearchPage} />
 					<Redirect from="*" to="/" />
 				</Switch>
 			</React.Fragment>

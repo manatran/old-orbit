@@ -32,7 +32,6 @@ class Contests extends Component {
 			year: year
 		}
 
-		console.log(body);
 		if (title && description && month && year) {
 			fetch(`${apiUrl}/api/v1/challenges`, {
 				method: "POST",

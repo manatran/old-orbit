@@ -5,6 +5,7 @@ const auth = require("./providers/auth")();
 // Controllers
 const authController = require("./controllers/authController");
 const userController = require("./controllers/userController");
+const searchController = require("./controllers/searchController");
 const postController = require("./controllers/postController");
 const submissionController = require("./controllers/submissionController");
 const categoryController = require("./controllers/categoryController");
@@ -33,6 +34,9 @@ router.get("/github/callback", authController.github);
 router.get("/user", auth.authenticateJWT(), userController.current_user);
 router.delete("/user", auth.authenticateJWT(), userController.delete_user);
 router.get("/user/:username", userController.get_user);
+
+// Search routes
+router.get("/search/:param", searchController.search);
 
 // Post routes
 router.get("/posts", postController.get_posts);
