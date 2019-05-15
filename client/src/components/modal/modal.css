@@ -1,0 +1,46 @@
+.modal-container {
+  z-index: 100;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  position: fixed;
+  background-color: white;
+  right: 16px;
+  left: 16px;
+  z-index: 500;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 16px;
+  max-width: 404px;
+  margin: 0 auto;
+}
+
+.modal .close {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  margin-bottom: 16px;
+}
+
+.modal .close i {
+  cursor: pointer;
+}
+
+.modal textarea {
+	resize: vertical;
+	min-height: 64px;
+	max-height: 250px;
+}

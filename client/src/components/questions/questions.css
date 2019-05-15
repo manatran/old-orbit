@@ -141,69 +141,6 @@
   width: 24px;
 }
 
-.question .dropdown-container {
-  z-index: 100;
-}
-
-.question .backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.75);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.question .dropdown {
-  position: fixed;
-  background-color: white;
-  right: 16px;
-  left: 16px;
-  z-index: 500;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
-  padding: 16px;
-  max-width: 404px;
-  margin: 0 auto;
-}
-
-.question .dropdown .close {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0;
-  margin-bottom: 16px;
-}
-
-.question .dropdown .close i {
-  cursor: pointer;
-}
-
-.question .dropdown ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-
-.question .dropdown a {
-  padding: 8px 0;
-  font-size: 16px;
-  color: #666;
-}
-
-.question .dropdown a.disabled {
-  color: #999;
-  cursor: no-drop;
-}
-
-.question .dropdown a i.material-icons {
-  margin-right: 16px;
-  font-size: 24px;
-}
-
 .content {
 	background-color: white;
 	padding: 16px;
@@ -257,11 +194,21 @@
 	margin: 0;
 	font-size: 20px;
 	}
-.content .meta.light {
-	padding-bottom: 16px;
+.content .titles {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: space-between;
+	margin-bottom: 16px;
 	border-bottom: solid 1px #d7d7d7;
 }
+.content .titles i.material-icons {
+	cursor: pointer;
+}
 
+.md {
+	margin: 24px 0;
+}
 .md h1, .md h2, .md h3, .md h4, .md h5, .md h6 {
 	color: #999;
 	font-family: "Roboto Light", "Roboto", sans-serif;

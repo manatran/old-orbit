@@ -59,7 +59,11 @@ class Profile extends Component {
 		const { submissions, questions, comments } = this.state;
 		switch (this.state.tab) {
 			case "submissions":
-				return <SubmissionsList submissions={submissions} />;
+				return (
+					<div className="submission-container" style={{ marginTop: `16px` }}>
+						<SubmissionsList submissions={submissions} />
+					</div>
+				);
 			case "questions":
 				return <QuestionsList questions={questions} />;
 			case "replies":

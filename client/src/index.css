@@ -100,7 +100,7 @@ p.error {
 }
 p.success {
   font-size: 14px;
-  color: #40a3e6;
+  color: #40a3e6 !important;
 }
 
 main {

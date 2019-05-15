@@ -47,67 +47,6 @@ class Question extends Component {
 						</span>
 					</p>
 				</Link>
-
-				<div className="options">
-					<span
-						onClick={() => {
-							this.setState({ dropdown: !this.state.dropdown });
-						}}
-						className="more"
-					>
-						<i className="material-icons">more_horiz</i>
-					</span>
-
-					{this.state.dropdown ? (
-						<div className="dropdown-container">
-							<div
-								className="backdrop"
-								onClick={() => {
-									this.setState({ dropdown: false });
-								}}
-							>
-								<div className="dropdown">
-									<h2 className="close">
-										Options
-                    <i
-											onClick={() => {
-												this.setState({ dropdown: false });
-											}}
-											className="material-icons"
-										>
-											close
-                    </i>
-									</h2>
-									<ul>
-										<li>
-											<Link to={`/subject/${this.props.slug}`}>
-												<i className="material-icons">timeline</i>
-												More from {this.props.category}
-											</Link>
-										</li>
-										<li>
-											<Link to={`/user/${this.props.author.username}`}>
-												<i className="material-icons">account_circle</i>
-												{this.props.author.username}'s profile
-                      </Link>
-										</li>
-										<li>
-											<Link
-												to="/report"
-												onClick={e => {
-													e.preventDefault();
-												}}
-											>
-												<i className="material-icons">report</i>
-												Report post
-                      </Link>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					) : null}
-				</div>
 			</div>
 		);
 	}

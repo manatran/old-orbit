@@ -30,7 +30,28 @@ exports.get_reports = (req, res, next) => {
 			.json({ error: "User is not authorized to view reports" });
 	}
 
-	models.Report.findAll({ where: { resolvedById: null } })
+	models.Report.findAll({
+		where: { resolvedById: null },
+		include: [
+			{
+				model: models.Post,
+				as: "parentPost",
+				include: [
+					{
+						model: models.User,
+						as: "author",
+						attributes: {
+							exclude: ["accessToken"]
+						}
+					},
+					{
+						model: models.Category,
+						as: "subject"
+					}
+				]
+			}
+		]
+	})
 		.then(reports => {
 			res.json(reports);
 		})

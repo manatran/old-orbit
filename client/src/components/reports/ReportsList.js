@@ -11,7 +11,12 @@ class ReportsList extends Component {
 				<div>
 					{reports.length ? (
 						reports.map((el, i) => (
-							<Report />
+							<Report
+								key={el.id}
+								id={el.id}
+								content={el.content}
+								question={el.parentPost}
+							/>
 						))
 					) : (
 							<p className="light">All clear, no reports!</p>
