@@ -92,9 +92,6 @@ class Comment extends Component {
 						})}>
 							{this.state.showCommentInput ? 'Cancel' : 'Reply'}
 						</span>
-						<span>
-							Report
-						</span>
 						{author.id === auth.user.profile.id && (
 							<span
 								className="danger"
@@ -156,9 +153,6 @@ class Comment extends Component {
 							})}>
 								{this.state.showCommentInput ? 'Cancel' : 'Reply'}
 							</span>
-							<span>
-								Report
-						</span>
 							{author.id === auth.user.profile.id && (
 								<span
 									className="danger"
