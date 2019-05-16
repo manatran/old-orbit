@@ -16,7 +16,6 @@ class Profile extends Component {
 	}
 
 	componentDidMount() {
-		// TODO: get submissions
 		fetch(`${apiUrl}/api/v1/submissions/author/${this.props.user}`)
 			.then(res => res.json())
 			.then(submissions => {

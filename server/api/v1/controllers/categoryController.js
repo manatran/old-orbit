@@ -124,8 +124,7 @@ exports.create_category = (req, res, next) => {
 // Subscribe category
 exports.subscribe_category = (req, res, next) => {
 	const { id } = req.params;
-	// TODO
-	// check if user has subscribed to category, then increment/decrement
+	// TODO: check if user has subscribed to category, then increment/decrement
 };
 
 // Update category

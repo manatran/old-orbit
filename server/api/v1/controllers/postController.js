@@ -137,7 +137,7 @@ exports.like_post = (req, res, next) => {
 	const { id } = req.params;
 	const userId = req.user.id;
 
-	// TODO
+	// TODO:
 	// check if user has liked post, then increment/decrement
 	// models.Post.findByPk(id)
 	// 	.then(post => {

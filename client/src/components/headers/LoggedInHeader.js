@@ -15,7 +15,7 @@ class LoggedInHeader extends Component {
 		fetch(`${apiUrl}/api/v1/challenges/current`)
 			.then(res => res.json())
 			.then(challenge => {
-				if(!challenge.error) {
+				if (!challenge.error) {
 					this.setState({ challenge });
 				}
 			})
@@ -26,9 +26,9 @@ class LoggedInHeader extends Component {
 
 	render() {
 		const { challenge } = this.state;
-    return (
+		return (
 			challenge ? (
-				<Link to="/challenges/current" className="big-header logged-in">
+				<Link to="/challenges" className="big-header logged-in">
 					<div className="container">
 						<div className="intro">
 							<h1>This month's challenge</h1>
@@ -42,11 +42,11 @@ class LoggedInHeader extends Component {
 					</div>
 				</Link>
 			)
-			: (
-				<div className="body spaced" />
-			)
-    );
-  }
+				: (
+					<div className="body spaced" />
+				)
+		);
+	}
 }
 
 export default LoggedInHeader;

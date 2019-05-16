@@ -16,7 +16,7 @@ class SmallHeader extends Component {
 		fetch(`${apiUrl}/api/v1/challenges/current`)
 			.then(res => res.json())
 			.then(challenge => {
-				if(!challenge.error) {
+				if (!challenge.error) {
 					this.setState({ challenge });
 				}
 			})
@@ -25,11 +25,11 @@ class SmallHeader extends Component {
 			})
 	}
 
-  render() {
+	render() {
 		const { challenge } = this.state;
-    return (
+		return (
 			challenge ? (
-				<Link to="/challenges/current" className="small-header">
+				<Link to="/challenges" className="small-header">
 					<div className="title">
 						<h2>This month's challenge</h2>
 						<h3>{challenge.title}</h3>
@@ -39,9 +39,9 @@ class SmallHeader extends Component {
 					</div>
 				</Link>
 			)
-			: null
-    );
-  }
+				: null
+		);
+	}
 }
 
 export default SmallHeader;

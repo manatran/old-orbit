@@ -116,7 +116,7 @@ exports.get_submissions_by_month_and_year = (req, res, next) => {
 		},
 	})
 		.then(challenge => {
-			if(challenge) {
+			if (challenge) {
 				models.Submission.findAll({
 					where: { contestId: challenge.id },
 					include: [
@@ -133,11 +133,11 @@ exports.get_submissions_by_month_and_year = (req, res, next) => {
 						}
 					]
 				})
-				.then(submissions => {
-					res.status(200).json(submissions);
-				}).catch(err => {
-					return res.status(200).json([]);
-				})
+					.then(submissions => {
+						res.status(200).json(submissions);
+					}).catch(err => {
+						return res.status(200).json([]);
+					})
 
 			} else {
 				res.satus(200).json([]);
@@ -181,8 +181,7 @@ exports.create_submission = (req, res, next) => {
 // Like submission
 exports.like_submission = (req, res, next) => {
 	const { id } = req.params;
-	// TODO
-	// check if user has liked submission, then increment/decrement
+	// TODO: check if user has liked submission, then increment/decrement
 };
 
 // Update submission

@@ -35,7 +35,7 @@ class Report extends Component {
 				})
 					.then(res => res.json())
 					.then(() => {
-						this.setState({ success: "Successfully removed report" });
+						this.setState({ success: "Successfully removed post" });
 					})
 					.catch(err => console.log(err));
 			})

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import CodeBlock from "../codehighlight";
 import Modal from "../modal";
+import Report from "../modal/Report";
 import { getTimeDifference } from "../../helpers";
 
 export default class QuestionDetail extends Component {
@@ -54,7 +55,14 @@ export default class QuestionDetail extends Component {
 						</span>
 					</p>
 				</div>
-				{modal && <Modal question={question} closeModal={() => this.setState({ modal: false })} />}
+				{modal && (
+					<Modal
+						title={`Report`}
+						closeModal={() => this.setState({ modal: false })}>
+						<Report
+							question={question}
+						/>
+					</Modal>)}
 			</div>
 		)
 	}

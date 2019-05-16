@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import Modal from "../modal";
+import Delete from "../modal/Delete";
 import { getTimeDifference } from "../../helpers";
 import { apiUrl } from "../../env";
 import "./comments.css";
@@ -12,6 +14,8 @@ class Comment extends Component {
 			subcomments: [],
 			content: "",
 			showCommentInput: false,
+			modal: false,
+			submodal: false
 		}
 	}
 
@@ -68,8 +72,8 @@ class Comment extends Component {
 	}
 
 	render() {
-		const { subcomments } = this.state;
-		const { content, author, timestamp, hue, auth } = this.props;
+		const { subcomments, modal, submodal } = this.state;
+		const { id, content, author, timestamp, hue, auth } = this.props;
 
 		return (
 			<>
@@ -91,7 +95,25 @@ class Comment extends Component {
 						<span>
 							Report
 						</span>
+						{author.id === auth.user.profile.id && (
+							<span
+								className="danger"
+								onClick={() => this.setState({ modal: true })}
+							>
+								Delete
+							</span>
+						)}
 					</p>
+					{modal && (
+						<Modal
+							title={`Delete`}
+							closeModal={() => this.setState({ modal: false })}>
+							<Delete
+								type="comment" id={id}
+								closeModal={() => this.setState({ modal: false })}
+							/>
+						</Modal>
+					)}
 					{this.state.showCommentInput && (
 						<>
 							<textarea
@@ -128,6 +150,34 @@ class Comment extends Component {
 							{getTimeDifference(el.createdAt)}
 						</p>
 						<p>{el.content}</p>
+						<p className="options light">
+							<span onClick={e => this.setState({
+								showCommentInput: !this.state.showCommentInput
+							})}>
+								{this.state.showCommentInput ? 'Cancel' : 'Reply'}
+							</span>
+							<span>
+								Report
+						</span>
+							{author.id === auth.user.profile.id && (
+								<span
+									className="danger"
+									onClick={() => this.setState({ submodal: true })}
+								>
+									Delete
+							</span>
+							)}
+						</p>
+						{submodal && (
+							<Modal
+								title={`Delete`}
+								closeModal={() => this.setState({ submodal: false })}>
+								<Delete
+									type="subcomment" id={el.id}
+									closeModal={() => this.setState({ submodal: false })}
+								/>
+							</Modal>
+						)}
 					</div>
 				))}
 

@@ -18,7 +18,7 @@
 	border-left: solid 3px hsla(204, 77%, 58%, 0.75);
 	color: #666;
 }
-.comment .options span{
+.comment .options span, .subcomment .options span{
 	margin-right: 16px;
 	cursor: pointer;
 	user-select: none;

@@ -44,7 +44,7 @@ class Contests extends Component {
 			})
 				.then(res => res.json())
 				.then(contest => {
-					if (!contest.error){
+					if (!contest.error) {
 						this.setState({ contests: [contest, ...this.state.contests] });
 						this.setState({ title: "" });
 						this.setState({ description: "" });
@@ -52,7 +52,7 @@ class Contests extends Component {
 						this.setState({ year: "" });
 						this.setState({ showForm: false })
 					} else {
-						this.setState({ error: contest.error});
+						this.setState({ error: contest.error });
 					}
 				})
 				.catch(error => {
@@ -60,7 +60,7 @@ class Contests extends Component {
 				})
 
 		} else {
-			this.setState({ error: "Please fill in all the fields correctly."})
+			this.setState({ error: "Please fill in all the fields correctly." })
 		}
 
 	}
@@ -98,17 +98,17 @@ class Contests extends Component {
 										onChange={e => this.setState({ month: e.target.value })}
 									>
 										<option hidden>Month</option>
-											<option value="jan">January</option>
-											<option value="feb">February</option>
-											<option value="mar">March</option>
-											<option value="apr">April</option>
-											<option value="may">May</option>
-											<option value="jun">June</option>
-											<option value="jul">July</option>
-											<option value="sep">September</option>
-											<option value="oct">October</option>
-											<option value="nov">November</option>
-											<option value="dec">December</option>
+										<option value="jan">January</option>
+										<option value="feb">February</option>
+										<option value="mar">March</option>
+										<option value="apr">April</option>
+										<option value="may">May</option>
+										<option value="jun">June</option>
+										<option value="jul">July</option>
+										<option value="sep">September</option>
+										<option value="oct">October</option>
+										<option value="nov">November</option>
+										<option value="dec">December</option>
 									</select>
 								</div>
 								<div className="input">
@@ -123,10 +123,9 @@ class Contests extends Component {
 										<option value={currYear + 4}>{currYear + 4}</option>
 										<option value={currYear + 5}>{currYear + 5}</option>
 									</select>
-							</div>
+								</div>
 							</div>
 
-							{/* TODO: add form inputs */}
 							<button className="button" type="submit">
 								Submit contest
 							</button>
