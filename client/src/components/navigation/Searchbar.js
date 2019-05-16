@@ -10,10 +10,10 @@ class Searchbar extends Component {
 		};
 
 		if (this.props.action) {
-			this.setState({ action: this.props.action });
+			this.state.action = this.props.action;
 		}
 		if (this.props.placeholder) {
-			this.setState({ placeholder: this.props.placeholder });
+			this.state.placeholder = this.props.placeholder;
 		}
 	}
 

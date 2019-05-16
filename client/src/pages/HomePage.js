@@ -60,7 +60,7 @@ class Homepage extends Component {
 								<SubmissionsList submissions={submissions} hideWarning />
 								<AddSubmission />
 							</div>
-							<Link to="/" className="link">
+							<Link to="/submissions" className="link">
 								View all submissions{" "}
 								<i className="material-icons">keyboard_arrow_right</i>
 							</Link>

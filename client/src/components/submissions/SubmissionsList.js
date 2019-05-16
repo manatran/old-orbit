@@ -10,6 +10,7 @@ class SubmissionsList extends Component {
 				submissions.map((el, i) => (
 					<Submission
 						key={el.id}
+						id={el.id}
 						title={el.title}
 						subtitle={`by ${el.author.username}`}
 						background={el.thumbnail}

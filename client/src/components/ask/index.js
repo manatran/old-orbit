@@ -29,8 +29,6 @@ class Ask extends Component {
 			subject: subject
 		};
 
-		console.log(body)
-
 		fetch(`${apiUrl}/api/v1/posts`, {
 			method: "POST",
 			headers: {
