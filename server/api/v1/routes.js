@@ -155,6 +155,7 @@ router.delete(
 router.get("/reports", auth.authenticateJWT(), reportController.get_reports);
 router.post("/reports", auth.authenticateJWT(), reportController.create_report);
 router.get("/reports/:id", auth.authenticateJWT(), reportController.get_report);
+router.patch("/reports/:id", auth.authenticateJWT(), reportController.update_report);
 router.delete(
 	"/reports/:id",
 	auth.authenticateJWT(),

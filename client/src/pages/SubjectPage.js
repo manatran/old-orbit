@@ -16,6 +16,7 @@ class SubjectPage extends Component {
 		this.state = {
 			subject: null,
 			questions: null,
+			suggestionId: null,
 			slug: '',
 			title: "",
 			content: "",
@@ -31,8 +32,10 @@ class SubjectPage extends Component {
 
 
 	componentDidMount() {
-		this.setState({ slug: this.props.match.params.slug })
+		const slug = this.props.match.params.slug
+		this.setState({ slug });
 		this.fetchCategory();
+
 	}
 
 	fetchCategory() {
@@ -42,6 +45,9 @@ class SubjectPage extends Component {
 			.then(res => res.json())
 			.then(subject => {
 				this.setState({ subject });
+				if (slug === "suggestion") {
+					this.setState({ suggestionId: subject.id })
+				}
 				this.setState({ loading: false });
 			})
 			.catch(err => {
@@ -61,7 +67,7 @@ class SubjectPage extends Component {
 
 	onSubmit = (e) => {
 		e.preventDefault();
-		const { title, content } = this.state;
+		const { title, content, suggestionId } = this.state;
 		const { auth } = this.props;
 
 		if (!title || !content) {
@@ -72,7 +78,7 @@ class SubjectPage extends Component {
 		const body = {
 			title: title,
 			content: content,
-			subject: 6
+			subject: suggestionId
 		};
 
 		fetch(`${apiUrl}/api/v1/posts`, {
@@ -99,15 +105,14 @@ class SubjectPage extends Component {
 	}
 
 	render() {
-		const { loading, subject, questions } = this.state;
-		const { slug } = this.props.match.params;
+		const { loading, subject, questions, suggestionId } = this.state;
 		return (
 			<>
 				{subject && <Header subject={subject} />}
 				<div className="body">
 					<Sidebar />
 					<main>
-						{slug === "suggestion" && (
+						{suggestionId && (
 							<>
 								<h2>Submit a suggestion</h2>
 								<form onSubmit={this.onSubmit}>
@@ -131,7 +136,7 @@ class SubjectPage extends Component {
 						)}
 						{loading
 							? <Spinner />
-							: <QuestionsList questions={questions} /> }
+							: <QuestionsList questions={questions} />}
 					</main>
 				</div>
 			</>

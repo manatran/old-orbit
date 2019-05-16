@@ -43,8 +43,20 @@ class Report extends Component {
 	}
 
 	ignore = () => {
-		// TODO: set resolved by
-		console.log("ignored");
+		// ignore report
+		fetch(`${apiUrl}/api/v1/reports/${this.props.id}`, {
+			method: "PATCH",
+			headers: {
+				Authorization: this.props.auth.token,
+				Accept: "application/json",
+				"Content-Type": "application/json"
+			},
+		})
+			.then(res => res.json())
+			.then(() => {
+				this.setState({ success: "Successfully ignored report" });
+			})
+			.catch(err => console.log(err));
 	}
 
 	render() {
@@ -67,6 +79,14 @@ class Report extends Component {
 							author={question.author}
 							timestamp={question.createdAt}
 						/>
+						<a
+							style={{ display: "block", paddingTop: `16px` }}
+							href={`/questions/${question.id}`}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							Open in new tab
+						</a>
 						<div className="button-container" style={{ marginTop: "16px" }}>
 							<button
 								className="button small"
